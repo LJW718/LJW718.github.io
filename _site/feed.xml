@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description>拒绝做一个空想主义者!</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 24 Feb 2019 01:16:39 +0800</pubDate>
+    <lastBuildDate>Sun, 24 Feb 2019 01:16:39 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Markdown基础语法学习 ！</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#markdown简介及扩展&quot; id=&quot;markdown-toc-markdown简介及扩展&quot;&gt;&lt;strong&gt;Markdown简介及扩展&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用语法&quot; id=&quot;markdown-toc-常用语法&quot;&gt;&lt;strong&gt;常用语法&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#一标题&quot; id=&quot;markdown-toc-一标题&quot;&gt;一、标题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#二字体&quot; id=&quot;markdown-toc-二字体&quot;&gt;二、字体&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#三引用&quot; id=&quot;markdown-toc-三引用&quot;&gt;三、引用&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#四分割线&quot; id=&quot;markdown-toc-四分割线&quot;&gt;四、分割线&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#五图片&quot; id=&quot;markdown-toc-五图片&quot;&gt;五、图片&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#六超链接&quot; id=&quot;markdown-toc-六超链接&quot;&gt;六、超链接&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#七列表&quot; id=&quot;markdown-toc-七列表&quot;&gt;七、列表&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#八表格&quot; id=&quot;markdown-toc-八表格&quot;&gt;八、表格&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#九代码块&quot; id=&quot;markdown-toc-九代码块&quot;&gt;九、代码块&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#十流程图&quot; id=&quot;markdown-toc-十流程图&quot;&gt;十、流程图&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#浏览器兼容&quot; id=&quot;markdown-toc-浏览器兼容&quot;&gt;&lt;strong&gt;浏览器兼容&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这是一篇关于Markdown语法的博客&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;markdown简介及扩展&quot;&gt;&lt;strong&gt;Markdown简介及扩展&lt;/strong&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— &lt;a href=&quot;https://zh.wikipedia.org/wiki/Markdown&quot; target=&quot;_blank&quot;&gt; [ 维基百科 ]&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;常用语法&quot;&gt;&lt;strong&gt;常用语法&lt;/strong&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;一标题&quot;&gt;一、标题&lt;/h2&gt;
+&lt;p&gt;在想要设置为标题的&lt;code class=&quot;highlighter-rouge&quot;&gt;文字前面加#&lt;/code&gt;来表示, 一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。
+注：标准语法一般在#后跟个空格再写文字,&lt;code class=&quot;highlighter-rouge&quot;&gt;在内容末尾敲**2个空格**+**回车**进行换行&lt;/code&gt;&lt;br /&gt;
+示例：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 这是一级标题
+## 这是二级标题
+### 这是三级标题
+#### 这是四级标题
+##### 这是五级标题
+###### 这是六级标题
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;二字体&quot;&gt;二、字体&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;   要加粗的文字左右分别用&lt;code class=&quot;highlighter-rouge&quot;&gt;2个*号&lt;/code&gt;包起来&lt;br /&gt;
+&lt;em&gt;斜体&lt;/em&gt;    要倾斜的文字左右分别用&lt;code class=&quot;highlighter-rouge&quot;&gt;1个*号&lt;/code&gt;包起来&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;斜体加粗&lt;/em&gt;&lt;/strong&gt;  要倾斜和加粗的文字左右分别用&lt;code class=&quot;highlighter-rouge&quot;&gt;3个*号&lt;/code&gt;包起来&lt;br /&gt;
+&lt;del&gt;删除线&lt;/del&gt;    要加删除线的文字左右分别用&lt;code class=&quot;highlighter-rouge&quot;&gt;2个~~号&lt;/code&gt;包起来&lt;/p&gt;
+
+&lt;h2 id=&quot;三引用&quot;&gt;三、引用&lt;/h2&gt;
+&lt;p&gt;在引用的文字前加&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;即可。引用也可以嵌套，如加两个»三个»&amp;gt; n个…貌似&lt;code class=&quot;highlighter-rouge&quot;&gt;可以一直加下去&lt;/code&gt;,&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;我是一级引用&lt;/p&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;我是二级引用&lt;/p&gt;
+    &lt;blockquote&gt;
+      &lt;blockquote&gt;
+        &lt;blockquote&gt;
+          &lt;blockquote&gt;
+            &lt;blockquote&gt;
+              &lt;blockquote&gt;
+                &lt;blockquote&gt;
+                  &lt;p&gt;我TM是多少级引用？算了,暂时没啥卵用&lt;/p&gt;
+                &lt;/blockquote&gt;
+              &lt;/blockquote&gt;
+            &lt;/blockquote&gt;
+          &lt;/blockquote&gt;
+        &lt;/blockquote&gt;
+      &lt;/blockquote&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;四分割线&quot;&gt;四、分割线&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;三个或者三个以上的 - 或者 * &lt;/code&gt;都可以,&lt;code class=&quot;highlighter-rouge&quot;&gt;---&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;*******&lt;/code&gt;显示效果都一样。示例： 三个-&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;五图片&quot;&gt;五、图片&lt;/h2&gt;
+&lt;p&gt;语法：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;![图片alt](图片地址 ''图片title'')&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;图片alt就是显示在图片下面的文字，相当于对图片内容的解释。&lt;br /&gt;
+图片地址可以为网上的地址，也可以是styles/images/下图片的绝对路径&lt;br /&gt;
+图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加 &lt;br /&gt;
+示例：&lt;br /&gt;
+&lt;img src=&quot;https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/
+u=702257389,1274025419&amp;amp;fm=27&amp;amp;gp=0.jpg&quot; alt=&quot;blockchain&quot; title=&quot;区块链&amp;lt;图片来自网络&amp;gt;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;六超链接&quot;&gt;六、超链接&lt;/h2&gt;
+&lt;p&gt;语法：&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;[超链接名](超链接地址 &quot;超链接title&quot;)&lt;/code&gt;  title可加可不加&lt;/p&gt;
+
+&lt;p&gt;示例：&lt;br /&gt;
+&lt;a href=&quot;http://www.github.com&quot;&gt;Github官网&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll官网&lt;/a&gt;&lt;br /&gt;
+注：Markdown本身语法不支持链接在新页面中打开,如果想要在新页面中打开的话可以用html语言的a标签代替。
+示例：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;a href=&quot;https://github.com/LJW718/LJW718.github.io&quot; target=&quot;_blank&quot;&amp;gt;本项目&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;a href=&quot;https://github.com/LJW718/LJW718.github.io&quot; target=&quot;_blank&quot;&gt;本项目&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;七列表&quot;&gt;七、列表&lt;/h2&gt;
+
+&lt;p&gt;(1)无序列表&lt;br /&gt;
+语法：
+无序列表 在列表前加 - + * 任何一种都可以&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;列表内容&lt;/li&gt;
+  &lt;li&gt;列表内容&lt;/li&gt;
+  &lt;li&gt;列表内容&lt;br /&gt;
+注意：&lt;code class=&quot;highlighter-rouge&quot;&gt;- + * 跟内容之间都要有一个空格&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2)有序列表&lt;br /&gt;
+语法：&lt;code class=&quot;highlighter-rouge&quot;&gt;数字+.+列表内容&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;列表内容&lt;/li&gt;
+  &lt;li&gt;列表内容&lt;/li&gt;
+  &lt;li&gt;列表内容&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;注意：&lt;code class=&quot;highlighter-rouge&quot;&gt;序号跟内容之间要有空格&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;(3)列表嵌套
+&lt;code class=&quot;highlighter-rouge&quot;&gt;上一级和下一级之间敲三个空格&lt;/code&gt;即可&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;一级无序列表内容
+    &lt;ul&gt;
+      &lt;li&gt;二级无序列表内容&lt;/li&gt;
+      &lt;li&gt;二级无序列表内容&lt;/li&gt;
+      &lt;li&gt;二级无序列表内容&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;一级无序列表内容
+    &lt;ol&gt;
+      &lt;li&gt;二级有序列表内容&lt;/li&gt;
+      &lt;li&gt;二级有序列表内容&lt;/li&gt;
+      &lt;li&gt;二级有序列表内容&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;一级有序列表内容
+    &lt;ul&gt;
+      &lt;li&gt;二级无序列表内容&lt;/li&gt;
+      &lt;li&gt;二级无序列表内容&lt;/li&gt;
+      &lt;li&gt;二级无序列表内容&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;一级有序列表内容
+    &lt;ol&gt;
+      &lt;li&gt;二级有序列表内容&lt;/li&gt;
+      &lt;li&gt;二级有序列表内容&lt;/li&gt;
+      &lt;li&gt;二级有序列表内容&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;&lt;strong&gt;Markdown　Extra&lt;/strong&gt;　定义列表语法：&lt;/dt&gt;
+  &lt;dt&gt;项目３&lt;/dt&gt;
+  &lt;dd&gt;定义 1
+    &lt;blockquote&gt;
+      &lt;p&gt;定义1内容&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&quot;八表格&quot;&gt;八、表格&lt;/h2&gt;
+&lt;p&gt;语法：&lt;br /&gt;
+表头|表头|表头&lt;br /&gt;
+—|:–:|—:&lt;br /&gt;
+内容|内容|内容&lt;br /&gt;
+内容|内容|内容&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;第二行分割表头和内容&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; 有一个就行，为了对齐，多加了几个,文字默认居左&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;------两边&lt;/code&gt;加&lt;code class=&quot;highlighter-rouge&quot;&gt;：&lt;/code&gt;表示文字&lt;code class=&quot;highlighter-rouge&quot;&gt;居中&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;------右边&lt;/code&gt;加&lt;code class=&quot;highlighter-rouge&quot;&gt;：&lt;/code&gt;表示文字&lt;code class=&quot;highlighter-rouge&quot;&gt;居右&lt;/code&gt;&lt;br /&gt;
+注：原生的语法两边都要用 | 包起来。&lt;/p&gt;
+
+&lt;p&gt;示例1:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;姓名&lt;/th&gt;
+      &lt;th&gt;技能&lt;/th&gt;
+      &lt;th&gt;排行&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;刘备&lt;/td&gt;
+      &lt;td&gt;哭&lt;/td&gt;
+      &lt;td&gt;大哥&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;关羽&lt;/td&gt;
+      &lt;td&gt;打&lt;/td&gt;
+      &lt;td&gt;二哥&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;张飞&lt;/td&gt;
+      &lt;td&gt;骂&lt;/td&gt;
+      &lt;td&gt;三弟&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;示例2：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;项目&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;价格&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;数量&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Computer&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1600 元&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Phone&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;12 元&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Pipe&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1 元&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;234&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;九代码块&quot;&gt;九、代码块&lt;/h2&gt;
+&lt;p&gt;语法：&lt;br /&gt;
+单行代码：代码之间分别用&lt;code class=&quot;highlighter-rouge&quot;&gt;1个反引号包起来&lt;/code&gt; &lt;br /&gt;
+代码块：代码之间分别用&lt;code class=&quot;highlighter-rouge&quot;&gt;3个反引号包起来，且两边的反引号单独占一行&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  代码...  
+  代码...  
+  代码... 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;示例：
+单行代码
+&lt;code class=&quot;highlighter-rouge&quot;&gt;create database hero;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;代码块&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    function func(){
+         echo &quot;Hello World !&quot;;
+    }
+    fun();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;十流程图&quot;&gt;十、流程图&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-flow&quot;&gt;st=&amp;gt;start: 开始
+op=&amp;gt;operation: My Operation
+cond=&amp;gt;condition: Yes or No?
+e=&amp;gt;end
+st-&amp;gt;op-&amp;gt;cond
+cond(yes)-&amp;gt;e
+cond(no)-&amp;gt;op
+&amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;!--
+### 十一、脚注
+生成一个脚注[^footnote]    
+  [^footnote]: 这里是 **脚注** 的 *内容*.  
+
+### 目录
+用 `[TOC]`来生成目录：
+
+[TOC]
+
+### 数学公式
+### UML 图:
+
+--&gt;
+
+&lt;h2 id=&quot;浏览器兼容&quot;&gt;&lt;strong&gt;浏览器兼容&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;目前，本编辑器对Chrome浏览器支持最为完整。建议大家使用较新版本的Chrome。&lt;/li&gt;
+  &lt;li&gt;IE９以下不支持&lt;/li&gt;
+  &lt;li&gt;IE９，10,11存在以下问题：
+    &lt;ul&gt;
+      &lt;li&gt;不支持离线功能&lt;/li&gt;
+      &lt;li&gt;IE9不支持文件导入导出&lt;/li&gt;
+      &lt;li&gt;IE10不支持拖拽文件导入&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;整理自简书  ：https://www.jianshu.com/p/191d1e21f7ed&lt;/p&gt;
+</description>
+        <pubDate>Sat, 23 Feb 2019 19:58:01 +0800</pubDate>
+        <link>http://localhost:4000/2019/02/23/Markdown-to-learnl/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/02/23/Markdown-to-learnl/</guid>
+        
+        <category>jekyll</category>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome To Jekyll !</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#zhugeliang&quot; id=&quot;markdown-toc-zhugeliang&quot;&gt;诫子书&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用Jekyll编写的第一篇博客 ！&lt;/p&gt;
+
+&lt;h2 id=&quot;zhugeliang&quot;&gt;诫子书&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/jiezishu.jpg&quot; alt=&quot;诫子书&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;诸葛亮&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;夫君子之行，静以修身，俭以养德。非淡泊(澹泊)无以明志，非宁静无以致远。夫学须静也，才须学也。非学无以广才，非志无以成学。淫慢则不能励精，险躁则不能冶性。
+年与时驰，意与日去，遂成枯落，多不接世，悲守穷庐，将复何及！&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 23 Feb 2019 19:21:01 +0800</pubDate>
+        <link>http://localhost:4000/2019/02/23/Welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/02/23/Welcome-to-jekyll/</guid>
+        
+        <category>jekyll</category>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>如何使用当前Jekyll模版</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#Thanks&quot; id=&quot;markdown-toc-Thanks&quot;&gt;致谢&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#How-to-use&quot; id=&quot;markdown-toc-How-to-use&quot;&gt;使用&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#Download&quot; id=&quot;markdown-toc-Download&quot;&gt;下载&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#Configuration&quot; id=&quot;markdown-toc-Configuration&quot;&gt;配置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#How-to-write-document&quot; id=&quot;markdown-toc-How-to-write-document&quot;&gt;如何写文章&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#execute&quot; id=&quot;markdown-toc-execute&quot;&gt;执行&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#result&quot; id=&quot;markdown-toc-result&quot;&gt;效果&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#about-author&quot; id=&quot;markdown-toc-about-author&quot;&gt;关于作者&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;Thanks&quot;&gt;致谢&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;感谢&lt;a href=&quot;https://github.com/&quot;&gt;Github&lt;/a&gt;提供的代码维护和发布平台&lt;/li&gt;
+  &lt;li&gt;感谢&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;团队做出如此优秀的产品&lt;/li&gt;
+  &lt;li&gt;感谢该开源项目的发起者&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;How-to-use&quot;&gt;使用&lt;/h1&gt;
+
+&lt;h2 id=&quot;Download&quot;&gt;下载&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/LJW718/LJW718.github.io
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;Configuration&quot;&gt;配置&lt;/h2&gt;
+
+&lt;p&gt;将当前项目下的所有文件Copy至你自己的&lt;code class=&quot;highlighter-rouge&quot;&gt;***.github.io&lt;/code&gt;仓库，&lt;br /&gt;
+该项目需要配置的只有一个文件&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;，打开之后按照如下进行配置。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;特别注意&lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl&lt;/code&gt;的配置。如果是&lt;code class=&quot;highlighter-rouge&quot;&gt;***.github.io&lt;/code&gt;项目，不修改为空&lt;code class=&quot;highlighter-rouge&quot;&gt;''&lt;/code&gt;的话，会导致JS,CSS等静态资源无法找到的错误&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;name: 博客名称
+email: 邮箱地址
+author: 作者名
+url: 个人网站
+&lt;span class=&quot;c&quot;&gt;### baseurl修改为项目名，如果项目是'***.github.io'，则设置为空''&lt;/span&gt;
+baseurl: &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+resume_site: 个人简历网站
+github: github地址
+github_username: github用户名称
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;How-to-write-document&quot;&gt;如何写文章&lt;/h2&gt;
+
+&lt;p&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;目录下新建一个文件，可以创建文件夹并在文件夹中添加文件，方便维护。在新建文件中粘贴如下信息，并修改以下的&lt;code class=&quot;highlighter-rouge&quot;&gt;titile&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;categories&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;tag&lt;/code&gt;的相关信息，添加&lt;code class=&quot;highlighter-rouge&quot;&gt;* content {:toc}&lt;/code&gt;为目录相关信息，在进行正文书写前需要在目录和正文之间输入至少2行空行。然后按照正常的Markdown语法书写正文。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+layout: post
+&lt;span class=&quot;c&quot;&gt;#标题配置&lt;/span&gt;
+title:  标题
+&lt;span class=&quot;c&quot;&gt;#时间配置&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;:   2019-02-22 01:08:00 +0800
+&lt;span class=&quot;c&quot;&gt;#大类配置&lt;/span&gt;
+categories: document
+&lt;span class=&quot;c&quot;&gt;#小类配置&lt;/span&gt;
+tag: 教程
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; content
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;:toc&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+文章相关信息
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;execute&quot;&gt;执行&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Windows系统：Ctrl+r 输入cmd,回车，cd命令进入到该项目
+jekyll server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;result&quot;&gt;效果&lt;/h2&gt;
+&lt;p&gt;打开浏览器并输入URL&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:4000/&lt;/code&gt;,回车。&lt;/p&gt;
+
+&lt;h1 id=&quot;about-author&quot;&gt;关于作者&lt;/h1&gt;
+
+&lt;p&gt;热爱编程，擅长Linux，精通C,喜欢探索新领域的程序猿。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 22 Feb 2019 01:08:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/02/22/how-to-use-this-jekyll-theme/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/02/22/how-to-use-this-jekyll-theme/</guid>
+        
+        <category>教程</category>
+        
+        
+        <category>document</category>
+        
+      </item>
+    
+  </channel>
+</rss>

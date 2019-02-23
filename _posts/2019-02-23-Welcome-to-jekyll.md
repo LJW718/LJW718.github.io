@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2014-11-17 13:31:01 +0800
+title:  "Welcome To Jekyll !"
+date:   2019-02-23 19:21:01 +0800
 categories: jekyll
 tag: jekyll
 ---
@@ -10,14 +10,12 @@ tag: jekyll
 {:toc}
 
 
-First POST build by Jekyll.
-
+使用Jekyll编写的第一篇博客 ！
 
 诫子书				{#zhugeliang}
 ------------------------
 
 ![诫子书]({{ '/styles/images/jiezishu.jpg' | prepend: site.baseurl  }})
-
 
 [诸葛亮](#)
 

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Markdown基础语法学习 ！ - 刘景稳的主页</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/styles/css/syntax.css">
+	<link rel="canonical" href="/2019/02/23/Markdown-to-learnl/">
+	<link rel="alternate" type="application/rss+xml" title="刘景稳的主页" href="/feed.xml">
+	
+	<meta name="keywords" content="Markdown基础语法学习 ！, 刘景稳的主页, 刘景稳;个人博客;活到老;学到老">
+	<meta name="description" content="刘景稳;个人博客;活到老;学到老">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?94be4b0f9fc5d94cc0d0415ea6761ae9";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">主页</a>
+        </li>
+        <li>
+          <a href="/categories/">大类分解</a>
+        </li>
+        <li>
+          <a href="/tag">小类内聚</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a><span id="busuanzi_container_site_pv">该网页累计访问<span id="busuanzi_value_site_pv"></span>次</span></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/LJW718/">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/LJW718">作者介绍</a></li>
+          <!--  <li><a rel="nofollow" href="/books">我的书单</a></li> 
+            <li><a rel="nofollow" href="http://www.hifreud.com/domains/">域名管理</a></li>
+            <li><a rel="nofollow" href="/reference">推荐博客</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li> -->
+            <li><a rel="nofollow" target="_blank" href="https://github.com/LJW718/LJW718.github.io">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>Markdown基础语法学习 ！</h1>
+		    <p>Post on Feb 23, 2019 by <a href="/about">Liu JingWen</a></p>
+		-->
+		    <h1>It's our wits that make us men.</h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#jekyll-ref">jekyll</a>	/
+    	<a href="/tag/#jekyll-ref">jekyll</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+  </ul>
+  <div style="height: 200px;width: 200px;">
+    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"> 
+    </script>
+  </div>
+</div>
+
+ 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">Markdown基础语法学习 ！</h1>
+              <!--
+                <p class="post-meta">Feb 23, 2019</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Feb 23, 2019</span> By <a target="_blank" href="http://localhost:4000">Liu JingWen</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#markdown简介及扩展" id="markdown-toc-markdown简介及扩展"><strong>Markdown简介及扩展</strong></a></li>
+  <li><a href="#常用语法" id="markdown-toc-常用语法"><strong>常用语法</strong></a></li>
+  <li><a href="#一标题" id="markdown-toc-一标题">一、标题</a></li>
+  <li><a href="#二字体" id="markdown-toc-二字体">二、字体</a></li>
+  <li><a href="#三引用" id="markdown-toc-三引用">三、引用</a></li>
+  <li><a href="#四分割线" id="markdown-toc-四分割线">四、分割线</a></li>
+  <li><a href="#五图片" id="markdown-toc-五图片">五、图片</a></li>
+  <li><a href="#六超链接" id="markdown-toc-六超链接">六、超链接</a></li>
+  <li><a href="#七列表" id="markdown-toc-七列表">七、列表</a></li>
+  <li><a href="#八表格" id="markdown-toc-八表格">八、表格</a></li>
+  <li><a href="#九代码块" id="markdown-toc-九代码块">九、代码块</a></li>
+  <li><a href="#十流程图" id="markdown-toc-十流程图">十、流程图</a></li>
+  <li><a href="#浏览器兼容" id="markdown-toc-浏览器兼容"><strong>浏览器兼容</strong></a></li>
+</ul>
+
+<p>这是一篇关于Markdown语法的博客</p>
+
+<hr />
+
+<h2 id="markdown简介及扩展"><strong>Markdown简介及扩展</strong></h2>
+<blockquote>
+  <p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— <a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank"> [ 维基百科 ]</a></p>
+</blockquote>
+
+<hr />
+
+<h2 id="常用语法"><strong>常用语法</strong></h2>
+<h2 id="一标题">一、标题</h2>
+<p>在想要设置为标题的<code class="highlighter-rouge">文字前面加#</code>来表示, 一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。
+注：标准语法一般在#后跟个空格再写文字,<code class="highlighter-rouge">在内容末尾敲**2个空格**+**回车**进行换行</code><br />
+示例：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 这是一级标题
+## 这是二级标题
+### 这是三级标题
+#### 这是四级标题
+##### 这是五级标题
+###### 这是六级标题
+</code></pre></div></div>
+<h2 id="二字体">二、字体</h2>
+<p><strong>加粗</strong>   要加粗的文字左右分别用<code class="highlighter-rouge">2个*号</code>包起来<br />
+<em>斜体</em>    要倾斜的文字左右分别用<code class="highlighter-rouge">1个*号</code>包起来<br />
+<strong><em>斜体加粗</em></strong>  要倾斜和加粗的文字左右分别用<code class="highlighter-rouge">3个*号</code>包起来<br />
+<del>删除线</del>    要加删除线的文字左右分别用<code class="highlighter-rouge">2个~~号</code>包起来</p>
+
+<h2 id="三引用">三、引用</h2>
+<p>在引用的文字前加<code class="highlighter-rouge">&gt;</code>即可。引用也可以嵌套，如加两个»三个»&gt; n个…貌似<code class="highlighter-rouge">可以一直加下去</code>,</p>
+<blockquote>
+  <p>我是一级引用</p>
+  <blockquote>
+    <p>我是二级引用</p>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <p>我TM是多少级引用？算了,暂时没啥卵用</p>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2 id="四分割线">四、分割线</h2>
+<p><code class="highlighter-rouge">三个或者三个以上的 - 或者 * </code>都可以,<code class="highlighter-rouge">---</code>和<code class="highlighter-rouge">*******</code>显示效果都一样。示例： 三个-</p>
+
+<hr />
+
+<h2 id="五图片">五、图片</h2>
+<p>语法：
+<code class="highlighter-rouge">![图片alt](图片地址 ''图片title'')</code></p>
+
+<p>图片alt就是显示在图片下面的文字，相当于对图片内容的解释。<br />
+图片地址可以为网上的地址，也可以是styles/images/下图片的绝对路径<br />
+图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加 <br />
+示例：<br />
+<img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/
+u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链&lt;图片来自网络&gt;" /></p>
+
+<h2 id="六超链接">六、超链接</h2>
+<p>语法：<br />
+<code class="highlighter-rouge">[超链接名](超链接地址 "超链接title")</code>  title可加可不加</p>
+
+<p>示例：<br />
+<a href="http://www.github.com">Github官网</a><br />
+<a href="http://jekyllrb.com">Jekyll官网</a><br />
+注：Markdown本身语法不支持链接在新页面中打开,如果想要在新页面中打开的话可以用html语言的a标签代替。
+示例：<code class="highlighter-rouge">&lt;a href="https://github.com/LJW718/LJW718.github.io" target="_blank"&gt;本项目&lt;/a&gt;</code><a href="https://github.com/LJW718/LJW718.github.io" target="_blank">本项目</a></p>
+
+<h2 id="七列表">七、列表</h2>
+
+<p>(1)无序列表<br />
+语法：
+无序列表 在列表前加 - + * 任何一种都可以</p>
+<ul>
+  <li>列表内容</li>
+  <li>列表内容</li>
+  <li>列表内容<br />
+注意：<code class="highlighter-rouge">- + * 跟内容之间都要有一个空格</code></li>
+</ul>
+
+<p>(2)有序列表<br />
+语法：<code class="highlighter-rouge">数字+.+列表内容</code></p>
+<ol>
+  <li>列表内容</li>
+  <li>列表内容</li>
+  <li>列表内容</li>
+</ol>
+
+<p>注意：<code class="highlighter-rouge">序号跟内容之间要有空格</code></p>
+
+<p>(3)列表嵌套
+<code class="highlighter-rouge">上一级和下一级之间敲三个空格</code>即可</p>
+<ul>
+  <li>一级无序列表内容
+    <ul>
+      <li>二级无序列表内容</li>
+      <li>二级无序列表内容</li>
+      <li>二级无序列表内容</li>
+    </ul>
+  </li>
+  <li>一级无序列表内容
+    <ol>
+      <li>二级有序列表内容</li>
+      <li>二级有序列表内容</li>
+      <li>二级有序列表内容</li>
+    </ol>
+  </li>
+</ul>
+
+<ol>
+  <li>一级有序列表内容
+    <ul>
+      <li>二级无序列表内容</li>
+      <li>二级无序列表内容</li>
+      <li>二级无序列表内容</li>
+    </ul>
+  </li>
+  <li>一级有序列表内容
+    <ol>
+      <li>二级有序列表内容</li>
+      <li>二级有序列表内容</li>
+      <li>二级有序列表内容</li>
+    </ol>
+  </li>
+</ol>
+
+<dl>
+  <dt><strong>Markdown　Extra</strong>　定义列表语法：</dt>
+  <dt>项目３</dt>
+  <dd>定义 1
+    <blockquote>
+      <p>定义1内容</p>
+    </blockquote>
+  </dd>
+</dl>
+
+<h2 id="八表格">八、表格</h2>
+<p>语法：<br />
+表头|表头|表头<br />
+—|:–:|—:<br />
+内容|内容|内容<br />
+内容|内容|内容</p>
+
+<p><code class="highlighter-rouge">第二行分割表头和内容</code>。<code class="highlighter-rouge">-</code> 有一个就行，为了对齐，多加了几个,文字默认居左<br />
+<code class="highlighter-rouge">------两边</code>加<code class="highlighter-rouge">：</code>表示文字<code class="highlighter-rouge">居中</code><br />
+<code class="highlighter-rouge">------右边</code>加<code class="highlighter-rouge">：</code>表示文字<code class="highlighter-rouge">居右</code><br />
+注：原生的语法两边都要用 | 包起来。</p>
+
+<p>示例1:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>姓名</th>
+      <th>技能</th>
+      <th>排行</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>刘备</td>
+      <td>哭</td>
+      <td>大哥</td>
+    </tr>
+    <tr>
+      <td>关羽</td>
+      <td>打</td>
+      <td>二哥</td>
+    </tr>
+    <tr>
+      <td>张飞</td>
+      <td>骂</td>
+      <td>三弟</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>示例2：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">项目</th>
+      <th style="text-align: right">价格</th>
+      <th style="text-align: center">数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Computer</td>
+      <td style="text-align: right">1600 元</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Phone</td>
+      <td style="text-align: right">12 元</td>
+      <td style="text-align: center">12</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Pipe</td>
+      <td style="text-align: right">1 元</td>
+      <td style="text-align: center">234</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="九代码块">九、代码块</h2>
+<p>语法：<br />
+单行代码：代码之间分别用<code class="highlighter-rouge">1个反引号包起来</code> <br />
+代码块：代码之间分别用<code class="highlighter-rouge">3个反引号包起来，且两边的反引号单独占一行</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  代码...  
+  代码...  
+  代码... 
+</code></pre></div></div>
+
+<p>示例：
+单行代码
+<code class="highlighter-rouge">create database hero;</code></p>
+
+<p>代码块</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    function func(){
+         echo "Hello World !";
+    }
+    fun();
+</code></pre></div></div>
+
+<h2 id="十流程图">十、流程图</h2>
+<pre><code class="language-flow">st=&gt;start: 开始
+op=&gt;operation: My Operation
+cond=&gt;condition: Yes or No?
+e=&gt;end
+st-&gt;op-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;op
+&amp;
+</code></pre>
+
+<!--
+### 十一、脚注
+生成一个脚注[^footnote]    
+  [^footnote]: 这里是 **脚注** 的 *内容*.  
+
+### 目录
+用 `[TOC]`来生成目录：
+
+[TOC]
+
+### 数学公式
+### UML 图:
+
+-->
+
+<h2 id="浏览器兼容"><strong>浏览器兼容</strong></h2>
+
+<ol>
+  <li>目前，本编辑器对Chrome浏览器支持最为完整。建议大家使用较新版本的Chrome。</li>
+  <li>IE９以下不支持</li>
+  <li>IE９，10,11存在以下问题：
+    <ul>
+      <li>不支持离线功能</li>
+      <li>IE9不支持文件导入导出</li>
+      <li>IE10不支持拖拽文件导入</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<p>整理自简书  ：https://www.jianshu.com/p/191d1e21f7ed</p>
+
+            </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2019-至今 <a href="https://github.com/LJW718"><code>Liu JingWen</code></a>.</p>
+		<p>Powered by <a href="http://jekyllrb.com">Jekyll</a>, Themed from <a href="http://lesscss.cn/">Less</a>, Refactored by Liu Jingwen</p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+<script src="/styles/js/application.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </body>
+</html>

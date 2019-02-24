@@ -1,15 +1,15 @@
 # Site settings
-name: 刘景稳的主页
+name: Welcome To My Blog
 email: 708912805@qq.com
 author: Liu JingWen
-url: http://www.hifreud.com
+#url: http://www.hifreud.com
 resume_site: https://github.com/LJW718
 github: https://github.com/LJW718/
 baseurl: ''
 description: 拒绝做一个空想主义者!
-meta_description: 刘景稳;个人博客;活到老;学到老
-motto: It's our wits that make us men.
-banner: 学而不思则罔，思而不学则殆。
+meta_description: 活到老;学到老
+motto: 活到老,学到老
+banner: 不积跬步,无以至千里 
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/

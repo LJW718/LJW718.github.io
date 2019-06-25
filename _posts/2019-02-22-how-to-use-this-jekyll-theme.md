@@ -2,7 +2,7 @@
 layout: post
 title:  如何使用当前Jekyll模版
 date:   2019-02-22 01:08:00 +0800
-categories: document
+categories: Document
 tag: 教程
 ---
 

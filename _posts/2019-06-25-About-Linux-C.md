@@ -1,8 +1,7 @@
 ---
 layout: post
-title:  "C语言中部分函数用法"
+title:  "基于Linux下的C函数的使用"
 date:   2019-06-25 22:58:01 +0800
-
 categories: Linux
 tag: C函数
 ---
@@ -12,9 +11,7 @@ tag: C函数
 {:toc}
 本篇博客是介绍C语言中一些常用、易用错的函数的使用方法,每个函数使用都以实例展示,并且都是在项目中实际用到过,持续更新...
 
-# Linux下常用难记函数
-
-## 1、GB2312与UTF-8互转
+# 1、GB2312与UTF-8互转
 ```
 #include <iconv.h>
 int code_convert(char *from_charset,char *to_charset,char *inbuf,int inlen,char *outbuf,int outlen)
@@ -50,7 +47,7 @@ int g2u(char *inbuf,size_t inlen,char *outbuf,size_t outlen)
 }
 ```
 
-## 2、strtok()函数
+# 2、strtok()函数
 ```
 #include<stdio.h>
 #include<string.h>

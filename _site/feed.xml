@@ -2,12 +2,82 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <description>拒绝做一个空想主义者!</description>
+    <description>自己动手,丰衣足食!</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Jun 2019 22:44:52 +0800</pubDate>
-    <lastBuildDate>Tue, 25 Jun 2019 22:44:52 +0800</lastBuildDate>
+    <pubDate>Tue, 25 Jun 2019 23:22:01 +0800</pubDate>
+    <lastBuildDate>Tue, 25 Jun 2019 23:22:01 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>基于Linux下的C函数的使用</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1gb2312与utf-8互转&quot; id=&quot;markdown-toc-1gb2312与utf-8互转&quot;&gt;1、GB2312与UTF-8互转&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2strtok函数&quot; id=&quot;markdown-toc-2strtok函数&quot;&gt;2、strtok()函数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本篇博客是介绍C语言中一些常用、易用错的函数的使用方法,每个函数使用都以实例展示,并且都是在项目中实际用到过,持续更新…&lt;/p&gt;
+
+&lt;h1 id=&quot;1gb2312与utf-8互转&quot;&gt;1、GB2312与UTF-8互转&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iconv.h&amp;gt;
+int code_convert(char *from_charset,char *to_charset,char *inbuf,int inlen,char *outbuf,int outlen)
+{
+​	iconv_t cd = NULL;
+​	//int rc;
+​	char **pin = &amp;amp;inbuf;
+​	char **pout = &amp;amp;outbuf;
+​	cd = iconv_open(to_charset,from_charset);
+​	if(cd == (void *)-1)
+​	{
+​		return FAIL;
+​	}
+​	size_t n = iconv(cd,pin,&amp;amp;inlen,pout,&amp;amp;outlen);  //iconv返回转换期间不可转换字符的数量
+​	if(n &amp;lt; 0)
+​	{
+​		return FAIL;
+​	}
+​	iconv_close(cd);
+	return SUC;
+}
+
+//UNICODE码转为GB2312码
+int u2g(char *inbuf,int inlen,char *outbuf,int outlen)
+{
+​	return code_convert(&quot;utf-8&quot;,&quot;gb2312&quot;,inbuf,inlen,outbuf,outlen);
+}
+
+//GB2312码转为UNICODE码
+int g2u(char *inbuf,size_t inlen,char *outbuf,size_t outlen)
+{
+	return code_convert(&quot;gb2312&quot;,&quot;utf-8&quot;,inbuf,inlen,outbuf,outlen);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;2strtok函数&quot;&gt;2、strtok()函数&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;stdio.h&amp;gt;
+#include&amp;lt;string.h&amp;gt;
+int main(void)
+{
+​    char buf[]=&quot;hello@boy@this@is@heima&quot;;
+​    char*temp = strtok(buf,&quot;@&quot;);
+​    while(temp)
+​    {
+​        printf(&quot;%s &quot;,temp);
+​        temp = strtok(NULL,&quot;@&quot;);
+​    }
+​    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 25 Jun 2019 22:58:01 +0800</pubDate>
+        <link>http://localhost:4000/2019/06/25/About-Linux-C/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/25/About-Linux-C/</guid>
+        
+        <category>C函数</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>Jekyll安装步骤&amp;目录结构</title>
@@ -515,8 +585,8 @@ jekyll server
 &lt;p&gt;热爱编程，擅长Linux，精通C,喜欢探索新领域的程序猿。&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Feb 2019 01:08:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/02/22/how-to-use-this-jekyll-theme/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/02/22/how-to-use-this-jekyll-theme/</guid>
+        <link>http://localhost:4000/2019/02/22/How-to-use-this-jekyll-theme/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/02/22/How-to-use-this-jekyll-theme/</guid>
         
         <category>教程</category>
         

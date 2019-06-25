@@ -6,9 +6,9 @@ author: Liu JingWen
 resume_site: https://github.com/LJW718
 github: https://github.com/LJW718/
 baseurl: ''
-description: 拒绝做一个空想主义者!
-meta_description: 活到老;学到老
-motto: 活到老,学到老
+description: 自己动手,丰衣足食!
+meta_description: 自己动手,丰衣足食
+motto: 自己动手,丰衣足食
 banner: 不积跬步,无以至千里 
 
 #permalink: /:categories/:year/:month/:day/:title/
@@ -23,4 +23,7 @@ github_username: LJW718
 markdown: kramdown
 
 baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
+
+# Gems
+plugins: [jekyll-paginate]
 

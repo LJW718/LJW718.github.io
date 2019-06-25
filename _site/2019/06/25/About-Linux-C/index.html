@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Welcome To Jekyll ! - Welcome To Liujw's Blog</title>
+	<title>基于Linux下的C函数的使用 - Welcome To Liujw's Blog</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
@@ -13,10 +13,10 @@
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/styles/css/syntax.css">
-	<link rel="canonical" href="/2019/02/23/Welcome-to-jekyll/">
+	<link rel="canonical" href="/2019/06/25/About-Linux-C/">
 	<link rel="alternate" type="application/rss+xml" title="Welcome To Liujw's Blog" href="/feed.xml">
 	
-	<meta name="keywords" content="Welcome To Jekyll !, Welcome To Liujw's Blog, 自己动手,丰衣足食">
+	<meta name="keywords" content="基于Linux下的C函数的使用, Welcome To Liujw's Blog, 自己动手,丰衣足食">
 	<meta name="description" content="自己动手,丰衣足食">
 
 	<script src="/styles/js/jquery.min.js"></script>
@@ -90,8 +90,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>Welcome To Jekyll !</h1>
-		    <p>Post on Feb 23, 2019 by <a href="/about">Liu JingWen</a></p>
+		    <h1>基于Linux下的C函数的使用</h1>
+		    <p>Post on Jun 25, 2019 by <a href="/about">Liu JingWen</a></p>
 		-->
 		    <h1>自己动手,丰衣足食</h1>
     
@@ -102,8 +102,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#jekyll-ref">jekyll</a>	/
-    	<a href="/tag/#jekyll-ref">jekyll</a>
+    	<a href="/categories/#Linux-ref">Linux</a>	/
+    	<a href="/tag/#C函数-ref">C函数</a>
     
   </div>
 </div>
@@ -131,29 +131,70 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">Welcome To Jekyll !</h1>
+              <h1 class="post-title">基于Linux下的C函数的使用</h1>
               <!--
-                <p class="post-meta">Feb 23, 2019</p>
+                <p class="post-meta">Jun 25, 2019</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Feb 23, 2019</span> By <a target="_blank" href="http://localhost:4000">Liu JingWen</a></div>
+              <div class="meta">Posted on <span class="postdate">Jun 25, 2019</span> By <a target="_blank" href="http://localhost:4000">Liu JingWen</a></div>
               <br />
             </header>
             <article class="post-content">
               <ul id="markdown-toc">
-  <li><a href="#zhugeliang" id="markdown-toc-zhugeliang">诫子书</a></li>
+  <li><a href="#1gb2312与utf-8互转" id="markdown-toc-1gb2312与utf-8互转">1、GB2312与UTF-8互转</a></li>
+  <li><a href="#2strtok函数" id="markdown-toc-2strtok函数">2、strtok()函数</a></li>
 </ul>
+<p>本篇博客是介绍C语言中一些常用、易用错的函数的使用方法,每个函数使用都以实例展示,并且都是在项目中实际用到过,持续更新…</p>
 
-<p>使用Jekyll编写的第一篇博客 ！</p>
+<h1 id="1gb2312与utf-8互转">1、GB2312与UTF-8互转</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iconv.h&gt;
+int code_convert(char *from_charset,char *to_charset,char *inbuf,int inlen,char *outbuf,int outlen)
+{
+​	iconv_t cd = NULL;
+​	//int rc;
+​	char **pin = &amp;inbuf;
+​	char **pout = &amp;outbuf;
+​	cd = iconv_open(to_charset,from_charset);
+​	if(cd == (void *)-1)
+​	{
+​		return FAIL;
+​	}
+​	size_t n = iconv(cd,pin,&amp;inlen,pout,&amp;outlen);  //iconv返回转换期间不可转换字符的数量
+​	if(n &lt; 0)
+​	{
+​		return FAIL;
+​	}
+​	iconv_close(cd);
+	return SUC;
+}
 
-<h2 id="zhugeliang">诫子书</h2>
+//UNICODE码转为GB2312码
+int u2g(char *inbuf,int inlen,char *outbuf,int outlen)
+{
+​	return code_convert("utf-8","gb2312",inbuf,inlen,outbuf,outlen);
+}
 
-<p><img src="/styles/images/jiezishu.jpg" alt="诫子书" /></p>
+//GB2312码转为UNICODE码
+int g2u(char *inbuf,size_t inlen,char *outbuf,size_t outlen)
+{
+	return code_convert("gb2312","utf-8",inbuf,inlen,outbuf,outlen);
+}
+</code></pre></div></div>
 
-<p><a href="#">诸葛亮</a></p>
-
-<p>夫君子之行，静以修身，俭以养德。非淡泊(澹泊)无以明志，非宁静无以致远。夫学须静也，才须学也。非学无以广才，非志无以成学。淫慢则不能励精，险躁则不能冶性。
-年与时驰，意与日去，遂成枯落，多不接世，悲守穷庐，将复何及！</p>
-
+<h1 id="2strtok函数">2、strtok()函数</h1>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+int main(void)
+{
+​    char buf[]="hello@boy@this@is@heima";
+​    char*temp = strtok(buf,"@");
+​    while(temp)
+​    {
+​        printf("%s ",temp);
+​        temp = strtok(NULL,"@");
+​    }
+​    return 0;
+}
+</code></pre></div></div>
 
             </article>
         </div>

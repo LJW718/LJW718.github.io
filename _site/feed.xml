@@ -5,12 +5,12 @@
     <description>自己动手,丰衣足食!</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Jul 2019 00:13:12 +0800</pubDate>
-    <lastBuildDate>Fri, 12 Jul 2019 00:13:12 +0800</lastBuildDate>
+    <pubDate>Fri, 12 Jul 2019 00:16:08 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Jul 2019 00:16:08 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>标题</title>
+        <title>Linux常用shell命令汇总</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#系统信息&quot; id=&quot;markdown-toc-系统信息&quot;&gt;系统信息&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#关机-系统的关机重启以及登出-&quot; id=&quot;markdown-toc-关机-系统的关机重启以及登出-&quot;&gt;关机 (系统的关机、重启以及登出 )&lt;/a&gt;&lt;/li&gt;
@@ -355,7 +355,7 @@ whois www.example.com lookup on Whois database&lt;/p&gt;
         <link>http://localhost:4000/2019/07/12/About-Linux-CMD/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/07/12/About-Linux-CMD/</guid>
         
-        <category>Linux常用shell命令汇总</category>
+        <category>Linux常用shell命令</category>
         
         
         <category>Linux</category>

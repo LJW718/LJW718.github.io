@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  标题
+title:  Linux常用shell命令汇总
 date:   2019-07-12 00:08:00 +0800
 categories: Linux
-tag: Linux常用shell命令汇总
+tag: Linux常用shell命令
 ---
 
 * content

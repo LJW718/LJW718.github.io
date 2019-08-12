@@ -13,7 +13,7 @@ tag: Sublime Text3
 
 通过View->Show Console菜单打开命令行
 
-![示例1]({{ '/styles/images/SublimeText3/Snipaste_2019-08-12_21-59-08-test.png' | prepend: site.baseurl  }})
+![图1]({{ '/styles/images/SublimeText3/Snipaste_2019-08-12_21-59-08-test.png' | prepend: site.baseurl  }})
 
 粘贴如下代码(注意下面代码为一行)：
 

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sublime Text3使用技巧 - Welcome To Liujw's Blog</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/styles/css/syntax.css">
+	<link rel="canonical" href="/2019/08/12/SublimeText3Settings/">
+	<link rel="alternate" type="application/rss+xml" title="Welcome To Liujw's Blog" href="/feed.xml">
+	
+	<meta name="keywords" content="Sublime Text3使用技巧, Welcome To Liujw's Blog, 自己动手,丰衣足食">
+	<meta name="description" content="自己动手,丰衣足食">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?94be4b0f9fc5d94cc0d0415ea6761ae9";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">我的主页</a>
+        </li>
+        <li>
+          <a href="/categories/">全部分类</a>
+        </li>
+        <li>
+          <a href="/tag">按标签分类</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a><span id="busuanzi_container_site_pv">该网页累计访问<span id="busuanzi_value_site_pv"></span>次</span></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/LJW718/">Github</a></li>
+            <li><a rel="nofollow" href="/books">我的书单</a></li>  
+            <li><a rel="nofollow" href="/author">作者介绍</a></li>  
+             <!-- <li><a rel="nofollow" href="http://www.hifreud.com/domains/">域名管理</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li> -->
+            <li><a rel="nofollow" target="_blank" href="https://github.com/LJW718/LJW718.github.io">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>Sublime Text3使用技巧</h1>
+		    <p>Post on Aug 12, 2019 by <a href="/about">Liujw</a></p>
+		-->
+		    <h1>自己动手,丰衣足食</h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#开发工具-ref">开发工具</a>	/
+    	<a href="/tag/#Sublime Text3-ref">Sublime Text3</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+  </ul>
+  <div style="height: 200px;width: 200px;">
+    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"> 
+    </script>
+  </div>
+</div>
+
+ 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">Sublime Text3使用技巧</h1>
+              <!--
+                <p class="post-meta">Aug 12, 2019</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Aug 12, 2019</span> By <a target="_blank" href="http://localhost:4000">Liujw</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#1package-control快速安装" id="markdown-toc-1package-control快速安装">1、Package Control快速安装</a></li>
+  <li><a href="#2package-control使用" id="markdown-toc-2package-control使用">2、Package Control使用</a></li>
+  <li><a href="#3解决unable-to-download-xxx问题" id="markdown-toc-3解决unable-to-download-xxx问题">3、解决Unable to download XXX问题</a></li>
+  <li><a href="#4安装常用插件" id="markdown-toc-4安装常用插件">4、安装常用插件</a>    <ul>
+      <li><a href="#41--localization-汉化" id="markdown-toc-41--localization-汉化">4.1  Localization [汉化]</a></li>
+      <li><a href="#42--docblockr-生成注释" id="markdown-toc-42--docblockr-生成注释">4.2  Doc​Blockr [生成注释]</a></li>
+      <li><a href="#43--autofilename-自动完成文件路径" id="markdown-toc-43--autofilename-自动完成文件路径">4.3  AutoFileName [自动完成文件路径]</a></li>
+      <li><a href="#44--ctags-函数跳转" id="markdown-toc-44--ctags-函数跳转">4.4  CTags [函数跳转]</a></li>
+      <li><a href="#44--astyleformatter-cc等编码风格格式器" id="markdown-toc-44--astyleformatter-cc等编码风格格式器">4.4  AStyleFormatter [C/C++等编码风格格式器]</a></li>
+      <li><a href="#45--converttoutf8--中文乱码解决包" id="markdown-toc-45--converttoutf8--中文乱码解决包">4.5  ConvertToUTF8  [中文乱码解决包]</a></li>
+    </ul>
+  </li>
+  <li><a href="#5卸载不常用插件" id="markdown-toc-5卸载不常用插件">5、卸载不常用插件</a></li>
+</ul>
+<p>Sublime Text3使用技巧及其常见问题解决办法</p>
+
+<h1 id="1package-control快速安装">1、Package Control快速安装</h1>
+
+<p>通过View-&gt;Show Console菜单打开命令行</p>
+
+<p><img src="/styles/images/SublimeText3/Snipaste_2019-08-13_10-53-42-p1.jpg" alt="图1" /></p>
+
+<p><img src="/styles/images/SublimeText3/Snipaste_2019-08-13_11-02-50-p2.jpg" alt="图2" /></p>
+
+<p>粘贴如下代码(注意下面代码为一行)：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+</code></pre></div></div>
+
+<p>按下enter键,稍等即可, 
+安装完毕后,重启sublime，此时就可以在Preferences菜单下看到<code class="highlighter-rouge">Package Settings</code>和<code class="highlighter-rouge">Package Control</code>两个菜单了。</p>
+
+<h1 id="2package-control使用">2、Package Control使用</h1>
+
+<p>打开命令行,快捷键为：<code class="highlighter-rouge">Ctrl + Shift + p</code>,输入<code class="highlighter-rouge">pci</code>(点击Package Control:Install Packge选项),几秒钟后弹出插件管理页面,输入想要安装的插件名称,以<code class="highlighter-rouge">ctags</code>为例</p>
+
+<p><img src="/styles/images/SublimeText3/Snipaste_2019-08-13_11-15-14-p3.png" alt="图3" /></p>
+
+<p>按回车即可安装。</p>
+
+<h1 id="3解决unable-to-download-xxx问题">3、解决Unable to download XXX问题</h1>
+
+<p>Sublime Text3 安装插件报错：<br />
+<code class="highlighter-rouge">Package Control</code><br />
+<code class="highlighter-rouge">Unable to download XXX. Please view the console for more details.</code></p>
+
+<p>解决方法：
+Preferences &gt; Package Settings &gt; Package Control &gt; Settings-User
+<img src="/styles/images/SublimeText3/Snipaste_2019-08-13_11-42-53-p4.png" alt="图4" /></p>
+
+<p>增加如下内容：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"debug": true,
+"downloader_precedence":
+{
+    "linux": [ "curl", "urllib", "wget" ],
+    "osx": [ "curl", "urllib" ],
+    "windows": [ "wininet" ]
+},
+</code></pre></div></div>
+<p>调整格式后内容如下：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"bootstrapped": true,
+	"debug": true,
+	"downloader_precedence":
+	{
+		"linux":
+		[
+			"curl",
+			"urllib",
+			"wget"
+		],
+		"osx":
+		[
+			"curl",
+			"urllib"
+		],
+		"windows":
+		[
+			"wininet"
+		]
+	},
+}
+</code></pre></div></div>
+<p>再次安装插件就OK了。</p>
+
+<h1 id="4安装常用插件">4、安装常用插件</h1>
+
+<h2 id="41--localization-汉化">4.1  Localization [汉化]</h2>
+<p>使用：安装后，点击help-&gt;languaremove packagege-&gt;相应语言版本<br />
+<img src="/styles/images/SublimeText3/Snipaste_2019-08-13_12-49-03-p5.png" alt="图5" /></p>
+
+<h2 id="42--docblockr-生成注释">4.2  Doc​Blockr [生成注释]</h2>
+<p>使用：输入<code class="highlighter-rouge">/**</code>,然后按Tab键,该插件就会自动解析任何功能,并准备合适的模板 <br />
+自定义注释：Preferences &gt; Package Settings &gt; DocBlockr &gt; Settings-User
+<img src="/styles/images/SublimeText3/Snipaste_2019-08-13_13-02-28-p6.png" alt="图6" />
+输入</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    //自定义配置
+    "jsdocs_extra_tags": [
+                    "@Author liujw",
+                    "@DateTime ",
+                    "@FuncName: ",
+                ],
+
+}
+</code></pre></div></div>
+<h2 id="43--autofilename-自动完成文件路径">4.3  AutoFileName [自动完成文件路径]</h2>
+
+<h2 id="44--ctags-函数跳转">4.4  CTags [函数跳转]</h2>
+<p>CTags58.zip下载链接<a href="https://pan.baidu.com/s/18uYw4b6uX4_DffdJShfoug"><code class="highlighter-rouge">https://pan.baidu.com/s/18uYw4b6uX4_DffdJShfoug</code></a>[提取码：<code class="highlighter-rouge">ge06</code>]<br />
+参考步骤 <a href="https://www.jianshu.com/p/9f5801e83c6c"><code class="highlighter-rouge">https://www.jianshu.com/p/9f5801e83c6c</code></a></p>
+
+<h2 id="44--astyleformatter-cc等编码风格格式器">4.4  AStyleFormatter [C/C++等编码风格格式器]</h2>
+<p>使用：找到需要格式化的<code class="highlighter-rouge">.c</code>文件,快捷键<code class="highlighter-rouge">Ctrl + ALT + F</code></p>
+
+<h2 id="45--converttoutf8--中文乱码解决包">4.5  ConvertToUTF8  [中文乱码解决包]</h2>
+
+<h1 id="5卸载不常用插件">5、卸载不常用插件</h1>
+<p><code class="highlighter-rouge">Ctrl + Shift + p</code>打开命令行,输入<code class="highlighter-rouge">pcrp</code>(点击Package Control:Remove Packge选项),几秒钟后弹出插件管理页面,选择想要卸载的插件即可。</p>
+
+
+            </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2019-至今 <a href="https://github.com/LJW718"><code>Liujw</code></a>.</p>
+		<p>Powered by <a href="http://jekyllrb.com">Jekyll</a>, Themed from <a href="http://lesscss.cn/">Less</a>, Refactored by <a href="https://ljw718.github.io/">Liujw</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+<script src="/styles/js/application.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </body>
+</html>

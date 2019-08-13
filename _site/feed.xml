@@ -5,9 +5,144 @@
     <description>自己动手,丰衣足食!</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 12 Aug 2019 22:03:03 +0800</pubDate>
-    <lastBuildDate>Mon, 12 Aug 2019 22:03:03 +0800</lastBuildDate>
+    <pubDate>Tue, 13 Aug 2019 17:31:53 +0800</pubDate>
+    <lastBuildDate>Tue, 13 Aug 2019 17:31:53 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Sublime Text3使用技巧</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1package-control快速安装&quot; id=&quot;markdown-toc-1package-control快速安装&quot;&gt;1、Package Control快速安装&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2package-control使用&quot; id=&quot;markdown-toc-2package-control使用&quot;&gt;2、Package Control使用&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3解决unable-to-download-xxx问题&quot; id=&quot;markdown-toc-3解决unable-to-download-xxx问题&quot;&gt;3、解决Unable to download XXX问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4安装常用插件&quot; id=&quot;markdown-toc-4安装常用插件&quot;&gt;4、安装常用插件&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#41--localization-汉化&quot; id=&quot;markdown-toc-41--localization-汉化&quot;&gt;4.1  Localization [汉化]&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#42--docblockr-生成注释&quot; id=&quot;markdown-toc-42--docblockr-生成注释&quot;&gt;4.2  Doc​Blockr [生成注释]&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#43--autofilename-自动完成文件路径&quot; id=&quot;markdown-toc-43--autofilename-自动完成文件路径&quot;&gt;4.3  AutoFileName [自动完成文件路径]&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#44--ctags-函数跳转&quot; id=&quot;markdown-toc-44--ctags-函数跳转&quot;&gt;4.4  CTags [函数跳转]&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#44--astyleformatter-cc等编码风格格式器&quot; id=&quot;markdown-toc-44--astyleformatter-cc等编码风格格式器&quot;&gt;4.4  AStyleFormatter [C/C++等编码风格格式器]&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#45--converttoutf8--中文乱码解决包&quot; id=&quot;markdown-toc-45--converttoutf8--中文乱码解决包&quot;&gt;4.5  ConvertToUTF8  [中文乱码解决包]&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5卸载不常用插件&quot; id=&quot;markdown-toc-5卸载不常用插件&quot;&gt;5、卸载不常用插件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sublime Text3使用技巧及其常见问题解决办法&lt;/p&gt;
+
+&lt;h1 id=&quot;1package-control快速安装&quot;&gt;1、Package Control快速安装&lt;/h1&gt;
+
+&lt;p&gt;通过View-&amp;gt;Show Console菜单打开命令行&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/SublimeText3/Snipaste_2019-08-13_10-53-42-p1.jpg&quot; alt=&quot;图1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/SublimeText3/Snipaste_2019-08-13_11-02-50-p2.jpg&quot; alt=&quot;图2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;粘贴如下代码(注意下面代码为一行)：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;按下enter键,稍等即可, 
+安装完毕后,重启sublime，此时就可以在Preferences菜单下看到&lt;code class=&quot;highlighter-rouge&quot;&gt;Package Settings&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Package Control&lt;/code&gt;两个菜单了。&lt;/p&gt;
+
+&lt;h1 id=&quot;2package-control使用&quot;&gt;2、Package Control使用&lt;/h1&gt;
+
+&lt;p&gt;打开命令行,快捷键为：&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + p&lt;/code&gt;,输入&lt;code class=&quot;highlighter-rouge&quot;&gt;pci&lt;/code&gt;(点击Package Control:Install Packge选项),几秒钟后弹出插件管理页面,输入想要安装的插件名称,以&lt;code class=&quot;highlighter-rouge&quot;&gt;ctags&lt;/code&gt;为例&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/SublimeText3/Snipaste_2019-08-13_11-15-14-p3.png&quot; alt=&quot;图3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;按回车即可安装。&lt;/p&gt;
+
+&lt;h1 id=&quot;3解决unable-to-download-xxx问题&quot;&gt;3、解决Unable to download XXX问题&lt;/h1&gt;
+
+&lt;p&gt;Sublime Text3 安装插件报错：&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Package Control&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Unable to download XXX. Please view the console for more details.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;解决方法：
+Preferences &amp;gt; Package Settings &amp;gt; Package Control &amp;gt; Settings-User
+&lt;img src=&quot;/styles/images/SublimeText3/Snipaste_2019-08-13_11-42-53-p4.png&quot; alt=&quot;图4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;增加如下内容：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;debug&quot;: true,
+&quot;downloader_precedence&quot;:
+{
+    &quot;linux&quot;: [ &quot;curl&quot;, &quot;urllib&quot;, &quot;wget&quot; ],
+    &quot;osx&quot;: [ &quot;curl&quot;, &quot;urllib&quot; ],
+    &quot;windows&quot;: [ &quot;wininet&quot; ]
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;调整格式后内容如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+	&quot;bootstrapped&quot;: true,
+	&quot;debug&quot;: true,
+	&quot;downloader_precedence&quot;:
+	{
+		&quot;linux&quot;:
+		[
+			&quot;curl&quot;,
+			&quot;urllib&quot;,
+			&quot;wget&quot;
+		],
+		&quot;osx&quot;:
+		[
+			&quot;curl&quot;,
+			&quot;urllib&quot;
+		],
+		&quot;windows&quot;:
+		[
+			&quot;wininet&quot;
+		]
+	},
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;再次安装插件就OK了。&lt;/p&gt;
+
+&lt;h1 id=&quot;4安装常用插件&quot;&gt;4、安装常用插件&lt;/h1&gt;
+
+&lt;h2 id=&quot;41--localization-汉化&quot;&gt;4.1  Localization [汉化]&lt;/h2&gt;
+&lt;p&gt;使用：安装后，点击help-&amp;gt;languaremove packagege-&amp;gt;相应语言版本&lt;br /&gt;
+&lt;img src=&quot;/styles/images/SublimeText3/Snipaste_2019-08-13_12-49-03-p5.png&quot; alt=&quot;图5&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;42--docblockr-生成注释&quot;&gt;4.2  Doc​Blockr [生成注释]&lt;/h2&gt;
+&lt;p&gt;使用：输入&lt;code class=&quot;highlighter-rouge&quot;&gt;/**&lt;/code&gt;,然后按Tab键,该插件就会自动解析任何功能,并准备合适的模板 &lt;br /&gt;
+自定义注释：Preferences &amp;gt; Package Settings &amp;gt; DocBlockr &amp;gt; Settings-User
+&lt;img src=&quot;/styles/images/SublimeText3/Snipaste_2019-08-13_13-02-28-p6.png&quot; alt=&quot;图6&quot; /&gt;
+输入&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    //自定义配置
+    &quot;jsdocs_extra_tags&quot;: [
+                    &quot;@Author liujw&quot;,
+                    &quot;@DateTime &quot;,
+                    &quot;@FuncName: &quot;,
+                ],
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;43--autofilename-自动完成文件路径&quot;&gt;4.3  AutoFileName [自动完成文件路径]&lt;/h2&gt;
+
+&lt;h2 id=&quot;44--ctags-函数跳转&quot;&gt;4.4  CTags [函数跳转]&lt;/h2&gt;
+&lt;p&gt;CTags58.zip下载链接&lt;a href=&quot;https://pan.baidu.com/s/18uYw4b6uX4_DffdJShfoug&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https://pan.baidu.com/s/18uYw4b6uX4_DffdJShfoug&lt;/code&gt;&lt;/a&gt;[提取码：&lt;code class=&quot;highlighter-rouge&quot;&gt;ge06&lt;/code&gt;]&lt;br /&gt;
+参考步骤 &lt;a href=&quot;https://www.jianshu.com/p/9f5801e83c6c&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https://www.jianshu.com/p/9f5801e83c6c&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;44--astyleformatter-cc等编码风格格式器&quot;&gt;4.4  AStyleFormatter [C/C++等编码风格格式器]&lt;/h2&gt;
+&lt;p&gt;使用：找到需要格式化的&lt;code class=&quot;highlighter-rouge&quot;&gt;.c&lt;/code&gt;文件,快捷键&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + ALT + F&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;45--converttoutf8--中文乱码解决包&quot;&gt;4.5  ConvertToUTF8  [中文乱码解决包]&lt;/h2&gt;
+
+&lt;h1 id=&quot;5卸载不常用插件&quot;&gt;5、卸载不常用插件&lt;/h1&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + p&lt;/code&gt;打开命令行,输入&lt;code class=&quot;highlighter-rouge&quot;&gt;pcrp&lt;/code&gt;(点击Package Control:Remove Packge选项),几秒钟后弹出插件管理页面,选择想要卸载的插件即可。&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 12 Aug 2019 23:08:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/12/SublimeText3Settings/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/12/SublimeText3Settings/</guid>
+        
+        <category>Sublime Text3</category>
+        
+        
+        <category>开发工具</category>
+        
+      </item>
     
       <item>
         <title>Linux常用shell命令汇总</title>

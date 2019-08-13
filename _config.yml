@@ -1,8 +1,9 @@
 # Site settings
 name: Welcome To Liujw's Blog
 email: 708912805@qq.com
-author: Liu JingWen
-#url: http://www.hifreud.com
+author: Liujw
+url: https://ljw718.github.io/
+
 resume_site: https://github.com/LJW718
 github: https://github.com/LJW718/
 baseurl: ''

@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>程序猿颈椎保健操 - Welcome To Liujw's Blog</title>
+	<title>GDB分析进程占用CPU过高 - Welcome To Liujw's Blog</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
@@ -13,10 +13,10 @@
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/styles/css/syntax.css">
-	<link rel="canonical" href="/2019/08/13/test/">
+	<link rel="canonical" href="/2019/08/13/LinuxDebugPthread/">
 	<link rel="alternate" type="application/rss+xml" title="Welcome To Liujw's Blog" href="/feed.xml">
 	
-	<meta name="keywords" content="程序猿颈椎保健操, Welcome To Liujw's Blog, 自己动手,丰衣足食">
+	<meta name="keywords" content="GDB分析进程占用CPU过高, Welcome To Liujw's Blog, 自己动手,丰衣足食">
 	<meta name="description" content="自己动手,丰衣足食">
 
 	<script src="/styles/js/jquery.min.js"></script>
@@ -89,7 +89,7 @@
   <div class="container">
   	
   		<!--
-		    <h1>程序猿颈椎保健操</h1>
+		    <h1>GDB分析进程占用CPU过高</h1>
 		    <p>Post on Aug 13, 2019 by <a href="/about">Liujw</a></p>
 		-->
 		    <h1>自己动手,丰衣足食</h1>
@@ -101,8 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#健康-ref">健康</a>	/
-    	<a href="/tag/#保健操-ref">保健操</a>
+    	<a href="/categories/#Linux-ref">Linux</a>	/
+    	<a href="/tag/#GDB调试-ref">GDB调试</a>
     
   </div>
 </div>
@@ -130,7 +130,7 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">程序猿颈椎保健操</h1>
+              <h1 class="post-title">GDB分析进程占用CPU过高</h1>
               <!--
                 <p class="post-meta">Aug 13, 2019</p>
               -->
@@ -139,54 +139,52 @@
             </header>
             <article class="post-content">
               <ul id="markdown-toc">
-  <li><a href="#程序猿颈椎保健操" id="markdown-toc-程序猿颈椎保健操"><strong>程序猿颈椎保健操</strong></a>    <ul>
-      <li><a href="#一双掌擦颈" id="markdown-toc-一双掌擦颈">一、双掌擦颈。</a></li>
-      <li><a href="#二左顾右盼" id="markdown-toc-二左顾右盼">二、左顾右盼。</a></li>
-      <li><a href="#三前后点头" id="markdown-toc-三前后点头">三、前后点头。</a></li>
-      <li><a href="#四旋肩舒颈" id="markdown-toc-四旋肩舒颈">四、旋肩舒颈。</a></li>
-      <li><a href="#五颈项争力" id="markdown-toc-五颈项争力">五、颈项争力。</a></li>
-      <li><a href="#六摇头晃脑" id="markdown-toc-六摇头晃脑">六、摇头晃脑。</a></li>
-      <li><a href="#七头手相抗" id="markdown-toc-七头手相抗">七、头手相抗。</a></li>
-      <li><a href="#八仰头望掌" id="markdown-toc-八仰头望掌">八、仰头望掌。</a></li>
-    </ul>
-  </li>
+  <li><a href="#1查看cpu与进程id" id="markdown-toc-1查看cpu与进程id">1、查看CPU与进程ID</a></li>
+  <li><a href="#2查看线程pid占用cpu情况" id="markdown-toc-2查看线程pid占用cpu情况">2、查看线程pid占用CPU情况</a></li>
+  <li><a href="#3attach到相关进程" id="markdown-toc-3attach到相关进程">3、attach到相关进程</a></li>
+  <li><a href="#4查看线程信息" id="markdown-toc-4查看线程信息">4、查看线程信息</a></li>
+  <li><a href="#5查看线程号对应的线程id" id="markdown-toc-5查看线程号对应的线程id">5、查看线程号对应的线程ID</a></li>
+  <li><a href="#6根据线程id切换线程" id="markdown-toc-6根据线程id切换线程">6、根据线程ID切换线程</a></li>
+  <li><a href="#7查看函数调用栈" id="markdown-toc-7查看函数调用栈">7、查看函数调用栈</a></li>
+  <li><a href="#8根据调用函数分析源代码" id="markdown-toc-8根据调用函数分析源代码">8、根据调用函数分析源代码</a></li>
 </ul>
-<p>这套颈椎保健操,适合在电脑前久坐工作的小伙伴</p>
+<p>重点是查看进程的线程中，哪个线程占用cpu过高，然后用gdb附加到进程，调试线程，看是否有死循环或者死锁等问题。
+调试步骤参考如下：</p>
 
-<h1 id="程序猿颈椎保健操"><strong>程序猿颈椎保健操</strong></h1>
+<h2 id="1查看cpu与进程id">1、查看CPU与进程ID</h2>
+<p>先用<code class="highlighter-rouge">top</code>查看CPU使用情况，再用<code class="highlighter-rouge">ps + grep</code>找出该死的进程pid，比如 36625</p>
 
-<h2 id="一双掌擦颈">一、双掌擦颈。</h2>
-<p>方法：用左手掌来回摩擦颈部，口中默念八下后，开始捏后颈，然后换右手，有助于颈部放松。<br />
-<img src="/styles/images/healthy/1.png" alt="p1" /></p>
+<p><img src="/styles/images/Linux/gdb-pthread/1.png" alt="p1" /></p>
 
-<h2 id="二左顾右盼">二、左顾右盼。</h2>
-<p>方法：头向左转90度，停留3秒，再向右转，停留3秒，做两个8拍。  <br />
-<img src="/styles/images/healthy/2.png" alt="p2" /></p>
+<h2 id="2查看线程pid占用cpu情况">2、查看线程pid占用CPU情况</h2>
+<p><code class="highlighter-rouge">top -H -p 36625</code>，(top然后shift+H可以看出某个线程，左上角有提示：thread on 则为可查看线程)所有该进程的线程都列出来， 看看哪个线程pid占用cpu最多，记下对应的线程号，如：36643
+<img src="/styles/images/Linux/gdb-pthread/2.png" alt="p2" /></p>
 
-<h2 id="三前后点头">三、前后点头。</h2>
-<p>方法：把颈尽量向前伸，停留3秒，再向后仰，停留3秒，做两个8拍。<br />
-<img src="/styles/images/healthy/3.png" alt="p3" /></p>
+<h2 id="3attach到相关进程">3、attach到相关进程</h2>
+<p><code class="highlighter-rouge">gdb attach</code> 到进程号码（36625）
+<img src="/styles/images/Linux/gdb-pthread/3.png" alt="p3" /></p>
 
-<h2 id="四旋肩舒颈">四、旋肩舒颈。</h2>
-<p>方法：双手放在肩部，掌心向下，两臂先由后向前旋转20-30次，再由前向后旋转20-30次。<br />
-<img src="/styles/images/healthy/4.png" alt="p4" /></p>
+<h2 id="4查看线程信息">4、查看线程信息</h2>
+<p>（仍然在gdb中） <code class="highlighter-rouge">info threads</code> 结果大致如下：
+<img src="/styles/images/Linux/gdb-pthread/4.png" alt="p4" /></p>
 
-<h2 id="五颈项争力">五、颈项争力。</h2>
-<p>方法：左手放在背后，右手手臂放在胸前，手掌立起向左平行推出，同时头部向右看，保持几秒钟，再换左右手。<br />
-<img src="/styles/images/healthy/5.png" alt="p5" /></p>
+<h2 id="5查看线程号对应的线程id">5、查看线程号对应的线程ID</h2>
+<p>找到线程号码对应的thread（LWP 36643）即是我们刚刚记下的线程号
+<img src="/styles/images/Linux/gdb-pthread/5.png" alt="p5" /></p>
 
-<h2 id="六摇头晃脑">六、摇头晃脑。</h2>
-<p>方法：左右、前后，360度旋转5次，再反方向旋转5次。<br />
-<img src="/styles/images/healthy/6.png" alt="p6" /></p>
+<h2 id="6根据线程id切换线程">6、根据线程ID切换线程</h2>
+<p>（仍然在gdb中）<code class="highlighter-rouge">thread  线程号码切换到线程（2）</code>–这里在info threads显示出来的序号需要使用gdb能识别的线程序号，即执行：thread 2 切换到我们刚刚记下的线程号：36643的对应线程，如下：
+<img src="/styles/images/Linux/gdb-pthread/6.png" alt="p6" /></p>
 
-<h2 id="七头手相抗">七、头手相抗。</h2>
-<p>方法：双手交叉仅仅贴颈后，用力顶头颈，头颈向后用力，互相抵抗5次。<br />
-<img src="/styles/images/healthy/7.png" alt="p7" /></p>
+<h2 id="7查看函数调用栈">7、查看函数调用栈</h2>
+<p>（仍然在gdb中）<code class="highlighter-rouge">bt</code> 查看线程调用堆栈 
+<img src="/styles/images/Linux/gdb-pthread/7.png" alt="p7" /></p>
 
-<h2 id="八仰头望掌">八、仰头望掌。</h2>
-<p>方法：双手上举过头，手指交叉，掌心向上，将头扬起向上看手背，保持5秒。<br />
-<img src="/styles/images/healthy/8.png" alt="p8" /></p>
+<h2 id="8根据调用函数分析源代码">8、根据调用函数分析源代码</h2>
+<p>从上面输出的信息，基本上可以查看线程对应的代码断，是否有死循环等，如果是死锁的话，需要多次查看当前线程堆栈，或者查看全部线程的堆栈，总是会有某些个线程跟其他线程不一致，然后再对应到代码来进行定位解决
+<img src="/styles/images/Linux/gdb-pthread/8.png" alt="p8" /></p>
 
+<p>代码中此处陷入死循环。</p>
 
             </article>
         </div>

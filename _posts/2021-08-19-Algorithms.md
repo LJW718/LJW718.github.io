@@ -3,7 +3,7 @@ layout: post
 title:  LeetCode刷题常用算法思路与框架
 
 date:   2021-08 22:08:00 +0800
-categories: 算法
+categories: 教程
 tag: 常用算法思路与框架
 typora-root-url: ..
 ---

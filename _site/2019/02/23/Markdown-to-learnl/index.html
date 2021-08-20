@@ -134,7 +134,7 @@
               <!--
                 <p class="post-meta">Feb 23, 2019</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Feb 23, 2019</span> By <a target="_blank" href="http://localhost:4000">Liujw</a></div>
+              <div class="meta">Posted on <span class="postdate">Feb 23, 2019</span> By <a target="_blank" href="https://ljw718.github.io/">Liujw</a></div>
               <br />
             </header>
             <article class="post-content">
@@ -167,10 +167,10 @@
 
 <h2 id="常用语法"><strong>常用语法</strong></h2>
 <h2 id="一标题">一、标题</h2>
-<p>在想要设置为标题的<code class="highlighter-rouge">文字前面加#</code>来表示, 一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。
-注：标准语法一般在#后跟个空格再写文字,<code class="highlighter-rouge">在内容末尾敲**2个空格**+**回车**进行换行</code><br />
+<p>在想要设置为标题的<code class="language-plaintext highlighter-rouge">文字前面加#</code>来表示, 一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。
+注：标准语法一般在#后跟个空格再写文字,<code class="language-plaintext highlighter-rouge">在内容末尾敲**2个空格**+**回车**进行换行</code><br />
 示例：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 这是一级标题
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 这是一级标题
 ## 这是二级标题
 ### 这是三级标题
 #### 这是四级标题
@@ -178,17 +178,18 @@
 ###### 这是六级标题
 </code></pre></div></div>
 <h2 id="二字体">二、字体</h2>
-<p><strong>加粗</strong>   要加粗的文字左右分别用<code class="highlighter-rouge">2个*号</code>包起来<br />
-<em>斜体</em>    要倾斜的文字左右分别用<code class="highlighter-rouge">1个*号</code>包起来<br />
-<strong><em>斜体加粗</em></strong>  要倾斜和加粗的文字左右分别用<code class="highlighter-rouge">3个*号</code>包起来<br />
-<del>删除线</del>    要加删除线的文字左右分别用<code class="highlighter-rouge">2个~~号</code>包起来</p>
+<p><strong>加粗</strong>   要加粗的文字左右分别用<code class="language-plaintext highlighter-rouge">2个*号</code>包起来<br />
+<em>斜体</em>    要倾斜的文字左右分别用<code class="language-plaintext highlighter-rouge">1个*号</code>包起来<br />
+<strong><em>斜体加粗</em></strong>  要倾斜和加粗的文字左右分别用<code class="language-plaintext highlighter-rouge">3个*号</code>包起来<br />
+<del>删除线</del>    要加删除线的文字左右分别用<code class="language-plaintext highlighter-rouge">2个~~号</code>包起来</p>
 
 <h2 id="三引用">三、引用</h2>
-<p>在引用的文字前加<code class="highlighter-rouge">&gt;</code>即可。引用也可以嵌套，如加两个»三个»&gt; n个…貌似<code class="highlighter-rouge">可以一直加下去</code>,</p>
+<p>在引用的文字前加<code class="language-plaintext highlighter-rouge">&gt;</code>即可。引用也可以嵌套，如加两个»三个»&gt; n个…貌似<code class="language-plaintext highlighter-rouge">可以一直加下去</code>,</p>
 <blockquote>
   <p>我是一级引用</p>
   <blockquote>
     <p>我是二级引用</p>
+
     <blockquote>
       <blockquote>
         <blockquote>
@@ -208,13 +209,13 @@
 </blockquote>
 
 <h2 id="四分割线">四、分割线</h2>
-<p><code class="highlighter-rouge">三个或者三个以上的 - 或者 * </code>都可以,<code class="highlighter-rouge">---</code>和<code class="highlighter-rouge">*******</code>显示效果都一样。示例： 三个-</p>
+<p><code class="language-plaintext highlighter-rouge">三个或者三个以上的 - 或者 * </code>都可以,<code class="language-plaintext highlighter-rouge">---</code>和<code class="language-plaintext highlighter-rouge">*******</code>显示效果都一样。示例： 三个-</p>
 
 <hr />
 
 <h2 id="五图片">五、图片</h2>
 <p>语法：
-<code class="highlighter-rouge">![图片alt](图片地址 ''图片title'')</code></p>
+<code class="language-plaintext highlighter-rouge">![图片alt](图片地址 ''图片title'')</code></p>
 
 <p>图片alt就是显示在图片下面的文字，相当于对图片内容的解释。<br />
 图片地址可以为网上的地址，也可以是styles/images/下图片的绝对路径<br />
@@ -225,13 +226,13 @@ u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链
 
 <h2 id="六超链接">六、超链接</h2>
 <p>语法：<br />
-<code class="highlighter-rouge">[超链接名](超链接地址 "超链接title")</code>  title可加可不加</p>
+<code class="language-plaintext highlighter-rouge">[超链接名](超链接地址 "超链接title")</code>  title可加可不加</p>
 
 <p>示例：<br />
 <a href="http://www.github.com">Github官网</a><br />
 <a href="http://jekyllrb.com">Jekyll官网</a><br />
 注：Markdown本身语法不支持链接在新页面中打开,如果想要在新页面中打开的话可以用html语言的a标签代替。
-示例：<code class="highlighter-rouge">&lt;a href="https://github.com/LJW718/LJW718.github.io" target="_blank"&gt;本项目&lt;/a&gt;</code><a href="https://github.com/LJW718/LJW718.github.io" target="_blank">本项目</a></p>
+示例：<code class="language-plaintext highlighter-rouge">&lt;a href="https://github.com/LJW718/LJW718.github.io" target="_blank"&gt;本项目&lt;/a&gt;</code><a href="https://github.com/LJW718/LJW718.github.io" target="_blank">本项目</a></p>
 
 <h2 id="七列表">七、列表</h2>
 
@@ -242,21 +243,21 @@ u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链
   <li>列表内容</li>
   <li>列表内容</li>
   <li>列表内容<br />
-注意：<code class="highlighter-rouge">- + * 跟内容之间都要有一个空格</code></li>
+注意：<code class="language-plaintext highlighter-rouge">- + * 跟内容之间都要有一个空格</code></li>
 </ul>
 
 <p>(2)有序列表<br />
-语法：<code class="highlighter-rouge">数字+.+列表内容</code></p>
+语法：<code class="language-plaintext highlighter-rouge">数字+.+列表内容</code></p>
 <ol>
   <li>列表内容</li>
   <li>列表内容</li>
   <li>列表内容</li>
 </ol>
 
-<p>注意：<code class="highlighter-rouge">序号跟内容之间要有空格</code></p>
+<p>注意：<code class="language-plaintext highlighter-rouge">序号跟内容之间要有空格</code></p>
 
 <p>(3)列表嵌套
-<code class="highlighter-rouge">上一级和下一级之间敲三个空格</code>即可</p>
+<code class="language-plaintext highlighter-rouge">上一级和下一级之间敲三个空格</code>即可</p>
 <ul>
   <li>一级无序列表内容
     <ul>
@@ -308,9 +309,9 @@ u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链
 内容|内容|内容<br />
 内容|内容|内容</p>
 
-<p><code class="highlighter-rouge">第二行分割表头和内容</code>。<code class="highlighter-rouge">-</code> 有一个就行，为了对齐，多加了几个,文字默认居左<br />
-<code class="highlighter-rouge">------两边</code>加<code class="highlighter-rouge">：</code>表示文字<code class="highlighter-rouge">居中</code><br />
-<code class="highlighter-rouge">------右边</code>加<code class="highlighter-rouge">：</code>表示文字<code class="highlighter-rouge">居右</code><br />
+<p><code class="language-plaintext highlighter-rouge">第二行分割表头和内容</code>。<code class="language-plaintext highlighter-rouge">-</code> 有一个就行，为了对齐，多加了几个,文字默认居左<br />
+<code class="language-plaintext highlighter-rouge">------两边</code>加<code class="language-plaintext highlighter-rouge">：</code>表示文字<code class="language-plaintext highlighter-rouge">居中</code><br />
+<code class="language-plaintext highlighter-rouge">------右边</code>加<code class="language-plaintext highlighter-rouge">：</code>表示文字<code class="language-plaintext highlighter-rouge">居右</code><br />
 注：原生的语法两边都要用 | 包起来。</p>
 
 <p>示例1:</p>
@@ -373,20 +374,20 @@ u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg" alt="blockchain" title="区块链
 
 <h2 id="九代码块">九、代码块</h2>
 <p>语法：<br />
-单行代码：代码之间分别用<code class="highlighter-rouge">1个反引号包起来</code> <br />
-代码块：代码之间分别用<code class="highlighter-rouge">3个反引号包起来，且两边的反引号单独占一行</code></p>
+单行代码：代码之间分别用<code class="language-plaintext highlighter-rouge">1个反引号包起来</code> <br />
+代码块：代码之间分别用<code class="language-plaintext highlighter-rouge">3个反引号包起来，且两边的反引号单独占一行</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  代码...  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  代码...  
   代码...  
   代码... 
 </code></pre></div></div>
 
 <p>示例：
 单行代码
-<code class="highlighter-rouge">create database hero;</code></p>
+<code class="language-plaintext highlighter-rouge">create database hero;</code></p>
 
 <p>代码块</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    function func(){
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    function func(){
          echo "Hello World !";
     }
     fun();
@@ -406,7 +407,7 @@ cond(no)-&gt;op
 <!--
 ### 十一、脚注
 生成一个脚注[^footnote]    
-  [^footnote]: 这里是 **脚注** 的 *内容*.  
+[^footnote]: 这里是 **脚注** 的 *内容*.  
 
 ### 目录
 用 `[TOC]`来生成目录：
@@ -446,7 +447,7 @@ cond(no)-&gt;op
     
     <footer class="footer" role="contentinfo">
 	<div class="container">
-		<p class="copyright">Copyright &copy; 2019-至今 <a href="https://github.com/LJW718"><code>Liujw</code></a>.</p>
+		<p class="copyright">Copyright &copy; 2021-至今 <a href="https://github.com/LJW718"><code>Liujw</code></a>.</p>
 		<p>Powered by <a href="http://jekyllrb.com">Jekyll</a>, Themed from <a href="http://lesscss.cn/">Less</a>, Refactored by <a href="https://ljw718.github.io/">Liujw</a></p>
 	</div>
 </footer>

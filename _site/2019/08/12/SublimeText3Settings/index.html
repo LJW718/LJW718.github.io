@@ -134,7 +134,7 @@
               <!--
                 <p class="post-meta">Aug 12, 2019</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Aug 12, 2019</span> By <a target="_blank" href="http://localhost:4000">Liujw</a></div>
+              <div class="meta">Posted on <span class="postdate">Aug 12, 2019</span> By <a target="_blank" href="https://ljw718.github.io/">Liujw</a></div>
               <br />
             </header>
             <article class="post-content">
@@ -165,15 +165,15 @@
 
 <p>粘贴如下代码(注意下面代码为一行)：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
 </code></pre></div></div>
 
 <p>按下enter键,稍等即可, 
-安装完毕后,重启sublime，此时就可以在Preferences菜单下看到<code class="highlighter-rouge">Package Settings</code>和<code class="highlighter-rouge">Package Control</code>两个菜单了。</p>
+安装完毕后,重启sublime，此时就可以在Preferences菜单下看到<code class="language-plaintext highlighter-rouge">Package Settings</code>和<code class="language-plaintext highlighter-rouge">Package Control</code>两个菜单了。</p>
 
 <h1 id="2package-control使用">2、Package Control使用</h1>
 
-<p>打开命令行,快捷键为：<code class="highlighter-rouge">Ctrl + Shift + p</code>,输入<code class="highlighter-rouge">pci</code>(点击Package Control:Install Packge选项),几秒钟后弹出插件管理页面,输入想要安装的插件名称,以<code class="highlighter-rouge">ctags</code>为例</p>
+<p>打开命令行,快捷键为：<code class="language-plaintext highlighter-rouge">Ctrl + Shift + p</code>,输入<code class="language-plaintext highlighter-rouge">pci</code>(点击Package Control:Install Packge选项),几秒钟后弹出插件管理页面,输入想要安装的插件名称,以<code class="language-plaintext highlighter-rouge">ctags</code>为例</p>
 
 <p><img src="/styles/images/SublimeText3/Snipaste_2019-08-13_11-15-14-p3.png" alt="图3" /></p>
 
@@ -182,15 +182,15 @@
 <h1 id="3解决unable-to-download-xxx问题">3、解决Unable to download XXX问题</h1>
 
 <p>Sublime Text3 安装插件报错：<br />
-<code class="highlighter-rouge">Package Control</code><br />
-<code class="highlighter-rouge">Unable to download XXX. Please view the console for more details.</code></p>
+<code class="language-plaintext highlighter-rouge">Package Control</code><br />
+<code class="language-plaintext highlighter-rouge">Unable to download XXX. Please view the console for more details.</code></p>
 
 <p>解决方法：
 Preferences &gt; Package Settings &gt; Package Control &gt; Settings-User
 <img src="/styles/images/SublimeText3/Snipaste_2019-08-13_11-42-53-p4.png" alt="图4" /></p>
 
 <p>增加如下内容：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"debug": true,
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"debug": true,
 "downloader_precedence":
 {
     "linux": [ "curl", "urllib", "wget" ],
@@ -199,7 +199,7 @@ Preferences &gt; Package Settings &gt; Package Control &gt; Settings-User
 },
 </code></pre></div></div>
 <p>调整格式后内容如下：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
 	"bootstrapped": true,
 	"debug": true,
 	"downloader_precedence":
@@ -231,11 +231,11 @@ Preferences &gt; Package Settings &gt; Package Control &gt; Settings-User
 <img src="/styles/images/SublimeText3/Snipaste_2019-08-13_12-49-03-p5.png" alt="图5" /></p>
 
 <h2 id="42--docblockr-生成注释">4.2  Doc​Blockr [生成注释]</h2>
-<p>使用：输入<code class="highlighter-rouge">/**</code>,然后按Tab键,该插件就会自动解析任何功能,并准备合适的模板 <br />
+<p>使用：输入<code class="language-plaintext highlighter-rouge">/**</code>,然后按Tab键,该插件就会自动解析任何功能,并准备合适的模板 <br />
 自定义注释：Preferences &gt; Package Settings &gt; DocBlockr &gt; Settings-User
 <img src="/styles/images/SublimeText3/Snipaste_2019-08-13_13-02-28-p6.png" alt="图6" />
 输入</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     //自定义配置
     "jsdocs_extra_tags": [
                     "@Author liujw",
@@ -248,16 +248,16 @@ Preferences &gt; Package Settings &gt; Package Control &gt; Settings-User
 <h2 id="43--autofilename-自动完成文件路径">4.3  AutoFileName [自动完成文件路径]</h2>
 
 <h2 id="44--ctags-函数跳转">4.4  CTags [函数跳转]</h2>
-<p>CTags58.zip下载链接<a href="https://pan.baidu.com/s/18uYw4b6uX4_DffdJShfoug"><code class="highlighter-rouge">https://pan.baidu.com/s/18uYw4b6uX4_DffdJShfoug</code></a>[提取码：<code class="highlighter-rouge">ge06</code>]<br />
-参考步骤 <a href="https://www.jianshu.com/p/9f5801e83c6c"><code class="highlighter-rouge">https://www.jianshu.com/p/9f5801e83c6c</code></a></p>
+<p>CTags58.zip下载链接<a href="https://pan.baidu.com/s/18uYw4b6uX4_DffdJShfoug"><code class="language-plaintext highlighter-rouge">https://pan.baidu.com/s/18uYw4b6uX4_DffdJShfoug</code></a>[提取码：<code class="language-plaintext highlighter-rouge">ge06</code>]<br />
+参考步骤 <a href="https://www.jianshu.com/p/9f5801e83c6c"><code class="language-plaintext highlighter-rouge">https://www.jianshu.com/p/9f5801e83c6c</code></a></p>
 
 <h2 id="44--astyleformatter-cc等编码风格格式器">4.4  AStyleFormatter [C/C++等编码风格格式器]</h2>
-<p>使用：找到需要格式化的<code class="highlighter-rouge">.c</code>文件,快捷键<code class="highlighter-rouge">Ctrl + ALT + F</code></p>
+<p>使用：找到需要格式化的<code class="language-plaintext highlighter-rouge">.c</code>文件,快捷键<code class="language-plaintext highlighter-rouge">Ctrl + ALT + F</code></p>
 
 <h2 id="45--converttoutf8--中文乱码解决包">4.5  ConvertToUTF8  [中文乱码解决包]</h2>
 
 <h1 id="5卸载不常用插件">5、卸载不常用插件</h1>
-<p><code class="highlighter-rouge">Ctrl + Shift + p</code>打开命令行,输入<code class="highlighter-rouge">pcrp</code>(点击Package Control:Remove Packge选项),几秒钟后弹出插件管理页面,选择想要卸载的插件即可。</p>
+<p><code class="language-plaintext highlighter-rouge">Ctrl + Shift + p</code>打开命令行,输入<code class="language-plaintext highlighter-rouge">pcrp</code>(点击Package Control:Remove Packge选项),几秒钟后弹出插件管理页面,选择想要卸载的插件即可。</p>
 
 
             </article>
@@ -270,7 +270,7 @@ Preferences &gt; Package Settings &gt; Package Control &gt; Settings-User
     
     <footer class="footer" role="contentinfo">
 	<div class="container">
-		<p class="copyright">Copyright &copy; 2019-至今 <a href="https://github.com/LJW718"><code>Liujw</code></a>.</p>
+		<p class="copyright">Copyright &copy; 2021-至今 <a href="https://github.com/LJW718"><code>Liujw</code></a>.</p>
 		<p>Powered by <a href="http://jekyllrb.com">Jekyll</a>, Themed from <a href="http://lesscss.cn/">Less</a>, Refactored by <a href="https://ljw718.github.io/">Liujw</a></p>
 	</div>
 </footer>

@@ -21,12 +21,15 @@ tag: jekyll
 
 ## 三、jekyll安装
 
-首先点击下载安装[Ruby installer](https://rubyinstaller.org/);  
-点击下载[RubyGems](https://rubygems.org/pages/download),下载完成后解压至你想放的位置,
-例如我放到E:\rubygems-2.7.4。  
+首先进入官网点击下载安装[Ruby installer](https://rubyinstaller.org/);  或者用阿里云盘下载：[Ruby2.6.1.1](https://www.aliyundrive.com/s/C6ULdQDbome)
+点击下载[RubyGems](https://rubygems.org/pages/download), 或者用阿里云盘下载：[[RubyGems3.0.2]](https://www.aliyundrive.com/s/KkiH9ftS3ZY) , 不建议下载最新的版本，可能存在兼容性问题， 用我的这两个链接下载即可，亲测有效。下载完成后解压至你想放的位置,
+
+
+
+例如我放到E:\rubygems-3.0.2。  
 
 ### 1、(win+R)DOS安装    
-打开命令行执行,进入到解压包的位置：cd E:\rubygems-2.7.4   
+打开命令行执行,进入到解压包的位置：cd E:\rubygems-3.0.2   
 E:  
 ruby setup.rb  
 在命令行执行gem install jekyll；  
@@ -39,7 +42,7 @@ jekyll server
 
 ### 2、Shell命令安装    
 熟悉Linux的朋友应该不陌生，我们先安装一个可以在windows下敲shell命令的工具，我们拿Git-bash为例(Git命令行输入工具),兼容部分shell命令,然后在git-bash终端完成jekyll安装以及启动。  
-打开命令行执行,进入到解压包的位置：cd E:\rubygems-2.7.4   
+打开命令行执行,进入到解压包的位置：cd E:\rubygems-3.0.2   
 ruby setup.rb  
 在命令行执行gem install jekyll；  
 安装完成，我们可以用jekyll命令创建一个博客模板,打开命令行执行：    
@@ -64,6 +67,9 @@ _data 动态数据
 _sites 最终生成的静态网页  
 _config.yml 网站的一些配置信息  
 index.html 网站的入口  
+
+## 五、jekyll安装常见问题
+
 
 
 

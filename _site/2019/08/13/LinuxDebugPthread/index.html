@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>GDB分析进程占用CPU过高 - Welcome To Liujw's Blog</title>
+	<title>GDB分析进程占用CPU过高问题 - Welcome To Liujw's Blog</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
@@ -16,7 +16,7 @@
 	<link rel="canonical" href="/2019/08/13/LinuxDebugPthread/">
 	<link rel="alternate" type="application/rss+xml" title="Welcome To Liujw's Blog" href="/feed.xml">
 	
-	<meta name="keywords" content="GDB分析进程占用CPU过高, Welcome To Liujw's Blog, 自己动手,丰衣足食">
+	<meta name="keywords" content="GDB分析进程占用CPU过高问题, Welcome To Liujw's Blog, 自己动手,丰衣足食">
 	<meta name="description" content="自己动手,丰衣足食">
 
 	<script src="/styles/js/jquery.min.js"></script>
@@ -89,7 +89,7 @@
   <div class="container">
   	
   		<!--
-		    <h1>GDB分析进程占用CPU过高</h1>
+		    <h1>GDB分析进程占用CPU过高问题</h1>
 		    <p>Post on Aug 13, 2019 by <a href="/about">Liujw</a></p>
 		-->
 		    <h1>自己动手,丰衣足食</h1>
@@ -130,11 +130,11 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">GDB分析进程占用CPU过高</h1>
+              <h1 class="post-title">GDB分析进程占用CPU过高问题</h1>
               <!--
                 <p class="post-meta">Aug 13, 2019</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Aug 13, 2019</span> By <a target="_blank" href="http://localhost:4000">Liujw</a></div>
+              <div class="meta">Posted on <span class="postdate">Aug 13, 2019</span> By <a target="_blank" href="https://ljw718.github.io/">Liujw</a></div>
               <br />
             </header>
             <article class="post-content">
@@ -152,20 +152,20 @@
 调试步骤参考如下：</p>
 
 <h2 id="1查看cpu与进程id">1、查看CPU与进程ID</h2>
-<p>先用<code class="highlighter-rouge">top</code>查看CPU使用情况，再用<code class="highlighter-rouge">ps + grep</code>找出该死的进程pid，比如 36625</p>
+<p>先用<code class="language-plaintext highlighter-rouge">top</code>查看CPU使用情况，再用<code class="language-plaintext highlighter-rouge">ps + grep</code>找出该死的进程pid，比如 36625</p>
 
 <p><img src="/styles/images/Linux/gdb-pthread/1.png" alt="p1" /></p>
 
 <h2 id="2查看线程pid占用cpu情况">2、查看线程pid占用CPU情况</h2>
-<p><code class="highlighter-rouge">top -H -p 36625</code>，(top然后shift+H可以看出某个线程，左上角有提示：thread on 则为可查看线程)所有该进程的线程都列出来， 看看哪个线程pid占用cpu最多，记下对应的线程号，如：36643
+<p><code class="language-plaintext highlighter-rouge">top -H -p 36625</code>，(top然后shift+H可以看出某个线程，左上角有提示：thread on 则为可查看线程)所有该进程的线程都列出来， 看看哪个线程pid占用cpu最多，记下对应的线程号，如：36643
 <img src="/styles/images/Linux/gdb-pthread/2.png" alt="p2" /></p>
 
 <h2 id="3attach到相关进程">3、attach到相关进程</h2>
-<p><code class="highlighter-rouge">gdb attach</code> 到进程号码（36625）
+<p><code class="language-plaintext highlighter-rouge">gdb attach</code> 到进程号码（36625）
 <img src="/styles/images/Linux/gdb-pthread/3.png" alt="p3" /></p>
 
 <h2 id="4查看线程信息">4、查看线程信息</h2>
-<p>（仍然在gdb中） <code class="highlighter-rouge">info threads</code> 结果大致如下：
+<p>（仍然在gdb中） <code class="language-plaintext highlighter-rouge">info threads</code> 结果大致如下：
 <img src="/styles/images/Linux/gdb-pthread/4.png" alt="p4" /></p>
 
 <h2 id="5查看线程号对应的线程id">5、查看线程号对应的线程ID</h2>
@@ -173,11 +173,11 @@
 <img src="/styles/images/Linux/gdb-pthread/5.png" alt="p5" /></p>
 
 <h2 id="6根据线程id切换线程">6、根据线程ID切换线程</h2>
-<p>（仍然在gdb中）<code class="highlighter-rouge">thread  线程号码切换到线程（2）</code>–这里在info threads显示出来的序号需要使用gdb能识别的线程序号，即执行：thread 2 切换到我们刚刚记下的线程号：36643的对应线程，如下：
+<p>（仍然在gdb中）<code class="language-plaintext highlighter-rouge">thread  线程号码切换到线程（2）</code>–这里在info threads显示出来的序号需要使用gdb能识别的线程序号，即执行：thread 2 切换到我们刚刚记下的线程号：36643的对应线程，如下：
 <img src="/styles/images/Linux/gdb-pthread/6.png" alt="p6" /></p>
 
 <h2 id="7查看函数调用栈">7、查看函数调用栈</h2>
-<p>（仍然在gdb中）<code class="highlighter-rouge">bt</code> 查看线程调用堆栈 
+<p>（仍然在gdb中）<code class="language-plaintext highlighter-rouge">bt</code> 查看线程调用堆栈 
 <img src="/styles/images/Linux/gdb-pthread/7.png" alt="p7" /></p>
 
 <h2 id="8根据调用函数分析源代码">8、根据调用函数分析源代码</h2>
@@ -196,7 +196,7 @@
     
     <footer class="footer" role="contentinfo">
 	<div class="container">
-		<p class="copyright">Copyright &copy; 2019-至今 <a href="https://github.com/LJW718"><code>Liujw</code></a>.</p>
+		<p class="copyright">Copyright &copy; 2021-至今 <a href="https://github.com/LJW718"><code>Liujw</code></a>.</p>
 		<p>Powered by <a href="http://jekyllrb.com">Jekyll</a>, Themed from <a href="http://lesscss.cn/">Less</a>, Refactored by <a href="https://ljw718.github.io/">Liujw</a></p>
 	</div>
 </footer>

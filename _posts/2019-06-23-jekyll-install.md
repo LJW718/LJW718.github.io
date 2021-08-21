@@ -4,6 +4,7 @@ title:  "Jekyll安装步骤&目录结构"
 date:   2019-06-23 18:01:01 +0800
 categories: jekyll
 tag: jekyll
+typora-root-url: ..
 ---
 
 * content
@@ -69,6 +70,41 @@ _config.yml 网站的一些配置信息
 index.html 网站的入口  
 
 ## 五、jekyll安装常见问题
+
+### Gem 证书错误
+![p1](/styles/images/Other/图片 2.png)
+
+1.先查看证书默认位置,系统,安装不一样可能导致证书查找位置不同
+
+`ruby -e "require 'openssl'; puts OpenSSL::X509::DEFAULT_CERT_FILE"`
+
+![p2](/styles/images/Other/图片 4.png)
+
+比如检查出地址是 D:/Ruby30-x64/ssl/cert.pem , 备份一下cert_bak.pem
+
+![p3](/styles/images/Other/图片 6.png)
+
+`curl -o  D:\Ruby30-x64\ssl\aaa.pem  https://curl.haxx.se/ca/cacert.pem`
+
+![p4](/styles/images/Other/图片 11.png)
+
+一次不行， 多试几次。
+
+![p5](/styles/images/Other/图片 8.png)
+
+点击aaa中的html链接， 下载证书
+
+![p6](/styles/images/Other/图片 7.png)
+
+将证书名字改成cert.pem,证书配置完成
+
+`gem source -a https://rubygems.org/`  （修改Ruby的gem源，默认的源， 之前删除了）
+
+安装jekyll:    `gem install jekyll`
+
+![p7](/styles/images/Other/图片 9.png)
+
+![p8](/styles/images/Other/图片 5.png)
 
 
 

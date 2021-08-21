@@ -147,7 +147,10 @@
     </ul>
   </li>
   <li><a href="#四jekyll目录结构" id="markdown-toc-四jekyll目录结构">四、jekyll目录结构</a></li>
-  <li><a href="#五jekyll安装常见问题" id="markdown-toc-五jekyll安装常见问题">五、jekyll安装常见问题</a></li>
+  <li><a href="#五jekyll安装常见问题" id="markdown-toc-五jekyll安装常见问题">五、jekyll安装常见问题</a>    <ul>
+      <li><a href="#gem证书错误" id="markdown-toc-gem证书错误">Gem 证书错误</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="一背景">一、背景</h2>
@@ -205,6 +208,41 @@ _config.yml 网站的一些配置信息<br />
 index.html 网站的入口</p>
 
 <h2 id="五jekyll安装常见问题">五、jekyll安装常见问题</h2>
+
+<h3 id="gem证书错误">Gem 证书错误</h3>
+<p><img src="/styles/images/Other/图片 2.png" alt="p1" /></p>
+
+<p>1.先查看证书默认位置,系统,安装不一样可能导致证书查找位置不同</p>
+
+<p><code class="language-plaintext highlighter-rouge">ruby -e "require 'openssl'; puts OpenSSL::X509::DEFAULT_CERT_FILE"</code></p>
+
+<p><img src="/styles/images/Other/图片 4.png" alt="p2" /></p>
+
+<p>比如检查出地址是 D:/Ruby30-x64/ssl/cert.pem , 备份一下cert_bak.pem</p>
+
+<p><img src="/styles/images/Other/图片 6.png" alt="p3" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">curl -o  D:\Ruby30-x64\ssl\aaa.pem  https://curl.haxx.se/ca/cacert.pem</code></p>
+
+<p><img src="/styles/images/Other/图片 11.png" alt="p4" /></p>
+
+<p>一次不行， 多试几次。</p>
+
+<p><img src="/styles/images/Other/图片 8.png" alt="p5" /></p>
+
+<p>点击aaa中的html链接， 下载证书</p>
+
+<p><img src="/styles/images/Other/图片 7.png" alt="p6" /></p>
+
+<p>将证书名字改成cert.pem,证书配置完成</p>
+
+<p><code class="language-plaintext highlighter-rouge">gem source -a https://rubygems.org/</code>  （修改Ruby的gem源，默认的源， 之前删除了）</p>
+
+<p>安装jekyll:    <code class="language-plaintext highlighter-rouge">gem install jekyll</code></p>
+
+<p><img src="/styles/images/Other/图片 9.png" alt="p7" /></p>
+
+<p><img src="/styles/images/Other/图片 5.png" alt="p8" /></p>
 
 
             </article>

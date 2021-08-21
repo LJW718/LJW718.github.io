@@ -5,8 +5,8 @@
     <description>自己动手,丰衣足食!</description>
     <link>https://ljw718.github.io//</link>
     <atom:link href="https://ljw718.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 21 Aug 2021 00:55:02 +0800</pubDate>
-    <lastBuildDate>Sat, 21 Aug 2021 00:55:02 +0800</lastBuildDate>
+    <pubDate>Sat, 21 Aug 2021 23:25:44 +0800</pubDate>
+    <lastBuildDate>Sat, 21 Aug 2021 23:25:44 +0800</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -739,7 +739,10 @@ int main(void)
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#四jekyll目录结构&quot; id=&quot;markdown-toc-四jekyll目录结构&quot;&gt;四、jekyll目录结构&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#五jekyll安装常见问题&quot; id=&quot;markdown-toc-五jekyll安装常见问题&quot;&gt;五、jekyll安装常见问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#五jekyll安装常见问题&quot; id=&quot;markdown-toc-五jekyll安装常见问题&quot;&gt;五、jekyll安装常见问题&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#gem证书错误&quot; id=&quot;markdown-toc-gem证书错误&quot;&gt;Gem 证书错误&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;一背景&quot;&gt;一、背景&lt;/h2&gt;
@@ -797,6 +800,41 @@ _config.yml 网站的一些配置信息&lt;br /&gt;
 index.html 网站的入口&lt;/p&gt;
 
 &lt;h2 id=&quot;五jekyll安装常见问题&quot;&gt;五、jekyll安装常见问题&lt;/h2&gt;
+
+&lt;h3 id=&quot;gem证书错误&quot;&gt;Gem 证书错误&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/styles/images/Other/图片 2.png&quot; alt=&quot;p1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1.先查看证书默认位置,系统,安装不一样可能导致证书查找位置不同&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby -e &quot;require 'openssl'; puts OpenSSL::X509::DEFAULT_CERT_FILE&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Other/图片 4.png&quot; alt=&quot;p2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;比如检查出地址是 D:/Ruby30-x64/ssl/cert.pem , 备份一下cert_bak.pem&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Other/图片 6.png&quot; alt=&quot;p3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl -o  D:\Ruby30-x64\ssl\aaa.pem  https://curl.haxx.se/ca/cacert.pem&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Other/图片 11.png&quot; alt=&quot;p4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;一次不行， 多试几次。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Other/图片 8.png&quot; alt=&quot;p5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;点击aaa中的html链接， 下载证书&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Other/图片 7.png&quot; alt=&quot;p6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;将证书名字改成cert.pem,证书配置完成&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem source -a https://rubygems.org/&lt;/code&gt;  （修改Ruby的gem源，默认的源， 之前删除了）&lt;/p&gt;
+
+&lt;p&gt;安装jekyll:    &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem install jekyll&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Other/图片 9.png&quot; alt=&quot;p7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Other/图片 5.png&quot; alt=&quot;p8&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 23 Jun 2019 18:01:01 +0800</pubDate>

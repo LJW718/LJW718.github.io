@@ -5,8 +5,8 @@
     <description>自己动手,丰衣足食!</description>
     <link>https://ljw718.github.io//</link>
     <atom:link href="https://ljw718.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 21 Aug 2021 23:25:44 +0800</pubDate>
-    <lastBuildDate>Sat, 21 Aug 2021 23:25:44 +0800</lastBuildDate>
+    <pubDate>Sun, 22 Aug 2021 00:12:31 +0800</pubDate>
+    <lastBuildDate>Sun, 22 Aug 2021 00:12:31 +0800</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -17,12 +17,12 @@
   &lt;li&gt;&lt;a href=&quot;#3滑动窗口&quot; id=&quot;markdown-toc-3滑动窗口&quot;&gt;3、滑动窗口&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;总结LeetCode刷题过程中常用的算法，以及整理部分算法思路框架，并且以伪代码实现&lt;/p&gt;
+&lt;p&gt;总结&lt;a href=&quot;https://leetcode-cn.com/problemset/all/&quot;&gt;LeetCode&lt;/a&gt;刷题过程中常用的算法，以及整理部分算法思路框架，并且以伪代码实现&lt;/p&gt;
 
 &lt;h2 id=&quot;1二分查找&quot;&gt;1、二分查找&lt;/h2&gt;
 &lt;p&gt;算法思路：从中间开始找，中间值等于目标值，返回true，中间值小于目标值，则从中间值右边开始查找，否则， 从中间值左边开始查找，直到找到目标返回，否则返回false。&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums[1,2,3,4,5,6,...,n], size = n, target = x
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums = [1,2,3,4,5,6,...,n], size = n, target = x
 int left = 0;
 int right = n - 1;
 int mid = 0;
@@ -39,9 +39,48 @@ while (left &amp;lt;= right) {
 return false
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;h2 id=&quot;2双指针&quot;&gt;2、双指针&lt;/h2&gt;
-&lt;p&gt;待补充&lt;/p&gt;
+&lt;p&gt;算法思路：涉及一维数组，大部分是双指针一个在左，一个在右，多维数组，都从左边开始，满足条件的指针先动。&lt;/p&gt;
+
+&lt;p&gt;LeetCode第11题：  &lt;a href=&quot;https://leetcode-cn.com/problems/container-with-most-water/&quot;&gt;盛最多水的容器&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums = [1,7,3,5,5,6,7,8.6,2]   size = n, target = x
+
+int left = 0;
+int right = size - 1;
+int x = 1;
+int min = 0;
+int max = 0;
+while (left &amp;lt; right) {
+	min = MIN(nums[left], nums[right]);
+	max = MAX(max, min * (right, - left));
+	if (nums[left] &amp;lt; nums[right]) {
+		++left;
+	}
+	++right;
+}
+return max;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h2 id=&quot;3滑动窗口&quot;&gt;3、滑动窗口&lt;/h2&gt;
-&lt;p&gt;待补充&lt;/p&gt;
+
+&lt;p&gt;算法思路：定义两个索引left和right, 开始都指向窗口起始位置，先移动right,改变窗口大小，此时检查窗口内部的数据是否满足待测条件， 不满足窗口继续向右移动， 若满足；计算窗口内部的数据，left右移。&lt;/p&gt;
+
+&lt;p&gt;LeetCode第209题：&lt;a href=&quot;https://leetcode-cn.com/problems/minimum-size-subarray-sum/&quot;&gt;长度最小的子数组&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums = [1,2,3,4,5,6,7,8...,n]   size = n, target = x
+int left = 0;
+int right = 0;
+int x = 1;
+while (right &amp;lt; size) {
+	x *= nums[right];
+	while (x &amp;gt;= targht) {
+		// 省略处理过程
+		++left;
+	}
+	++right;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 </description>
         <pubDate>Thu, 19 Aug 2021 22:08:00 +0800</pubDate>
         <link>https://ljw718.github.io//2021/08/19/Algorithms/</link>
@@ -50,7 +89,7 @@ return false
         <category>常用算法思路与框架</category>
         
         
-        <category>算法</category>
+        <category>LeetCode</category>
         
       </item>
     

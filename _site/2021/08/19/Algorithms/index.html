@@ -101,7 +101,7 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#算法-ref">算法</a>	/
+    	<a href="/categories/#LeetCode-ref">LeetCode</a>	/
     	<a href="/tag/#常用算法思路与框架-ref">常用算法思路与框架</a>
     
   </div>
@@ -144,12 +144,12 @@
   <li><a href="#3滑动窗口" id="markdown-toc-3滑动窗口">3、滑动窗口</a></li>
 </ul>
 
-<p>总结LeetCode刷题过程中常用的算法，以及整理部分算法思路框架，并且以伪代码实现</p>
+<p>总结<a href="https://leetcode-cn.com/problemset/all/">LeetCode</a>刷题过程中常用的算法，以及整理部分算法思路框架，并且以伪代码实现</p>
 
 <h2 id="1二分查找">1、二分查找</h2>
 <p>算法思路：从中间开始找，中间值等于目标值，返回true，中间值小于目标值，则从中间值右边开始查找，否则， 从中间值左边开始查找，直到找到目标返回，否则返回false。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nums[1,2,3,4,5,6,...,n], size = n, target = x
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nums = [1,2,3,4,5,6,...,n], size = n, target = x
 int left = 0;
 int right = n - 1;
 int mid = 0;
@@ -166,9 +166,48 @@ while (left &lt;= right) {
 return false
 </code></pre></div></div>
 <h2 id="2双指针">2、双指针</h2>
-<p>待补充</p>
+<p>算法思路：涉及一维数组，大部分是双指针一个在左，一个在右，多维数组，都从左边开始，满足条件的指针先动。</p>
+
+<p>LeetCode第11题：  <a href="https://leetcode-cn.com/problems/container-with-most-water/">盛最多水的容器</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nums = [1,7,3,5,5,6,7,8.6,2]   size = n, target = x
+
+int left = 0;
+int right = size - 1;
+int x = 1;
+int min = 0;
+int max = 0;
+while (left &lt; right) {
+	min = MIN(nums[left], nums[right]);
+	max = MAX(max, min * (right, - left));
+	if (nums[left] &lt; nums[right]) {
+		++left;
+	}
+	++right;
+}
+return max;
+</code></pre></div></div>
+
 <h2 id="3滑动窗口">3、滑动窗口</h2>
-<p>待补充</p>
+
+<p>算法思路：定义两个索引left和right, 开始都指向窗口起始位置，先移动right,改变窗口大小，此时检查窗口内部的数据是否满足待测条件， 不满足窗口继续向右移动， 若满足；计算窗口内部的数据，left右移。</p>
+
+<p>LeetCode第209题：<a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">长度最小的子数组</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nums = [1,2,3,4,5,6,7,8...,n]   size = n, target = x
+int left = 0;
+int right = 0;
+int x = 1;
+while (right &lt; size) {
+	x *= nums[right];
+	while (x &gt;= targht) {
+		// 省略处理过程
+		++left;
+	}
+	++right;
+}
+</code></pre></div></div>
+
 
             </article>
         </div>

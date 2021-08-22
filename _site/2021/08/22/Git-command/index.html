@@ -140,19 +140,197 @@
             <article class="post-content">
               <ul id="markdown-toc">
   <li><a href="#1git工作流程" id="markdown-toc-1git工作流程">1、Git工作流程</a></li>
-  <li><a href="#2常用命令" id="markdown-toc-2常用命令">2、常用命令</a></li>
+  <li><a href="#2git工作区暂存区和版本库" id="markdown-toc-2git工作区暂存区和版本库">2、Git工作区、暂存区和版本库</a></li>
+  <li><a href="#3git常用命令" id="markdown-toc-3git常用命令">3、Git常用命令</a>    <ul>
+      <li><a href="#git创建仓库命令" id="markdown-toc-git创建仓库命令">git创建仓库命令</a></li>
+      <li><a href="#提交与修改" id="markdown-toc-提交与修改">提交与修改</a></li>
+      <li><a href="#提交日志" id="markdown-toc-提交日志">提交日志</a></li>
+      <li><a href="#远程操作" id="markdown-toc-远程操作">远程操作</a></li>
+    </ul>
+  </li>
+  <li><a href="#4git常见问题" id="markdown-toc-4git常见问题">4、Git常见问题</a>    <ul>
+      <li><a href="#openssl-ssl_read-connection-was-reset-errno-10054" id="markdown-toc-openssl-ssl_read-connection-was-reset-errno-10054">OpenSSL SSL_read: Connection was reset, errno 10054</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="1git工作流程">1、Git工作流程</h2>
 
 <p><img src="/styles/images/Git/git-process.png" alt="git-process" /></p>
 
-<h2 id="2常用命令">2、常用命令</h2>
+<h2 id="2git工作区暂存区和版本库">2、Git工作区、暂存区和版本库</h2>
+
+<ul>
+  <li>
+    <p><strong>工作区：</strong>就是你在电脑里能看到的目录。</p>
+  </li>
+  <li>
+    <p><strong>暂存区：</strong>英文叫 stage 或 index。一般存放在 <strong>.git</strong> 目录下的 index 文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。</p>
+  </li>
+  <li>
+    <p><strong>版本库：</strong>工作区有一个隐藏目录 <strong>.git</strong>，这个不算工作区，而是 Git 的版本库。</p>
+  </li>
+</ul>
+
+<p><img src="/styles/images/Git/work-stage.jpg" alt="img" /></p>
+
+<ul>
+  <li>图中左侧为工作区，右侧为版本库。在版本库中标记为 “index” 的区域是暂存区（stage/index），标记为 “master” 的是 master 分支所代表的目录树。</li>
+  <li>图中我们可以看出此时 “HEAD” 实际是指向 master 分支的一个”游标”。所以图示的命令中出现 HEAD 的地方可以用 master 来替换。</li>
+  <li>图中的 objects 标识的区域为 Git 的对象库，实际位于 “.git/objects” 目录下，里面包含了创建的各种对象及内容。</li>
+  <li>当对工作区修改（或新增）的文件执行 <strong>git add</strong> 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。</li>
+  <li>当执行提交操作（git commit）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。</li>
+  <li>当执行 <strong>git reset HEAD</strong> 命令时，暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响。</li>
+  <li>当执行 **git rm –cached <file>** 命令时，会直接从暂存区删除文件，工作区则不做出改变。</file></li>
+  <li>当执行 <strong>git checkout .</strong> 或者 **git checkout – <file>** 命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区中的改动。</file></li>
+  <li>当执行 <strong>git checkout HEAD .</strong> 或者 **git checkout HEAD <file>** 命令时，会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</file></li>
+</ul>
+
+<h2 id="3git常用命令">3、Git常用命令</h2>
 
 <p>Git 常用的是以下 6 个命令：<strong>git clone</strong>、<strong>git push</strong>、<strong>git add</strong> 、<strong>git commit</strong>、<strong>git checkout</strong>、<strong>git pull</strong>。</p>
 
 <p><img src="/styles/images/Git/git-command.jpg" alt="git-command" /></p>
 
+<p><strong>说明：</strong></p>
+
+<ul>
+  <li>workspace：工作区</li>
+  <li>staging area：暂存区/缓存区</li>
+  <li>local repository：版本库或本地仓库</li>
+  <li>remote repository：远程仓库</li>
+</ul>
+
+<p>一个简单的操作步骤：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git init                        - 初始化仓库。
+$ git add .                       - 添加文件到暂存区。
+$ git commit                      - 将暂存区内容添加到仓库中。
+</code></pre></div></div>
+
+<h3 id="git创建仓库命令">git创建仓库命令</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">命令</th>
+      <th style="text-align: left">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git init</code></td>
+      <td style="text-align: left">初始化仓库</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git clone</code></td>
+      <td style="text-align: left">拷贝一份远程仓库，也就是下载一个项目。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="提交与修改">提交与修改</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">命令</th>
+      <th style="text-align: left">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git add</code></td>
+      <td style="text-align: left">添加文件到仓库</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git status</code></td>
+      <td style="text-align: left">查看仓库当前的状态，显示有变更的文件。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git diff</code></td>
+      <td style="text-align: left">比较文件的不同，即暂存区和工作区的差异。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git commit</code></td>
+      <td style="text-align: left">提交暂存区到本地仓库。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git reset</code></td>
+      <td style="text-align: left">回退版本。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git rm</code></td>
+      <td style="text-align: left">删除工作区文件。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git mv</code></td>
+      <td style="text-align: left">移动或重命名工作区文件。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="提交日志">提交日志</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">命令</th>
+      <th style="text-align: left">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git log</code></td>
+      <td style="text-align: left">查看历史提交记录</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git blame &lt;file&gt;</code></td>
+      <td style="text-align: left">以列表形式查看指定文件的历史修改记录</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git reflog</code></td>
+      <td style="text-align: left">查看所有分支的所有操作记录</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="远程操作">远程操作</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">命令</th>
+      <th style="text-align: left">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git remote</code></td>
+      <td style="text-align: left">远程仓库操作</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git fetch</code></td>
+      <td style="text-align: left">从远程获取代码库</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git pull</code></td>
+      <td style="text-align: left">下载远程代码并合并</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git push</code></td>
+      <td style="text-align: left">上传远程代码并合并</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="4git常见问题">4、Git常见问题</h2>
+
+<h3 id="openssl-ssl_read-connection-was-reset-errno-10054">OpenSSL SSL_read: Connection was reset, errno 10054</h3>
+
+<p><img src="/styles/images/Git/2021-08-20_01-01-37.png" alt="ssl-error" />’’</p>
+
+<p>解决方案： <code class="language-plaintext highlighter-rouge">git config --global http.sslVerify "false"</code></p>
 
             </article>
         </div>

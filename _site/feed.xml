@@ -5,27 +5,205 @@
     <description>自己动手,丰衣足食!</description>
     <link>https://ljw718.github.io//</link>
     <atom:link href="https://ljw718.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 22 Aug 2021 14:57:55 +0800</pubDate>
-    <lastBuildDate>Sun, 22 Aug 2021 14:57:55 +0800</lastBuildDate>
+    <pubDate>Sun, 22 Aug 2021 16:05:02 +0800</pubDate>
+    <lastBuildDate>Sun, 22 Aug 2021 16:05:02 +0800</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
         <title>常用Git命令</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#1git工作流程&quot; id=&quot;markdown-toc-1git工作流程&quot;&gt;1、Git工作流程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2常用命令&quot; id=&quot;markdown-toc-2常用命令&quot;&gt;2、常用命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2git工作区暂存区和版本库&quot; id=&quot;markdown-toc-2git工作区暂存区和版本库&quot;&gt;2、Git工作区、暂存区和版本库&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3git常用命令&quot; id=&quot;markdown-toc-3git常用命令&quot;&gt;3、Git常用命令&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#git创建仓库命令&quot; id=&quot;markdown-toc-git创建仓库命令&quot;&gt;git创建仓库命令&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#提交与修改&quot; id=&quot;markdown-toc-提交与修改&quot;&gt;提交与修改&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#提交日志&quot; id=&quot;markdown-toc-提交日志&quot;&gt;提交日志&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#远程操作&quot; id=&quot;markdown-toc-远程操作&quot;&gt;远程操作&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4git常见问题&quot; id=&quot;markdown-toc-4git常见问题&quot;&gt;4、Git常见问题&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#openssl-ssl_read-connection-was-reset-errno-10054&quot; id=&quot;markdown-toc-openssl-ssl_read-connection-was-reset-errno-10054&quot;&gt;OpenSSL SSL_read: Connection was reset, errno 10054&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;1git工作流程&quot;&gt;1、Git工作流程&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/styles/images/Git/git-process.png&quot; alt=&quot;git-process&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;2常用命令&quot;&gt;2、常用命令&lt;/h2&gt;
+&lt;h2 id=&quot;2git工作区暂存区和版本库&quot;&gt;2、Git工作区、暂存区和版本库&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;工作区：&lt;/strong&gt;就是你在电脑里能看到的目录。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;暂存区：&lt;/strong&gt;英文叫 stage 或 index。一般存放在 &lt;strong&gt;.git&lt;/strong&gt; 目录下的 index 文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;版本库：&lt;/strong&gt;工作区有一个隐藏目录 &lt;strong&gt;.git&lt;/strong&gt;，这个不算工作区，而是 Git 的版本库。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Git/work-stage.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;图中左侧为工作区，右侧为版本库。在版本库中标记为 “index” 的区域是暂存区（stage/index），标记为 “master” 的是 master 分支所代表的目录树。&lt;/li&gt;
+  &lt;li&gt;图中我们可以看出此时 “HEAD” 实际是指向 master 分支的一个”游标”。所以图示的命令中出现 HEAD 的地方可以用 master 来替换。&lt;/li&gt;
+  &lt;li&gt;图中的 objects 标识的区域为 Git 的对象库，实际位于 “.git/objects” 目录下，里面包含了创建的各种对象及内容。&lt;/li&gt;
+  &lt;li&gt;当对工作区修改（或新增）的文件执行 &lt;strong&gt;git add&lt;/strong&gt; 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。&lt;/li&gt;
+  &lt;li&gt;当执行提交操作（git commit）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。&lt;/li&gt;
+  &lt;li&gt;当执行 &lt;strong&gt;git reset HEAD&lt;/strong&gt; 命令时，暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响。&lt;/li&gt;
+  &lt;li&gt;当执行 **git rm –cached &lt;file&gt;** 命令时，会直接从暂存区删除文件，工作区则不做出改变。&lt;/file&gt;&lt;/li&gt;
+  &lt;li&gt;当执行 &lt;strong&gt;git checkout .&lt;/strong&gt; 或者 **git checkout – &lt;file&gt;** 命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区中的改动。&lt;/file&gt;&lt;/li&gt;
+  &lt;li&gt;当执行 &lt;strong&gt;git checkout HEAD .&lt;/strong&gt; 或者 **git checkout HEAD &lt;file&gt;** 命令时，会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。&lt;/file&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3git常用命令&quot;&gt;3、Git常用命令&lt;/h2&gt;
 
 &lt;p&gt;Git 常用的是以下 6 个命令：&lt;strong&gt;git clone&lt;/strong&gt;、&lt;strong&gt;git push&lt;/strong&gt;、&lt;strong&gt;git add&lt;/strong&gt; 、&lt;strong&gt;git commit&lt;/strong&gt;、&lt;strong&gt;git checkout&lt;/strong&gt;、&lt;strong&gt;git pull&lt;/strong&gt;。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/styles/images/Git/git-command.jpg&quot; alt=&quot;git-command&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;workspace：工作区&lt;/li&gt;
+  &lt;li&gt;staging area：暂存区/缓存区&lt;/li&gt;
+  &lt;li&gt;local repository：版本库或本地仓库&lt;/li&gt;
+  &lt;li&gt;remote repository：远程仓库&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一个简单的操作步骤：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git init                        - 初始化仓库。
+$ git add .                       - 添加文件到暂存区。
+$ git commit                      - 将暂存区内容添加到仓库中。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;git创建仓库命令&quot;&gt;git创建仓库命令&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;命令&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git init&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;初始化仓库&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git clone&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;拷贝一份远程仓库，也就是下载一个项目。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;提交与修改&quot;&gt;提交与修改&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;命令&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;添加文件到仓库&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git status&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;查看仓库当前的状态，显示有变更的文件。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git diff&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;比较文件的不同，即暂存区和工作区的差异。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;提交暂存区到本地仓库。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git reset&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;回退版本。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git rm&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;删除工作区文件。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git mv&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;移动或重命名工作区文件。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;提交日志&quot;&gt;提交日志&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;命令&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git log&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;查看历史提交记录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git blame &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;以列表形式查看指定文件的历史修改记录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git reflog&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;查看所有分支的所有操作记录&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;远程操作&quot;&gt;远程操作&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;命令&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git remote&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;远程仓库操作&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git fetch&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;从远程获取代码库&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git pull&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;下载远程代码并合并&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;上传远程代码并合并&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;4git常见问题&quot;&gt;4、Git常见问题&lt;/h2&gt;
+
+&lt;h3 id=&quot;openssl-ssl_read-connection-was-reset-errno-10054&quot;&gt;OpenSSL SSL_read: Connection was reset, errno 10054&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Git/2021-08-20_01-01-37.png&quot; alt=&quot;ssl-error&quot; /&gt;’’&lt;/p&gt;
+
+&lt;p&gt;解决方案： &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git config --global http.sslVerify &quot;false&quot;&lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 Aug 2021 12:08:00 +0800</pubDate>
         <link>https://ljw718.github.io//2021/08/22/Git-command/</link>

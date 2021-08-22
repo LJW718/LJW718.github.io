@@ -5,9 +5,36 @@
     <description>自己动手,丰衣足食!</description>
     <link>https://ljw718.github.io//</link>
     <atom:link href="https://ljw718.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 22 Aug 2021 11:58:40 +0800</pubDate>
-    <lastBuildDate>Sun, 22 Aug 2021 11:58:40 +0800</lastBuildDate>
+    <pubDate>Sun, 22 Aug 2021 13:03:27 +0800</pubDate>
+    <lastBuildDate>Sun, 22 Aug 2021 13:03:27 +0800</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Git常用命令</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1git工作流程&quot; id=&quot;markdown-toc-1git工作流程&quot;&gt;1、Git工作流程&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2常用命令&quot; id=&quot;markdown-toc-2常用命令&quot;&gt;2、常用命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1git工作流程&quot;&gt;1、Git工作流程&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Git/git-process.png&quot; alt=&quot;git-process&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2常用命令&quot;&gt;2、常用命令&lt;/h2&gt;
+
+&lt;p&gt;Git 常用的是以下 6 个命令：&lt;strong&gt;git clone&lt;/strong&gt;、&lt;strong&gt;git push&lt;/strong&gt;、&lt;strong&gt;git add&lt;/strong&gt; 、&lt;strong&gt;git commit&lt;/strong&gt;、&lt;strong&gt;git checkout&lt;/strong&gt;、&lt;strong&gt;git pull&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/styles/images/Git/git-command.jpg&quot; alt=&quot;git-command&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 22 Aug 2021 12:08:00 +0800</pubDate>
+        <link>https://ljw718.github.io//2021/08/22/Git-command/</link>
+        <guid isPermaLink="true">https://ljw718.github.io//2021/08/22/Git-command/</guid>
+        
+        
+        <category>Git</category>
+        
+      </item>
     
       <item>
         <title>LeetCode刷题常用算法思路与框架</title>
@@ -1225,104 +1252,6 @@ cond(no)-&amp;gt;op
         
         
         <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>如何使用当前Jekyll模版</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#Thanks&quot; id=&quot;markdown-toc-Thanks&quot;&gt;致谢&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#How-to-use&quot; id=&quot;markdown-toc-How-to-use&quot;&gt;使用&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#Download&quot; id=&quot;markdown-toc-Download&quot;&gt;下载&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#Configuration&quot; id=&quot;markdown-toc-Configuration&quot;&gt;配置&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#How-to-write-document&quot; id=&quot;markdown-toc-How-to-write-document&quot;&gt;如何写文章&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#execute&quot; id=&quot;markdown-toc-execute&quot;&gt;执行&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#result&quot; id=&quot;markdown-toc-result&quot;&gt;效果&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#about-author&quot; id=&quot;markdown-toc-about-author&quot;&gt;关于作者&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;Thanks&quot;&gt;致谢&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;感谢&lt;a href=&quot;https://github.com/&quot;&gt;Github&lt;/a&gt;提供的代码维护和发布平台&lt;/li&gt;
-  &lt;li&gt;感谢&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;团队做出如此优秀的产品&lt;/li&gt;
-  &lt;li&gt;感谢该开源项目的发起者&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;How-to-use&quot;&gt;使用&lt;/h1&gt;
-
-&lt;h2 id=&quot;Download&quot;&gt;下载&lt;/h2&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/LJW718/LJW718.github.io
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;Configuration&quot;&gt;配置&lt;/h2&gt;
-
-&lt;p&gt;将当前项目下的所有文件Copy至你自己的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;***.github.io&lt;/code&gt;仓库，&lt;br /&gt;
-该项目需要配置的只有一个文件&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;，打开之后按照如下进行配置。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;特别注意&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;baseurl&lt;/code&gt;的配置。如果是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;***.github.io&lt;/code&gt;项目，不修改为空&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;''&lt;/code&gt;的话，会导致JS,CSS等静态资源无法找到的错误&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;name: 博客名称
-email: 邮箱地址
-author: 作者名
-url: 个人网站
-&lt;span class=&quot;c&quot;&gt;### baseurl修改为项目名，如果项目是'***.github.io'，则设置为空''&lt;/span&gt;
-baseurl: &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
-resume_site: 个人简历网站
-github: github地址
-github_username: github用户名称
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;How-to-write-document&quot;&gt;如何写文章&lt;/h2&gt;
-
-&lt;p&gt;在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt;目录下新建一个文件，可以创建文件夹并在文件夹中添加文件，方便维护。在新建文件中粘贴如下信息，并修改以下的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;titile&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;date&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tag&lt;/code&gt;的相关信息，添加&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;* content {:toc}&lt;/code&gt;为目录相关信息，在进行正文书写前需要在目录和正文之间输入至少2行空行。然后按照正常的Markdown语法书写正文。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
-layout: post
-&lt;span class=&quot;c&quot;&gt;#标题配置&lt;/span&gt;
-title:  标题
-&lt;span class=&quot;c&quot;&gt;#时间配置&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;:   2019-02-22 01:08:00 +0800
-&lt;span class=&quot;c&quot;&gt;#大类配置&lt;/span&gt;
-categories: document
-&lt;span class=&quot;c&quot;&gt;#小类配置&lt;/span&gt;
-tag: 教程
-&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; content
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;:toc&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-
-文章相关信息
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;execute&quot;&gt;执行&lt;/h2&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Windows系统：Ctrl+r 输入cmd,回车，cd命令进入到该项目
-jekyll server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;result&quot;&gt;效果&lt;/h2&gt;
-&lt;p&gt;打开浏览器并输入URL&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4000/&lt;/code&gt;,回车。&lt;/p&gt;
-
-&lt;h1 id=&quot;about-author&quot;&gt;关于作者&lt;/h1&gt;
-
-&lt;p&gt;热爱编程，擅长Linux，精通C,喜欢探索新领域的程序猿。&lt;/p&gt;
-</description>
-        <pubDate>Fri, 22 Feb 2019 01:08:00 +0800</pubDate>
-        <link>https://ljw718.github.io//2019/02/22/How-to-use-this-jekyll-theme/</link>
-        <guid isPermaLink="true">https://ljw718.github.io//2019/02/22/How-to-use-this-jekyll-theme/</guid>
-        
-        <category>教程</category>
-        
-        
-        <category>Document</category>
         
       </item>
     

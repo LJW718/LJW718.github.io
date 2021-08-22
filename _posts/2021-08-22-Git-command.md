@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  Git常用命令
-
+title:  常用Git命令
 date:   2021-08-22 12:08:00 +0800
 categories: Git
 typora-root-url: ..
+
 ---
 * content
 {:toc}

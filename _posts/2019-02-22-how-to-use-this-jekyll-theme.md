@@ -58,7 +58,7 @@ github_username: github用户名称
 ---
 layout: post
 #标题配置
-title:  标题
+title:  标题 
 #时间配置
 date:   2019-02-22 01:08:00 +0800
 #大类配置

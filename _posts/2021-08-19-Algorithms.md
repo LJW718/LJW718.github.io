@@ -78,3 +78,41 @@ while (right < size) {
 }
 ```
 
+## 4、深度优先搜索（DFS）
+
+算法思路：从起始节点开始搜索，到下一个节点，判断其是否满足退出条件（搜索到末尾了）。如果到达末尾，此时进行数据相关处理，否则，一直搜索下去。
+
+LeetCode第797题：[所有可能的路径](https://leetcode-cn.com/problems/all-paths-from-source-to-target/)
+LeetCode第200题：[岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
+LeetCode第797题：[省份数量](https://leetcode-cn.com/problems/number-of-provinces/)
+
+```
+// 第797题：省份数量：
+void DFS(int **isConnected, int *visted, int provence, int i) {
+    for (int j = 0; j < provence; j++) {
+        if (isConnected[i][j] == 1 && visted[j] == 0) {
+            visted[j] = 1;
+            DFS(isConnected, visted, provence, j);
+        }
+    }
+    return;
+}
+
+int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize){
+    int provence = isConnectedSize;
+    int *visted = (int *)malloc(sizeof(int) * provence);
+    memset(visted, 0, sizeof(int) * provence);
+
+    int cnt = 0;
+    for (int i = 0; i < provence; i++) {
+        if (visted[i] != 1) {
+            DFS(isConnected, visted, provence, i);
+            cnt++;
+        }
+    }
+    return cnt;
+}
+```
+
+
+

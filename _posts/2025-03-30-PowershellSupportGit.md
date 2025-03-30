@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Powershell支持Git
+title:  Powershell完美支持Git
 date:   2025-03-30 12:08:00 +0800
 categories: Git
 typora-root-url: ..
@@ -61,6 +61,8 @@ Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
 Set-PSReadLineOption -PredictionSource History
+# 启用自动补全的快捷键（例如，在输入命令时按Tab键）
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
 # Fzf
 # Import-Module PSFzf -Cmdlet fzf

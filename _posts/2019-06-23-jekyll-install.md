@@ -106,7 +106,18 @@ index.html 网站的入口
 
 ![p8](/styles/images/Other/图片 5.png)
 
+### Dependency Error
 
+```
+Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. If you've run Jekyll with `bundle exec`, ensure that you have included the jekyll-paginate gem in your Gemfile as well. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
+
+------------------------------------------------
+      Jekyll 4.4.1   Please append `--trace` to the `serve` command
+      for any additional information or backtrace.
+------------------------------------------------
+```
+
+解决方案：gem install jekyll-paginate
 
 
 [jekyll]:      http://jekyllrb.com

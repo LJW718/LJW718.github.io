@@ -9,8 +9,8 @@ typora-root-url: ..
 * content
 {:toc}
 
+## 1、安装posh-git
 
-# 1、安装posh-git
 > Install-Module posh-git -Scope CurrentUser -Force
 
 要在你的提示符中包含 Git 信息，那么需要导入 posh-git 模块。
@@ -21,11 +21,12 @@ typora-root-url: ..
 
 > Add-PoshGitToProfile -AllHosts
 
-# 2、安装oh-my-posh（需要科学上网）
+## 2、安装oh-my-posh（需要科学上网
+
 > winget install JanDeDobbeleer.OhMyPosh -s winget
 
+## 3、安装文件图标库
 
-# 3、安装文件图标库
 > Install-Module -Name Terminal-Icons -Repository PSGallery
 
 PS：文件图标库能否正常使用，必须依赖于Nerd Fonts字体。
@@ -33,18 +34,21 @@ PS：文件图标库能否正常使用，必须依赖于Nerd Fonts字体。
 使用文件图标库，需要在PowerShell配置文件中，增加如下命令：
 > Import-Module -Name Terminal-Icons
 
-# 4、安装Meslo字体(推荐)
+## 4、安装Meslo字体(推荐)
+
 推荐使用MesloLGM NF字体，[点此即可直接下载Meslo字体(v2.3.3)](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Meslo.zip)。
 下载完成后解压，全选右键点击安装即可自动安装。
 
-# 5、安装PSReadLine
+## 5、安装PSReadLine
+
 Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
 
-# 6、创建userProfile.ps1
+## 6、创建userProfile.ps1
+
 Powershell窗口输入命令：notepad.exe $PROFILE
 复制以下文本到xxx_Profile.ps1文件
 
-```
+```text
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
@@ -86,26 +90,37 @@ function which ($command) {
 }
 ```
 
-# 7、最终效果图如下
+## 7、最终效果图如下
+
 ![powershell]({{ '/styles/images/Git/powershell.png' | prepend: site.baseurl  }})
 
 参考：
-https://blog.csdn.net/weixin_44155966/article/details/142624257
 
+https://blog.csdn.net/weixin_44155966/article/details/142624257
 
 https://blog.csdn.net/ZHOU_YONG915/article/details/129733931
 
-# 8、FAQ
-## 更新oh-my-posh
-oh-my-posh --version	显示当前安装的Oh My Posh版本号
-oh-my-posh upgrade --force	将Oh My Posh自身强制更新到最新版本
-## .ps1文件不生效
-验证语法：使用 oh-my-posf init pwsh，而非 --init --shell pwsh。
-检查路径：确保xxxx.omp.json 文件确实存在于 $PSScriptRoot 所指示的目录下。
+## 8、FAQ
+
+### 更新oh-my-posh
+
+oh-my-posh --version, 显示当前安装的Oh My Posh版本号
+
+oh-my-posh upgrade --force, 将Oh My Posh自身强制更新到最新版本
+
+### .ps1文件不生效
+
+```text
+验证语法：使用 oh-my-posh init pwsh，而非 --init --shell pwsh。
+检查路径：确保xxxx.omp.json 文件确实存在于 `$PSScriptRoot` 所指示的目录下。
 检查引号：确保整个路径被双引号 " 包围。
 检查配置文件：运行 Get-Content $PROFILE 命令，可以快速查看你的配置文件中是否还存在旧的命令。
 查看$PSScriptRoot路径： pwsh > $env:PSScriptRoot
 如果上述路径不生效，请使用$env:POSH_THEMES_PATH，同时将xxxx.omp.json文件手动拷贝到此目录下，重启终端生效。
-## git分支不完整
-修改xxxx.omp.json文件的"branch_template": "{{ trunc 50 .Branch }}",参数，50表示字符长度，按需修改。
+```
 
+### git分支不完整
+
+```text
+修改xxxx.omp.json文件的"branch_template": "{{ trunc 50 .Branch }}",参数，50表示字符长度，按需修改。
+```

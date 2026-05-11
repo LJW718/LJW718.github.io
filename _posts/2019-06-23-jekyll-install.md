@@ -10,10 +10,9 @@ typora-root-url: ..
 * content
 {:toc}
 
-
 ## 一、背景
-由于最近换了新电脑，之前的Jekyll环境用不了了，但是之前创建的仓库[https://LJW718.github.io](http://ljw718.github.io) 依然是可以访问的，所以需要在新电脑上重新安装。
 
+由于最近换了新电脑，之前的Jekyll环境用不了了，但是之前创建的仓库[https://LJW718.github.io](http://ljw718.github.io) 依然是可以访问的，所以需要在新电脑上重新安装。
 
 ## 二、什么是jekyll？
 
@@ -25,29 +24,29 @@ typora-root-url: ..
 首先进入官网点击下载安装[Ruby installer](https://rubyinstaller.org/);  或者用阿里云盘下载：[Ruby2.6.1.1](https://www.aliyundrive.com/s/C6ULdQDbome)
 点击下载[RubyGems](https://rubygems.org/pages/download), 或者用阿里云盘下载：[[RubyGems3.0.2]](https://www.aliyundrive.com/s/KkiH9ftS3ZY) , 不建议下载最新的版本，可能存在兼容性问题， 用我的这两个链接下载即可，亲测有效。下载完成后解压至你想放的位置,
 
+例如我放到E:\rubygems-3.0.2。
 
+### 1、(win+R)DOS安装
 
-例如我放到E:\rubygems-3.0.2。  
-
-### 1、(win+R)DOS安装    
-打开命令行执行,进入到解压包的位置：cd E:\rubygems-3.0.2   
+打开命令行执行,进入到解压包的位置：cd E:\rubygems-3.0.2
 E:  
 ruby setup.rb  
 在命令行执行gem install jekyll；  
-安装完成，我们可以用jekyll命令创建一个博客模板,打开命令行执行：    
-cd d:    
-d:    
+安装完成，我们可以用jekyll命令创建一个博客模板,打开命令行执行：
+cd d:
+d:
 jekyll new testblog  
 cd testblog  
 jekyll server  
 
-### 2、Shell命令安装    
+### 2、Shell命令安装
+
 熟悉Linux的朋友应该不陌生，我们先安装一个可以在windows下敲shell命令的工具，我们拿Git-bash为例(Git命令行输入工具),兼容部分shell命令,然后在git-bash终端完成jekyll安装以及启动。  
-打开命令行执行,进入到解压包的位置：cd E:\rubygems-3.0.2   
+打开命令行执行,进入到解压包的位置：cd E:\rubygems-3.0.2
 ruby setup.rb  
 在命令行执行gem install jekyll；  
-安装完成，我们可以用jekyll命令创建一个博客模板,打开命令行执行：    
-cd d:      
+安装完成，我们可以用jekyll命令创建一个博客模板,打开命令行执行：
+cd d:
 jekyll new testblog  
 cd testblog  
 jekyll server  
@@ -58,6 +57,7 @@ jekyll server
 
 
 ## 四、jekyll目录结构
+
 jekyll目录结构主要包含如下目录：  
 _posts 博客内容  
 _pages 其他需要生成的网页，如About页  
@@ -72,6 +72,7 @@ index.html 网站的入口
 ## 五、jekyll安装常见问题
 
 ### Gem 证书错误
+
 ![p1](/styles/images/Other/图片 2.png)
 
 1.先查看证书默认位置,系统,安装不一样可能导致证书查找位置不同
@@ -108,7 +109,7 @@ index.html 网站的入口
 
 ### Dependency Error
 
-```
+```text
 Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. If you've run Jekyll with `bundle exec`, ensure that you have included the jekyll-paginate gem in your Gemfile as well. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
 
 ------------------------------------------------
@@ -118,7 +119,6 @@ Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of 
 ```
 
 解决方案：gem install jekyll-paginate
-
 
 [jekyll]:      http://jekyllrb.com
 [jekyll-gh]:   https://github.com/jekyll/jekyll

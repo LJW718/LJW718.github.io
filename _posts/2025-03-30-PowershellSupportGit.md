@@ -122,5 +122,13 @@ oh-my-posh upgrade --force, 将Oh My Posh自身强制更新到最新版本
 ### git分支不完整
 
 ```text
-修改xxxx.omp.json文件的"branch_template": "{{ trunc 50 .Branch }}",参数，50表示字符长度，按需修改。
+修改xxxx.omp.json文件的{% raw %}"branch_template": "{{ .Branch | truncate 50 }}"{% endraw %},参数，50表示字符长度，按需修改。
+
+raw标签解释见jekyll-install.md中的FAQ
+```
+
+### 导出当前ompl.json文件
+
+```text
+oh-my-posh config export --output ~/alvin.omp.json
 ```

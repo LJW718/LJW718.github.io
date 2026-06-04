@@ -122,22 +122,31 @@ Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of 
 
 ### Liquid Warning: Liquid syntax error
 
-Liquid Warning: Liquid syntax error (line 117): [:dot, "."] is not a valid expression in "{{ .Branch | truncate 50 }}" in D:/WorkSpace/Alvin/private/LJW718.github.io/_posts/2025-03-30-PowershellSupportGit.md
+Liquid Warning: Liquid syntax error (line 117): [:dot, "."] is not a valid expression in 
+{% raw %}"{{ .Branch | truncate 50 }}"{% endraw %} in D:/WorkSpace/Alvin/private/LJW718.github.io/_posts/2025-03-30-PowershellSupportGit.md
 
 ```text
-看到你遇到的错误了，问题出现在 {{ .Branch | truncate 50 }} 这段代码上。这是因为你的博客文章文件（.md）在构建时，Jekyll 引擎会优先解析其中的所有 {{ }} 标签。但它无法识别 Oh My Posh 的语法，所以当它碰到这个标签时就报错了。
+看到你遇到的错误了，问题出现在 {% raw %} "branch_template": "{{ .Branch | truncate 50 }}" {% endraw %}这段代码上。这是因为你的博客文章文件（.md）在构建时，Jekyll 引擎会优先解析其中的所有 {% raw %}{{ }} {% endraw %}标签。但它无法识别 Oh My Posh 的语法，所以当它碰到这个标签时就报错了。
+```
 
 处理起来很简单，但需要根据你写文章的目的（分享代码还是记录教程文件），分两种情况来解决。
 
+```text
 情况一：只需在博客文章里分享这段代码
+
 如果只是想在文章里展示这个配置，而不需要 Jekyll 执行它，用 raw 标签把代码包起来就可以了。
 把你教程 xxxx.omp.json 文件中的那一行，在文章里写成下面这样：
-{% raw %}"branch_template": "{{ .Branch | truncate 50 }}"{% endraw %}
+```
+&#123;% raw %&#125;"branch_template": "&#123;&#123; .Branch | truncate 50 &#125;&#125;"&#123;% endraw %&#125;
 
-原理：raw 标签会告诉 Jekyll “这是一段原始文本，里面的内容请不要解析”，从而确保了 {{ .Branch | truncate 50 }} 能无损地出现在最终的网页上。
+```text
+原理：raw 标签会告诉 Jekyll “这是一段原始文本，里面的内容请不要解析”，从而确保了 {% raw %}{{ .Branch | truncate 50 }}{% endraw %}能无损地出现在最终的网页上。
+```
 
+```text
 情况二：需要在自己的 takuya.omp.json 文件里使用
-如果是为了修正 takuya.omp.json 配置文件本身，问题就出在 truncate 过滤器上。根据 Oh My Posh 模板引擎的语法，正确的写法应该是："branch_template": "{{ .Branch | trunc 50 }}"
+
+如果是为了修正 takuya.omp.json 配置文件本身，问题就出在 truncate 过滤器上。根据 Oh My Posh 模板引擎的语法，正确的写法应该是：{% raw %}"branch_template": "{{ .Branch | truncate 50 }}"{% endraw %}
 原理：你的 Oh My Posh 版本，其支持的 Sprig 函数库提供了 trunc 函数来实现字符串截取
 ```
 

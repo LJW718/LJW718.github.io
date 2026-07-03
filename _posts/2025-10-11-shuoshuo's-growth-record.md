@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  liuyunshuo's growth record
+title:  刘运朔成长记录
 date:   2025-10-11 15:26:00 +0800
 categories: life
 typora-root-url: ..

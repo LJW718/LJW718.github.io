@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ai to image
+title:  AI生成图片
 date:   2026-07-01 15:26:00 +0800
 categories: AI
 typora-root-url: ..

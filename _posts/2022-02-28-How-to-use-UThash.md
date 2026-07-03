@@ -1,3 +1,14 @@
+---
+layout: post
+title:  UTHash的使用
+date:   2022-02-28 12:08:00 +0800
+categories: Hash
+typora-root-url: ..
+
+---
+* content
+{:toc}
+
 # uthash简介
 
   由于C语言本身不存在哈希，但是当需要使用哈希表的时候自己构建哈希会异常复杂。因此，我们可以调用开源的第三方头文件，**这只是一个头文件**：uthash.h。我们需要做的就是将头文件复制到您的项目中，然后：#include "uthash.h"。由于uthash仅是头文件，因此没有可链接的库代码。

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  auto build tools
+title:  自动化构建
 date:   2026-06-01 12:08:00 +0800
 categories: Tools
 typora-root-url: ..

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  subnet mask and network segment
+title:  子网掩码与网段划分
 date:   2026-07-03 10:26:00 +0800
 categories: network
 typora-root-url: ..

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  page xml readme
+title:  XML页面说明
 date:   2026-05-08 12:08:00 +0800
 categories: README
 typora-root-url: ..

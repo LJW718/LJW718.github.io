@@ -14,7 +14,7 @@
 	    $('#navigation .sidenav ul').addClass("nav");
 	    $("#markdown-toc").remove();
 
-      // 添加Bootstrap表格样式 table-hover 
+      // Add Bootstrap table styles: table-hover
       $(".docs-content table").addClass("table table-hover");
   	}
 
@@ -25,7 +25,7 @@
       resetHeadersStyles();
     }
 
-    // 重新计算图片显示大小。
+    // Recalculate image display size.
   	function repairTheImagesWhichCrossTheMaxWidth(){
   		var images = $(".docs-content img");
   		if(images != undefined && images.length > 0){
@@ -38,7 +38,7 @@
   		}
   	}
 
-    // 设置标题样式
+    // Apply heading styles
     function resetHeadersStyles(){
       resetHeaderItemStyles($(".docs-content h1"));
       resetHeaderItemStyles($(".docs-content h2"));

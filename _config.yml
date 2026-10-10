@@ -1,5 +1,5 @@
 # Site settings
-name: 不重复自己，不假设未来
+name: Don't Repeat Yourself, Don't Assume the Future
 email: liujingwen718@gmail.com
 author: LiuJingwen
 url: https://ljw718.github.io/
@@ -7,10 +7,10 @@ url: https://ljw718.github.io/
 resume_site: https://github.com/LJW718
 github: https://github.com/LJW718/
 baseurl: ''
-description: 自己动手,丰衣足食!
-meta_description: 自己动手,丰衣足食
-motto: 自己动手,丰衣足食
-banner: 不积跬步,无以至千里 
+description: DIY — prosper by your own hands!
+meta_description: DIY — prosper by your own hands
+motto: DIY — prosper by your own hands
+banner: A journey of a thousand miles begins with a single step
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
@@ -25,6 +25,10 @@ markdown: kramdown
 
 baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
 
+# Page views display starts at busuanzi_pv_start, then grows with new visits.
+# busuanzi_pv_baseline = current real site_pv on ljw718.github.io (so display ≈ 1000 now)
+busuanzi_pv_start: 1000
+busuanzi_pv_baseline: 4028
+
 # Gems
 plugins: [jekyll-paginate]
-

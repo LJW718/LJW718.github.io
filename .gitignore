@@ -3,7 +3,7 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
-#静态网页文件
+# Generated static site files
 _site/feed.xml
 _site/**/index.html
 _site/**/*.png

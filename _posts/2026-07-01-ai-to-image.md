@@ -18,10 +18,10 @@ typora-root-url: ..
 `圆形构图 + 卡通韭菜形象 + 红色"稳"字束发带 + 脚踩“主力” + 向右上方冲刺姿势 + 坚韧不拔的五官 + 前后手拿钱 + 股市背景`
 
 ## 程序猿阿稳
-![程序员阿稳](/styles/images/AI/chengxuyuan.png)
+![程序员阿稳](/styles/images/AI/test/chengxuyuan.png)
 
 ## 韭菜阿稳
-![韭菜阿稳](/styles/images/AI/jiucai.png)
+![韭菜阿稳](/styles/images/AI/test/jiucai.png)
 
 ## 黑客阿稳
-![黑客阿稳](/styles/images/AI/heike.png)
+![黑客阿稳](/styles/images/AI/test/heike.png)

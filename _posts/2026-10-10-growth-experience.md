@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  人生不同阶段
+title:  人生时间线
 date:   2026-10-10 14:30:00 +0800
 categories: life
 tag: 成长
@@ -11,7 +11,7 @@ typora-root-url: ..
 {:toc}
 
 
-# 人生不同阶段
+# 普通人的奋斗史
 
 用一组 AI 插画，把走过的路串成一条时间线——从山里的小学门，到如今的三口之家。
 

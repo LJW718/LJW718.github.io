@@ -27,63 +27,87 @@ var bszCaller, bszTag;
     }, 5)))
 }(),
 bszCaller = {
-  fetch: function (a, b) {
-    var c = "BusuanziCallback_" + Math.floor(1099511627776 * Math.random());
-    window[c] = this.evalCall(b),
-      a = a.replace("=BusuanziCallback", "=" + c),
-      scriptTag = document.createElement("SCRIPT"),
-      scriptTag.type = "text/javascript",
-      scriptTag.defer = !0,
-      scriptTag.src = a,
-      scriptTag.referrerPolicy = "no-referrer-when-downgrade",
-      document.getElementsByTagName("HEAD")[0].appendChild(scriptTag)
+  fetch: function (url, callback, attempt) {
+    var self = this;
+    var tries = typeof attempt === "number" ? attempt : 0;
+    var cbName = "BusuanziCallback_" + Math.floor(1099511627776 * Math.random());
+    var done = !1;
+    var timer;
+    var script;
+    var requestUrl = url.replace("=BusuanziCallback", "=" + cbName) + "&t=" + Date.now();
+
+    window[cbName] = this.evalCall(function (data) {
+      if (done) return;
+      done = !0;
+      clearTimeout(timer);
+      try { delete window[cbName] } catch (err) {}
+      callback(data);
+    });
+
+    script = document.createElement("SCRIPT");
+    script.type = "text/javascript";
+    script.defer = !0;
+    script.src = requestUrl;
+    script.referrerPolicy = "no-referrer-when-downgrade";
+    script.onerror = function () {
+      cleanup(!0);
+    };
+    document.getElementsByTagName("HEAD")[0].appendChild(script);
+
+    timer = setTimeout(function () {
+      cleanup(!0);
+    }, 5000);
+
+    function cleanup(failed) {
+      if (done) return;
+      done = !0;
+      clearTimeout(timer);
+      try { script.parentElement.removeChild(script) } catch (err) {}
+      try { delete window[cbName] } catch (err) {}
+      if (!failed) return;
+      if (tries < 2) {
+        setTimeout(function () { self.fetch(url, callback, tries + 1) }, 600 * (tries + 1));
+      } else {
+        bszTag.hides();
+      }
+    }
+
+    // Keep a reference for evalCall cleanup compatibility
+    scriptTag = script;
   },
   evalCall: function (a) {
     return function (b) {
       ready(function () {
         try {
-          a(b),
-          scriptTag.parentElement.removeChild(scriptTag)
+          a(b);
+          if (scriptTag && scriptTag.parentElement) {
+            scriptTag.parentElement.removeChild(scriptTag);
+          }
         } catch (c) {
-          bszTag.hides()
+          bszTag.hides();
         }
-      })
-    }
+      });
+    };
   }
 },
 /* Force HTTPS so the counter works on both http://localhost and https:// pages */
 bszCaller.fetch("https://busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", function (a) {
-  bszTag.texts(a),
-  bszTag.shows()
+  bszTag.texts(a);
+  bszTag.shows();
 }),
 bszTag = {
   bszs: ["site_pv", "page_pv", "site_uv"],
   texts: function (a) {
-    var start = Number(window.BUSUANZI_PV_START || 1000);
-    var i, key, el, val, baseline, storageKey, stored;
+    var floor = Number(window.BUSUANZI_PV_START || 0);
+    var i, key, el, val;
     for (i = 0; i < this.bszs.length; i++) {
       key = this.bszs[i];
       el = document.getElementById("busuanzi_value_" + key);
       if (!el) continue;
       val = Number(a[key] || 0);
-      if (key === "site_pv") {
-        /*
-         * Display = start + max(0, real_pv - baseline)
-         * so the visible counter starts from 1000 and then grows.
-         * Production uses configured baseline; localhost calibrates once per session.
-         */
-        if (/ljw718\.github\.io$/i.test(location.hostname)) {
-          baseline = Number(window.BUSUANZI_PV_BASELINE || 0);
-        } else {
-          storageKey = "bsz_pv_baseline_" + location.hostname;
-          stored = sessionStorage.getItem(storageKey);
-          if (stored === null) {
-            sessionStorage.setItem(storageKey, String(val));
-            stored = String(val);
-          }
-          baseline = Number(stored);
-        }
-        val = start + Math.max(0, val - baseline);
+      /* site_pv: show live Busuanzi count, never below configured floor */
+      if (key === "site_pv" && floor > 0) {
+        val = Math.max(floor, val);
       }
       el.innerHTML = val;
     }

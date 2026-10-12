@@ -25,10 +25,8 @@ markdown: kramdown
 
 baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
 
-# Page views display starts at busuanzi_pv_start, then grows with new visits.
-# busuanzi_pv_baseline = current real site_pv on ljw718.github.io (so display ≈ 1000 now)
+# Page views floor: display max(busuanzi_pv_start, real site_pv)
 busuanzi_pv_start: 1000
-busuanzi_pv_baseline: 4028
 
 # Gems
 plugins: [jekyll-paginate]

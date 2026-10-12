@@ -611,6 +611,76 @@ table {
   border-color: rgba(194, 164, 107, 0.25) !important;
 }
 
+/* ---------- Photo grid (3 per row) ---------- */
+.photo-grid {
+  display: grid;
+  gap: 16px;
+  margin: 1.6em 0 2.2em;
+  padding: 0;
+}
+
+.photo-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.photo-grid__item {
+  margin: 0;
+  background: linear-gradient(180deg, #fff, #f7f4ee);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.photo-grid__item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(194, 164, 107, 0.45);
+  box-shadow: var(--shadow);
+}
+
+.photo-grid__item img,
+.docs-content .photo-grid__item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.photo-grid__item figcaption {
+  margin: 0;
+  padding: 10px 12px 12px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: transparent;
+}
+
+@media (max-width: 767px) {
+  .photo-grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .photo-grid__item figcaption {
+    font-size: 13px;
+    padding: 8px 8px 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .photo-grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Misc ---------- */
 #busuanzi_container_site_pv {
   white-space: nowrap;

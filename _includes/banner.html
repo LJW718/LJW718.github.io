@@ -1,9 +1,15 @@
 
 <div class="banner">
   <div class="container">
-  	{% if page.categories != null %}
-    	<a href="{{ '/categories/' | prepend: site.baseurl }}#{{page.categories}}-ref">{{page.categories}}</a>	/
-    	<a href="{{ '/tag/' | prepend: site.baseurl }}#{{page.tag}}-ref">{{page.tag}}</a>
+  	{% if page.categories and page.categories != empty %}
+    	{% assign cat = page.categories | first %}
+    	<a href="{{ '/categories/' | prepend: site.baseurl }}#{{ cat }}-ref">{{ cat }}</a>
+    	{% if page.tags and page.tags != empty %}
+    		/
+    		{% for t in page.tags %}
+    			<a href="{{ '/tag/' | prepend: site.baseurl }}#{{ t }}-ref">{{ t }}</a>{% unless forloop.last %} · {% endunless %}
+    		{% endfor %}
+    	{% endif %}
     {% else %}
     	{{ site.banner }}
     {% endif %}

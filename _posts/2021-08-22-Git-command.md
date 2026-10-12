@@ -2,7 +2,8 @@
 layout: post
 title:  常用Git命令
 date:   2021-08-22 12:08:00 +0800
-categories: Git
+categories: 工具
+tags: [Git]
 typora-root-url: ..
 
 ---

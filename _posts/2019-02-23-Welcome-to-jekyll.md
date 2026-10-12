@@ -2,8 +2,8 @@
 layout: post
 title:  "Welcome To Jekyll !"
 date:   2019-02-23 19:21:01 +0800
-categories: jekyll
-tag: jekyll
+categories: 工具
+tags: [Jekyll]
 ---
 
 * content

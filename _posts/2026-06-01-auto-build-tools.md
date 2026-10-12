@@ -2,7 +2,8 @@
 layout: post
 title:  自动化构建
 date:   2026-06-01 12:08:00 +0800
-categories: Tools
+categories: 工具
+tags: [自动化, 构建]
 typora-root-url: ..
 
 ---

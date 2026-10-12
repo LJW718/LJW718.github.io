@@ -2,7 +2,8 @@
 layout: post
 title:  XML页面说明
 date:   2026-05-08 12:08:00 +0800
-categories: README
+categories: 工具
+tags: [文档]
 typora-root-url: ..
 
 ---

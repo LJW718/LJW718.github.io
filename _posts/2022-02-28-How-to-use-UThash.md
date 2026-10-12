@@ -2,7 +2,8 @@
 layout: post
 title:  UTHash的使用
 date:   2022-02-28 12:08:00 +0800
-categories: Hash
+categories: 编程
+tags: [C, Hash]
 typora-root-url: ..
 
 ---

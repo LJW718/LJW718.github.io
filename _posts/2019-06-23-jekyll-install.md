@@ -2,8 +2,8 @@
 layout: post
 title:  "Jekyll安装步骤&目录结构"
 date:   2019-06-23 18:01:01 +0800
-categories: jekyll
-tag: jekyll
+categories: 工具
+tags: [Jekyll]
 typora-root-url: ..
 ---
 

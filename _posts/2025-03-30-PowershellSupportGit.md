@@ -2,7 +2,8 @@
 layout: post
 title:  Powershell完美支持Git
 date:   2025-03-30 12:08:00 +0800
-categories: Git
+categories: 工具
+tags: [PowerShell, Git]
 typora-root-url: ..
 
 ---

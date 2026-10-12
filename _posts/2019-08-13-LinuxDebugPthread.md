@@ -3,8 +3,8 @@ layout: post
 title:  GDB分析进程占用CPU过高问题
 
 date:   2019-08-13 22:08:00 +0800
-categories: Linux
-tag: GDB调试
+categories: 系统
+tags: [Linux, GDB]
 ---
 
 * content

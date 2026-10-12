@@ -2,7 +2,8 @@
 layout: post
 title:  刘运朔成长记录
 date:   2025-10-11 15:26:00 +0800
-categories: life
+categories: 生活
+tags: [成长, 家庭]
 typora-root-url: ..
 
 ---

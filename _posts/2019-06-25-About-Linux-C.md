@@ -2,8 +2,8 @@
 layout: post
 title:  "基于Linux下的C函数使用"
 date:   2019-06-25 22:58:01 +0800
-categories: Linux
-tag: C函数
+categories: 编程
+tags: [Linux, C]
 ---
 
 

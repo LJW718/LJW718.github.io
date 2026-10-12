@@ -2,8 +2,8 @@
 layout: post
 title:  Sublime Text3使用技巧
 date:   2019-08-12 23:08:00 +0800
-categories: 开发工具
-tag: Sublime Text3
+categories: 工具
+tags: [Sublime]
 ---
 
 * content

@@ -2,8 +2,8 @@
 layout: post
 title:  如何使用当前Jekyll模版
 date:   2019-02-22 01:08:00 +0800
-categories: Document
-tag: 教程
+categories: 工具
+tags: [Jekyll, 教程]
 ---
 
 * content
@@ -52,19 +52,19 @@ github_username: github用户名称
 如何写文章							{#How-to-write-document}
 ------------------------------------
 
-在`_posts`目录下新建一个文件，可以创建文件夹并在文件夹中添加文件，方便维护。在新建文件中粘贴如下信息，并修改以下的`titile`,`date`,`categories`,`tag`的相关信息，添加`* content {:toc}`为目录相关信息，在进行正文书写前需要在目录和正文之间输入至少2行空行。然后按照正常的Markdown语法书写正文。
+在`_posts`目录下新建一个文件，可以创建文件夹并在文件夹中添加文件，方便维护。在新建文件中粘贴如下信息，并修改以下的`title`,`date`,`categories`,`tags`的相关信息，添加`* content {:toc}`为目录相关信息，在进行正文书写前需要在目录和正文之间输入至少2行空行。然后按照正常的Markdown语法书写正文。
 
 ```bash
 ---
 layout: post
 #标题配置
-title:  标题 
+title:  标题
 #时间配置
 date:   2019-02-22 01:08:00 +0800
-#大类配置
-categories: document
-#小类配置
-tag: 教程
+#分类：生活 / 编程 / 系统 / 工具 / AI
+categories: 工具
+#标签：可多个，用于细粒度检索
+tags: [Jekyll, 教程]
 ---
 
 * content

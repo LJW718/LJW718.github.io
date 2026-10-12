@@ -2,8 +2,8 @@
 layout: post
 title:  程序猿颈椎保健操
 date:   2019-08-13 20:20:00 +0800
-categories: 健康
-tag: 健康操
+categories: 生活
+tags: [健康]
 ---
 
 * content

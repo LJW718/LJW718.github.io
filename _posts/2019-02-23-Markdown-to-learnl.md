@@ -2,8 +2,8 @@
 layout: post
 title:  "Markdown基础语法学习 ！"
 date:   2019-02-23 19:58:01 +0800
-categories: Markdown
-tag: Markdown
+categories: 工具
+tags: [Markdown, 教程]
 ---
 
 * content

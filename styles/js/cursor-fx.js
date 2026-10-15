@@ -72,6 +72,7 @@
   function onMove(e) {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
+
     if (!mouse.active) {
       mouse.active = true;
       root.classList.add('is-active');

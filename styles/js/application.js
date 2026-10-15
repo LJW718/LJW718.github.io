@@ -37,6 +37,21 @@
       e.preventDefault()
     });
 
+    // Close More dropdown when pointer/focus leaves
+    $('.docs-nav .dropdown').on('mouseleave', function () {
+      var $dropdown = $(this)
+      $dropdown.removeClass('open')
+      $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false')
+    }).on('focusout', function () {
+      var $dropdown = $(this)
+      setTimeout(function () {
+        if (!$dropdown.find(':focus').length) {
+          $dropdown.removeClass('open')
+          $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false')
+        }
+      }, 0)
+    });
+
 
     $('.source-link').each(function () {
       var id = $(this).data('content');

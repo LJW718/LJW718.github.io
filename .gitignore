@@ -1,10 +1,15 @@
-# These are some examples of commonly ignored file patterns.
-# You should customize this list as applicable to your project.
-# Learn more about .gitignore:
-#     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+# Build output — never commit; GitHub Pages / jekyll build regenerates it
+_site/
 
-# Generated static site files
-_site/feed.xml
-_site/**/index.html
-_site/**/*.png
+# Bundler / local tooling
+.bundle/
+vendor/bundle/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~

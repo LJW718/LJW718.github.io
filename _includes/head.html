@@ -2,7 +2,23 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{{ page.title | append: ' - ' |append: site.name }}</title>
+	{% assign asset_v = site.time | date: '%Y%m%d%H%M' %}
+	{% assign page_title = page.title | default: site.name %}
+	{% if page.title %}
+	{% assign full_title = page.title | append: ' - ' | append: site.name %}
+	{% else %}
+	{% assign full_title = site.name %}
+	{% endif %}
+	{% if page.description %}
+	{% assign page_desc = page.description %}
+	{% elsif page.excerpt %}
+	{% assign page_desc = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+	{% else %}
+	{% assign page_desc = site.meta_description %}
+	{% endif %}
+	{% assign canonical_path = page.url | replace:'index.html','' | prepend: site.baseurl %}
+	{% assign canonical_url = site.url | append: canonical_path | replace:'//','/' | replace:'https:/','https://' | replace:'http:/','http://' %}
+	<title>{{ full_title }}</title>
 
 	<link rel="shortcut icon" href="{{ '/styles/images/favicon.jpg' | prepend: site.baseurl }}">
 	<link rel="icon" href="{{ '/styles/images/favicon.jpg' | prepend: site.baseurl }}">
@@ -14,30 +30,31 @@
 	<link rel="stylesheet" href="{{ '/styles/css/index.css' | prepend: site.baseurl }}">
 	<link rel="stylesheet" href="{{ '/styles/css/fontawesome/css/font-awesome.min.css' | prepend: site.baseurl }}">
 	<link rel="stylesheet" href="{{ '/styles/css/syntax.css' | prepend: site.baseurl }}">
-	<link rel="stylesheet" href="{{ '/styles/css/custom.css' | prepend: site.baseurl }}">
+	<link rel="stylesheet" href="{{ '/styles/css/custom.css' | prepend: site.baseurl }}?v={{ asset_v }}">
 	<meta name="theme-color" content="#070b12">
-	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl }}">
-	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ '/feed.xml' | prepend: site.baseurl }}">
-	
-	<meta name="keywords" content="{{ page.title | append: ', ' | append: site.name | append: ', ' | append: site.meta_description}}">
-	<meta name="description" content="{{site.meta_description}}">
+	<link rel="canonical" href="{{ canonical_url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url | append: site.baseurl | append: '/feed.xml' | replace:'//','/' | replace:'https:/','https://' | replace:'http:/','http://' }}">
 
-	<script src="{{ '/styles/js/jquery.min.js' | prepend: site.baseurl }}"></script>
-	<!--[if lt IE 9]>
-    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  	<![endif]-->
+	<meta name="keywords" content="{{ page_title | append: ', ' | append: site.name | append: ', ' | append: site.meta_description }}">
+	<meta name="description" content="{{ page_desc }}">
+	<meta property="og:title" content="{{ full_title }}">
+	<meta property="og:description" content="{{ page_desc }}">
+	<meta property="og:url" content="{{ canonical_url }}">
+	<meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+	<meta property="og:site_name" content="{{ site.name }}">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="{{ full_title }}">
+	<meta name="twitter:description" content="{{ page_desc }}">
+
+	{% if site.baidu_analysis %}
   	<script>
 		var _hmt = _hmt || [];
 		(function() {
 		  var hm = document.createElement("script");
-		  hm.src = "//hm.baidu.com/hm.js?{{ site.baidu_analysis }}";
-		  var s = document.getElementsByTagName("script")[0]; 
+		  hm.src = "https://hm.baidu.com/hm.js?{{ site.baidu_analysis }}";
+		  var s = document.getElementsByTagName("script")[0];
 		  s.parentNode.insertBefore(hm, s);
 		})();
 	</script>
-  	<style type="text/css">
-	  	.docs-content{
-	  		margin-bottom: 10px;
-	  	}
-  	</style>
+	{% endif %}
 </head>

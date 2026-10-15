@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand" aria-label="Alvin home">
+      <a href="{{ '/author' | prepend: site.baseurl }}" class="navbar-brand" aria-label="About Alvin">
         <span class="brand-mark">Alvin</span>
       </a>
     </div>
@@ -24,7 +24,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-            <a><span id="busuanzi_container_site_pv" style="display:none">Page views: <span id="busuanzi_value_site_pv"></span></span></a>
+            <a><span id="busuanzi_container_site_pv">Page views: <span id="busuanzi_value_site_pv">{{ site.busuanzi_pv_start | default: 1000 }}</span></span></a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
@@ -34,7 +34,7 @@
             <li class="divider"></li> -->
             <li><a rel="nofollow" target="_blank" href="https://github.com/LJW718/LJW718.github.io">This Project</a></li>
             <li><a rel="nofollow" href="{{ '/books' | prepend: site.baseurl }}">Books</a></li>
-            <li><a rel="nofollow" href="{{ '/author' | prepend: site.baseurl }}">About</a></li>
+            <li><a rel="nofollow" href="{{ '/author' | prepend: site.baseurl }}">Author</a></li>
           </ul>
         </li>
       </ul>

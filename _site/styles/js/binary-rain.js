@@ -4,9 +4,13 @@
 (function () {
   'use strict';
 
+  if (window.__binaryRainStarted || document.querySelector('.binary-rain')) {
+    return;
+  }
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
+  window.__binaryRainStarted = true;
 
   var canvas = document.createElement('canvas');
   canvas.className = 'binary-rain';

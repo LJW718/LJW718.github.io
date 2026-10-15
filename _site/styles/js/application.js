@@ -1,71 +1,76 @@
 /*!
  * Adapted from Bootstrap docs JavaScript
  */
-
-
 !function ($) {
 
-  $(function () {
+  var dropdownBound = false;
 
-    // IE10 viewport hack for Surface/desktop Windows 8 bug
-    //
-    // See Getting Started docs for more information
-    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-      var msViewportStyle = document.createElement('style')
-      msViewportStyle.appendChild(
-        document.createTextNode(
-          '@-ms-viewport{width:auto!important}'
-        )
-      )
-      document.querySelector('head').appendChild(msViewportStyle)
-    }
+  function bindDropdownOnce() {
+    if (dropdownBound) return;
+    dropdownBound = true;
 
-    var $window = $(window)
-    var $body   = $(document.body)
+    $(document)
+      .on('mouseleave', '.docs-nav .dropdown', function () {
+        var $dropdown = $(this);
+        $dropdown.removeClass('open');
+        $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false');
+      })
+      .on('focusout', '.docs-nav .dropdown', function () {
+        var $dropdown = $(this);
+        setTimeout(function () {
+          if (!$dropdown.find(':focus').length) {
+            $dropdown.removeClass('open');
+            $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false');
+          }
+        }, 0);
+      })
+      .on('click', '.docs-container [href="#"]', function (e) {
+        e.preventDefault();
+      });
+  }
 
+  window.initApplication = function () {
+    var $window = $(window);
+    var $body = $(document.body);
+
+    bindDropdownOnce();
+
+    // Reset scrollspy for the new page DOM
+    var stickyTop = 50;
+    try {
+      var raw = getComputedStyle(document.documentElement)
+        .getPropertyValue('--sticky-top')
+        .trim();
+      var parsed = parseFloat(raw);
+      if (!isNaN(parsed) && parsed > 0) stickyTop = parsed;
+    } catch (e) {}
+
+    $body.removeData('bs.scrollspy');
     $body.scrollspy({
       target: '.sidebar',
-      offset: 20 // required to select the right thing. if this is smaller then you are at the top of one section
-                 // but the next section is highlighted
+      offset: stickyTop + 8
     });
+    $body.scrollspy('refresh');
 
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    });
-
-    $('.docs-container [href=#]').click(function (e) {
-      e.preventDefault()
-    });
-
-    // Close More dropdown when pointer/focus leaves
-    $('.docs-nav .dropdown').on('mouseleave', function () {
-      var $dropdown = $(this)
-      $dropdown.removeClass('open')
-      $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false')
-    }).on('focusout', function () {
-      var $dropdown = $(this)
-      setTimeout(function () {
-        if (!$dropdown.find(':focus').length) {
-          $dropdown.removeClass('open')
-          $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false')
-        }
-      }, 0)
-    });
-
+    if (typeof window.syncStickyOffsets === 'function') {
+      window.syncStickyOffsets();
+    }
 
     $('.source-link').each(function () {
-      var id = $(this).data('content');
-      var content = $('<span>').append($('#' + id)).html();
-      $(this).attr('data-content', content);
+      var $el = $(this);
+      if ($el.data('bs.popover')) return;
 
-      // Keep popovers open when hovered
-      $(this).popover({
+      var id = $el.data('content');
+      var content = $('<span>').append($('#' + id)).html();
+      $el.attr('data-content', content);
+
+      $el.popover({
         trigger: 'manual',
         container: 'body',
         placement: 'left',
         template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
         html: true,
-        delay: {show: 50, hide: 750}
+        delay: { show: 50, hide: 750 }
       }).on('mouseenter', function () {
         var self = this;
         $(this).popover('show');
@@ -76,7 +81,6 @@
           $(self).popover('hide');
           $(self).removeClass('active');
         });
-
       }).on('mouseleave', function () {
         var self = this;
         setTimeout(function () {
@@ -88,31 +92,29 @@
       });
     });
 
-
-    // back to top
     setTimeout(function () {
-      var $sideBar = $('.sidebar')
-
-      $sideBar.affix({
-        offset: {
-          top: function () {
-            var offsetTop      = $sideBar.offset().top
-            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-            var navOuterHeight = $('.docs-nav').height()
-
-            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-          },
-          bottom: function () {
-            return (this.bottom = $('.footer').outerHeight(true))
-          }
-        }
-      })
+      var $top = $('.top');
+      if ($top.length) {
+        try { $top.affix('checkPosition'); } catch (e) {}
+        $top.affix();
+      }
     }, 100);
+  };
 
-    setTimeout(function () {
-      $('.top').affix()
-    }, 100);
+  $(function () {
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+      var msViewportStyle = document.createElement('style');
+      msViewportStyle.appendChild(
+        document.createTextNode('@-ms-viewport{width:auto!important}')
+      );
+      document.querySelector('head').appendChild(msViewportStyle);
+    }
 
-  })
+    window.initApplication();
+
+    $(window).on('load', function () {
+      $(document.body).scrollspy('refresh');
+    });
+  });
 
 }(jQuery)

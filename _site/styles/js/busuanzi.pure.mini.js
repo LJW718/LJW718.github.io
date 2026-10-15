@@ -31,70 +31,57 @@ bszCaller = {
     var self = this;
     var tries = typeof attempt === "number" ? attempt : 0;
     var cbName = "BusuanziCallback_" + Math.floor(1099511627776 * Math.random());
-    var done = !1;
+    var settled = !1;
     var timer;
     var script;
     var requestUrl = url.replace("=BusuanziCallback", "=" + cbName) + "&t=" + Date.now();
 
-    window[cbName] = this.evalCall(function (data) {
-      if (done) return;
-      done = !0;
+    window[cbName] = function (data) {
+      if (settled) return;
+      settled = !0;
       clearTimeout(timer);
       try { delete window[cbName] } catch (err) {}
-      callback(data);
-    });
-
-    script = document.createElement("SCRIPT");
-    script.type = "text/javascript";
-    script.defer = !0;
-    script.src = requestUrl;
-    script.referrerPolicy = "no-referrer-when-downgrade";
-    script.onerror = function () {
-      cleanup(!0);
-    };
-    document.getElementsByTagName("HEAD")[0].appendChild(script);
-
-    timer = setTimeout(function () {
-      cleanup(!0);
-    }, 5000);
-
-    function cleanup(failed) {
-      if (done) return;
-      done = !0;
-      clearTimeout(timer);
-      try { script.parentElement.removeChild(script) } catch (err) {}
-      try { delete window[cbName] } catch (err) {}
-      if (!failed) return;
-      if (tries < 2) {
-        setTimeout(function () { self.fetch(url, callback, tries + 1) }, 600 * (tries + 1));
-      } else {
-        bszTag.hides();
-      }
-    }
-
-    // Keep a reference for evalCall cleanup compatibility
-    scriptTag = script;
-  },
-  evalCall: function (a) {
-    return function (b) {
+      try {
+        if (script && script.parentElement) script.parentElement.removeChild(script);
+      } catch (err) {}
       ready(function () {
         try {
-          a(b);
-          if (scriptTag && scriptTag.parentElement) {
-            scriptTag.parentElement.removeChild(scriptTag);
-          }
-        } catch (c) {
-          bszTag.hides();
+          callback(data);
+        } catch (err) {
+          bszTag.shows();
         }
       });
     };
+
+    script = document.createElement("SCRIPT");
+    script.type = "text/javascript";
+    script.async = !0;
+    script.src = requestUrl;
+    script.referrerPolicy = "no-referrer-when-downgrade";
+    script.onerror = function () {
+      fail();
+    };
+    document.getElementsByTagName("HEAD")[0].appendChild(script);
+
+    timer = setTimeout(fail, 8000);
+
+    function fail() {
+      if (settled) return;
+      clearTimeout(timer);
+      try {
+        if (script && script.parentElement) script.parentElement.removeChild(script);
+      } catch (err) {}
+      try { delete window[cbName] } catch (err) {}
+      if (tries < 3) {
+        setTimeout(function () { self.fetch(url, callback, tries + 1) }, 500 * (tries + 1));
+      } else {
+        /* Keep current / floor value visible when remote counter is unreachable */
+        settled = !0;
+        bszTag.shows();
+      }
+    }
   }
 },
-/* Force HTTPS so the counter works on both http://localhost and https:// pages */
-bszCaller.fetch("https://busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", function (a) {
-  bszTag.texts(a);
-  bszTag.shows();
-}),
 bszTag = {
   bszs: ["site_pv", "page_pv", "site_uv"],
   texts: function (a) {
@@ -126,4 +113,13 @@ bszTag = {
       if (el) el.style.display = "inline";
     }
   }
+},
+window.refreshBusuanzi = function () {
+  bszCaller.fetch("https://busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", function (a) {
+    bszTag.texts(a);
+    bszTag.shows();
+  });
 };
+
+/* Force HTTPS so the counter works on both http://localhost and https:// pages */
+window.refreshBusuanzi();

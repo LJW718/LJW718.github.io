@@ -4,12 +4,16 @@
 (function () {
   'use strict';
 
+  if (window.__cursorFxStarted || document.querySelector('.cursor-fx')) {
+    return;
+  }
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
   if (window.matchMedia && window.matchMedia('(hover: none), (pointer: coarse)').matches) {
     return;
   }
+  window.__cursorFxStarted = true;
 
   var root = document.createElement('div');
   root.className = 'cursor-fx';

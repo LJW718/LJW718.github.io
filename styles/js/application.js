@@ -1,118 +1,74 @@
 /*!
  * Adapted from Bootstrap docs JavaScript
  */
-
-
 !function ($) {
 
-  $(function () {
+  var dropdownBound = false;
 
-    // IE10 viewport hack for Surface/desktop Windows 8 bug
-    //
-    // See Getting Started docs for more information
-    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-      var msViewportStyle = document.createElement('style')
-      msViewportStyle.appendChild(
-        document.createTextNode(
-          '@-ms-viewport{width:auto!important}'
-        )
-      )
-      document.querySelector('head').appendChild(msViewportStyle)
-    }
+  function bindDropdownOnce() {
+    if (dropdownBound) return;
+    dropdownBound = true;
 
-    var $window = $(window)
-    var $body   = $(document.body)
-
-    $body.scrollspy({
-      target: '.sidebar',
-      offset: 20 // required to select the right thing. if this is smaller then you are at the top of one section
-                 // but the next section is highlighted
-    });
-
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    });
-
-    $('.docs-container [href=#]').click(function (e) {
-      e.preventDefault()
-    });
-
-    // Close More dropdown when pointer/focus leaves
-    $('.docs-nav .dropdown').on('mouseleave', function () {
-      var $dropdown = $(this)
-      $dropdown.removeClass('open')
-      $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false')
-    }).on('focusout', function () {
-      var $dropdown = $(this)
-      setTimeout(function () {
-        if (!$dropdown.find(':focus').length) {
-          $dropdown.removeClass('open')
-          $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false')
-        }
-      }, 0)
-    });
-
-
-    $('.source-link').each(function () {
-      var id = $(this).data('content');
-      var content = $('<span>').append($('#' + id)).html();
-      $(this).attr('data-content', content);
-
-      // Keep popovers open when hovered
-      $(this).popover({
-        trigger: 'manual',
-        container: 'body',
-        placement: 'left',
-        template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
-        html: true,
-        delay: {show: 50, hide: 750}
-      }).on('mouseenter', function () {
-        var self = this;
-        $(this).popover('show');
-        $(this).addClass('active');
-        $(this).addClass('popover-source');
-
-        $('.popover').on('mouseleave', function () {
-          $(self).popover('hide');
-          $(self).removeClass('active');
-        });
-
-      }).on('mouseleave', function () {
-        var self = this;
-        setTimeout(function () {
-          if (!$('.popover:hover').length) {
-            $(self).popover('hide');
-            $(self).removeClass('active');
-          }
-        }, 100);
-      });
-    });
-
-
-    // back to top
-    setTimeout(function () {
-      var $sideBar = $('.sidebar')
-
-      $sideBar.affix({
-        offset: {
-          top: function () {
-            var offsetTop      = $sideBar.offset().top
-            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-            var navOuterHeight = $('.docs-nav').height()
-
-            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-          },
-          bottom: function () {
-            return (this.bottom = $('.footer').outerHeight(true))
-          }
-        }
+    $(document)
+      .on('mouseleave', '.docs-nav .dropdown', function () {
+        var $dropdown = $(this);
+        $dropdown.removeClass('open');
+        $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false');
       })
-    }, 100);
+      .on('focusout', '.docs-nav .dropdown', function () {
+        var $dropdown = $(this);
+        setTimeout(function () {
+          if (!$dropdown.find(':focus').length) {
+            $dropdown.removeClass('open');
+            $dropdown.find('.dropdown-toggle').attr('aria-expanded', 'false');
+          }
+        }, 0);
+      })
+      .on('keydown', '.docs-nav .dropdown-toggle', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ' && e.keyCode !== 13 && e.keyCode !== 32) return;
+        e.preventDefault();
+        var $dropdown = $(this).closest('.dropdown');
+        var open = !$dropdown.hasClass('open');
+        $dropdown.toggleClass('open', open);
+        $(this).attr('aria-expanded', open ? 'true' : 'false');
+      })
+      .on('keydown', function (e) {
+        if (e.key !== 'Escape' && e.keyCode !== 27) return;
+        var $open = $('.docs-nav .dropdown.open');
+        if (!$open.length) return;
+        $open.removeClass('open');
+        $open.find('.dropdown-toggle').attr('aria-expanded', 'false').trigger('focus');
+      })
+      .on('click', '.docs-container [href="#"]', function (e) {
+        e.preventDefault();
+      });
+  }
 
-    setTimeout(function () {
-      $('.top').affix()
-    }, 100);
+  window.initApplication = function () {
+    var $body = $(document.body);
 
-  })
+    bindDropdownOnce();
+
+    // TOC highlighting is owned by toc-spy.js (window scroll)
+    try { $body.removeData('bs.scrollspy'); } catch (e) {}
+    try { $body.off('.bs.scrollspy'); } catch (e2) {}
+    try { $('.docs-content').removeData('bs.scrollspy').off('.bs.scrollspy'); } catch (e3) {}
+
+    if (typeof window.syncStickyOffsets === 'function') {
+      window.syncStickyOffsets();
+    }
+    if (typeof window.refreshTocSpy === 'function') {
+      window.refreshTocSpy();
+    }
+  };
+
+  $(function () {
+    window.initApplication();
+
+    $(window).on('load', function () {
+      try { $(document.body).removeData('bs.scrollspy').off('.bs.scrollspy'); } catch (e) {}
+      if (typeof window.refreshTocSpy === 'function') window.refreshTocSpy();
+    });
+  });
 
 }(jQuery)

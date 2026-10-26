@@ -28,5 +28,12 @@ baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
 # Page views floor: display max(busuanzi_pv_start, real site_pv)
 busuanzi_pv_start: 1000
 
+# Tools privacy (static site — browser unlock only, not real auth)
+# true: hide More→Tools & /tools/* until this browser unlocks
+# Unlock once: open any page with ?tools=<tools_unlock_key>
+# Lock again:  ?tools=0
+tools_private: true
+tools_unlock_key: "alvin-tools"
+
 # Gems
 plugins: [jekyll-paginate]

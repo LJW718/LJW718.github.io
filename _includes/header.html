@@ -33,6 +33,7 @@
             <!-- <li><a href="{{ '/feed.xml' | prepend: site.baseurl }}">RSS</a></li>
             <li class="divider"></li> -->
             <li><a rel="nofollow" target="_blank" href="https://github.com/LJW718/LJW718.github.io">This Project</a></li>
+            <li class="js-tools-nav"{% if site.tools_private %} hidden{% endif %}><a rel="nofollow" href="{{ '/tools' | prepend: site.baseurl }}">Tools</a></li>
             <li><a rel="nofollow" href="{{ '/books' | prepend: site.baseurl }}">Books</a></li>
             <li><a rel="nofollow" href="{{ '/author' | prepend: site.baseurl }}">Author</a></li>
           </ul>

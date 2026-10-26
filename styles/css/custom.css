@@ -1658,3 +1658,45 @@ table {
     border-radius: 12px !important;
   }
 }
+
+/* Tools private lock screen */
+.tools-lock {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 0 16px 64px;
+}
+
+.tools-lock-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.tools-lock-panel h1 {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+
+.tools-lock-panel h1::before {
+  content: "// ";
+  color: var(--cyan);
+  opacity: 0.7;
+}
+
+.tools-lock-panel p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+body.tools-locked .footer {
+  margin-top: 0;
+}
+

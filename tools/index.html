@@ -1,0 +1,47 @@
+---
+layout: default
+title: Tools
+permalink: /tools/
+description: 在线小工具合集
+---
+<div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+          <div class="sidenav-shell">
+            <h1>Contents</h1>
+            <ul class="nav sidenav">
+              {% for tool in site.data.tools %}
+              <li><a href="#tool_{{ tool.id }}">{{ tool.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% include visitor_map.html %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+          <div class="home">
+            <h1>Tools</h1>
+            <ul>
+              {% for tool in site.data.tools %}
+              <ol class="breadcrumb" id="tool_{{ tool.id }}">
+                <li>
+                  <span>{{ tool.kind | default: 'App' }}</span>
+                  &raquo;
+                  <a href="{{ tool.path | prepend: site.baseurl }}">{{ tool.title }}</a>
+                </li>
+              </ol>
+              {% else %}
+              <p>暂无工具。</p>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

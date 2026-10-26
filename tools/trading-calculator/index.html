@@ -1,0 +1,55 @@
+---
+layout: default
+title: 略亏少赚不被套交易计算器
+permalink: /tools/trading-calculator/
+description: A股手续费已计入的补货/卖出价格计算器，支持多商品与PNG导出。
+extra_css:
+  - /tools/trading-calculator/trading_calculator.css
+---
+<div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+          <div class="sidenav-shell">
+            <h1>Contents</h1>
+            <ul class="nav sidenav">
+              <li><a href="{{ '/tools/' | prepend: site.baseurl }}">全部工具</a></li>
+              {% for tool in site.data.tools %}
+              <li{% if page.url == tool.path %} class="active"{% endif %}>
+                <a href="{{ tool.path | prepend: site.baseurl }}">{{ tool.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% include visitor_map.html %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+          <div class="tool-app" id="trading-calc">
+            <header class="page-header">
+              <div class="header-text">
+                <h1 class="app-title">略亏少赚不被套交易计算器</h1>
+                <p class="fee-hint" title="佣金万分之2.5（最低5元）、过户费万0.01双向、印花税万5仅卖出">
+                  总价/收益已计入 A 股手续费（佣金万2.5起5元 · 过户万0.01双向 · 印花税万5卖出）
+                </p>
+              </div>
+              <div class="toolbar">
+                <button type="button" class="tool-btn" id="btn-add">添加商品</button>
+                <button type="button" class="tool-btn" id="btn-del">删除商品</button>
+                <button type="button" class="tool-btn tool-btn-primary" id="btn-export">
+                  导出 PNG
+                </button>
+              </div>
+            </header>
+            <main id="products" class="products" aria-live="polite"></main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ '/tools/trading-calculator/trading_calculator.js' | prepend: site.baseurl }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>

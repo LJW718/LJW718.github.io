@@ -32,7 +32,15 @@
     if (url.pathname === location.pathname && url.search === location.search && url.hash) {
       return false;
     }
+    // Tool apps bring private CSS/JS — full reload in and out
+    if (isToolAppPath(url.pathname) || isToolAppPath(location.pathname)) {
+      return false;
+    }
     return true;
+  }
+
+  function isToolAppPath(pathname) {
+    return /^\/tools\/.+/i.test(pathname || '');
   }
 
   function persistNodes() {

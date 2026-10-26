@@ -1,0 +1,11 @@
+# Tools registry — /tools/ hub reads this list (HOME-style layout).
+# To add a tool:
+#   1. Put a self-contained app under tools/<id>/ (index.html + assets)
+#   2. Append an entry below (id, title, kind, path [, description])
+# Standalone apps should NOT use site layout (avoid Bootstrap/theme conflicts).
+
+- id: trading-calculator
+  title: 略亏少赚不被套交易计算器
+  kind: Calculator
+  description: A 股手续费已计入的补货/卖出价格表，支持多商品与 PNG 导出。
+  path: /tools/trading-calculator/

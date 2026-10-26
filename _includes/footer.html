@@ -17,5 +17,10 @@
 <script src="{{ '/styles/js/page-nav.js' | prepend: site.baseurl }}?v={{ asset_v }}"></script>
 <script>
   window.BUSUANZI_PV_START = {{ site.busuanzi_pv_start | default: 1000 }};
+  window.__TOOLS_GATE__ = {
+    private: {{ site.tools_private | default: false | jsonify }},
+    key: {{ site.tools_unlock_key | default: '' | jsonify }}
+  };
 </script>
+<script src="{{ '/styles/js/tools-gate.js' | prepend: site.baseurl }}?v={{ asset_v }}"></script>
 <script src="{{ '/styles/js/busuanzi.pure.mini.js' | prepend: site.baseurl }}?v={{ asset_v }}"></script>

@@ -1,0 +1,326 @@
+/* Trading calculator — scoped to site dark cyan theme */
+.tool-app {
+  --tc-card: var(--surface-2, #182338);
+  --tc-header: rgba(46, 230, 166, 0.12);
+  --tc-header-fg: var(--cyan-soft, #7af0c8);
+  --tc-mute-fg: var(--text-soft, #8b9bb0);
+  --tc-mute-bg: rgba(7, 11, 18, 0.45);
+  --tc-emph-fg: var(--blue-soft, #8ec8ff);
+  --tc-emph-bg: rgba(74, 163, 255, 0.12);
+  --tc-edit-fg: #f0c674;
+  --tc-edit-bg: rgba(240, 198, 116, 0.12);
+  --tc-edit-border: rgba(240, 198, 116, 0.45);
+  --tc-edit-focus: #f0c674;
+  --tc-plus: #ff8e8e;
+  --tc-minus: var(--cyan, #2ee6a6);
+  --tc-line: var(--line, rgba(122, 240, 200, 0.14));
+  --tc-btn-bg: var(--surface, #121a2b);
+  --tc-btn-border: var(--line-strong, rgba(46, 230, 166, 0.35));
+  font-family: var(--font-body, "IBM Plex Sans", "Noto Sans SC", sans-serif);
+  font-size: 14px;
+  color: var(--text, #d2dce9);
+}
+
+.tool-app .page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-bottom: 16px;
+}
+
+.tool-app .header-text {
+  min-width: 0;
+}
+
+.tool-app .app-title {
+  margin: 0;
+  font-family: var(--font-display, "Space Grotesk", "Noto Sans SC", sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink, #eef4fc);
+  letter-spacing: 0.02em;
+}
+
+.tool-app .fee-hint {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+  color: var(--tc-mute-fg);
+  line-height: 1.35;
+}
+
+.tool-app .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-app .tool-btn {
+  appearance: none;
+  border: 1px solid var(--tc-btn-border);
+  background: var(--tc-btn-bg);
+  color: var(--cyan-soft, #7af0c8);
+  font: inherit;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.tool-app .tool-btn:hover:not(:disabled) {
+  background: var(--cyan-dim, rgba(46, 230, 166, 0.14));
+  border-color: var(--cyan, #2ee6a6);
+  color: var(--cyan, #2ee6a6);
+}
+
+.tool-app .tool-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tool-app .tool-btn-primary {
+  background: rgba(46, 230, 166, 0.18);
+  border-color: var(--cyan, #2ee6a6);
+  color: var(--cyan, #2ee6a6);
+}
+
+.tool-app .tool-btn-primary:hover:not(:disabled) {
+  background: rgba(46, 230, 166, 0.28);
+  color: #fff;
+}
+
+.tool-app .products {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tool-app .product {
+  background: var(--tc-card);
+  border: 1px solid var(--tc-line);
+  border-radius: 12px;
+  padding: 16px 16px 14px;
+  box-shadow: var(--shadow-soft, 0 8px 24px rgba(0, 0, 0, 0.35));
+}
+
+.tool-app .product-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-bottom: 12px;
+}
+
+.tool-app .name-cluster {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.tool-app .name-input {
+  width: 5.5em;
+  text-align: center;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--tc-edit-fg);
+  background: var(--tc-edit-bg);
+  border: 2px solid var(--tc-edit-border);
+  border-radius: 4px;
+  padding: 3px 6px;
+  outline: none;
+}
+
+.tool-app .name-input.is-placeholder {
+  color: rgba(240, 198, 116, 0.55);
+}
+
+.tool-app .name-input:focus {
+  border-color: var(--tc-edit-focus);
+}
+
+.tool-app .title-suffix {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--tc-header-fg);
+  white-space: nowrap;
+}
+
+.tool-app .expected {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--tc-mute-fg);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.tool-app .expected.is-plus {
+  color: var(--tc-plus);
+}
+
+.tool-app .expected.is-minus {
+  color: var(--tc-minus);
+}
+
+.tool-app .table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--tc-line);
+  border-radius: 8px;
+}
+
+.tool-app table.sheet {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 720px;
+  margin: 0 !important;
+  color: var(--text, #d2dce9) !important;
+  background: transparent !important;
+}
+
+.docs-content .tool-app table.sheet th,
+.docs-content .tool-app table.sheet td {
+  border: 1px solid var(--tc-line) !important;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0 !important;
+  height: 42px;
+  color: inherit !important;
+}
+
+.docs-content .tool-app table.sheet thead th,
+.docs-content .tool-app table.sheet th {
+  background: var(--tc-header) !important;
+  color: var(--tc-header-fg) !important;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 8px 4px !important;
+}
+
+.docs-content .tool-app table.sheet tr:nth-child(odd) > td,
+.docs-content .tool-app table.sheet tr:hover > td {
+  background: transparent !important;
+}
+
+.docs-content .tool-app table.sheet td.op,
+.docs-content .tool-app table.sheet td.ro {
+  background: var(--tc-mute-bg) !important;
+  color: var(--tc-mute-fg) !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.docs-content .tool-app table.sheet td.emph-ro {
+  background: var(--tc-emph-bg) !important;
+  color: var(--tc-emph-fg) !important;
+  font-weight: 700;
+}
+
+.tool-app .sheet td.emph-ro .stepper {
+  background: var(--tc-emph-bg);
+  border-color: rgba(74, 163, 255, 0.45);
+}
+
+.tool-app .sheet td.emph-ro .step-btn {
+  background: rgba(74, 163, 255, 0.25);
+  color: var(--tc-emph-fg);
+}
+
+.tool-app .sheet td.emph-ro .step-val {
+  color: var(--tc-emph-fg);
+  background: transparent;
+}
+
+.tool-app .stepper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  max-width: 100%;
+  margin: 3px;
+  padding: 2px;
+  background: var(--tc-edit-bg);
+  border: 2px solid var(--tc-edit-border);
+  border-radius: 4px;
+}
+
+.tool-app .stepper:focus-within {
+  border-color: var(--tc-edit-focus);
+}
+
+.tool-app .step-btn {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 3px;
+  background: rgba(240, 198, 116, 0.28);
+  color: var(--tc-edit-fg);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.tool-app .step-btn:hover:not(:disabled) {
+  background: rgba(240, 198, 116, 0.45);
+}
+
+.tool-app .step-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.tool-app .step-val {
+  width: 4.2em;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--tc-edit-fg);
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  padding: 4px 2px;
+}
+
+.tool-app .step-val:disabled {
+  opacity: 1;
+  -webkit-text-fill-color: currentColor;
+}
+
+.tool-app .margin-stepper .step-val {
+  width: 3.2em;
+  text-align: right;
+  padding-right: 0;
+}
+
+.tool-app .margin-pct {
+  font-weight: 700;
+  padding-right: 4px;
+  user-select: none;
+}
+
+.tool-app .margin-stepper.is-plus .step-val,
+.tool-app .margin-stepper.is-plus .margin-pct {
+  color: var(--tc-plus);
+}
+
+.tool-app .margin-stepper.is-minus .step-val,
+.tool-app .margin-stepper.is-minus .margin-pct {
+  color: var(--tc-minus);
+}
+
+@media (max-width: 640px) {
+  .tool-app .app-title {
+    font-size: 1.05rem;
+  }
+
+  .tool-app .product {
+    padding: 12px 10px;
+  }
+}

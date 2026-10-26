@@ -31,6 +31,11 @@
 	<link rel="stylesheet" href="{{ '/styles/css/fontawesome/css/font-awesome.min.css' | prepend: site.baseurl }}">
 	<link rel="stylesheet" href="{{ '/styles/css/syntax.css' | prepend: site.baseurl }}">
 	<link rel="stylesheet" href="{{ '/styles/css/custom.css' | prepend: site.baseurl }}?v={{ asset_v }}">
+	{% if page.extra_css %}
+	{% for css in page.extra_css %}
+	<link rel="stylesheet" href="{{ css | prepend: site.baseurl }}?v={{ asset_v }}">
+	{% endfor %}
+	{% endif %}
 	<meta name="theme-color" content="#070b12">
 	<link rel="canonical" href="{{ canonical_url }}">
 	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url | append: site.baseurl | append: '/feed.xml' | replace:'//','/' | replace:'https:/','https://' | replace:'http:/','http://' }}">

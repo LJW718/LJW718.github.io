@@ -2,7 +2,7 @@
 layout: default
 title: 略亏少赚不被套交易计算器
 permalink: /tools/trading-calculator/
-description: A股手续费已计入的补货/卖出价格计算器，支持多商品与PNG导出。
+description: A股手续费已计入的补仓/卖出价格计算器，支持多商品与PNG导出。
 extra_css:
   - /tools/trading-calculator/trading_calculator.css
 ---
@@ -34,18 +34,46 @@ extra_css:
               <div class="header-text">
                 <h1 class="app-title">略亏少赚不被套交易计算器</h1>
                 <p class="fee-hint" title="佣金万分之2.5（最低5元）、过户费万0.01双向、印花税万5仅卖出">
-                  总价/收益已计入 A 股手续费（佣金万2.5起5元 · 过户万0.01双向 · 印花税万5卖出）
+                  默认：建仓卖出+3.6%；补仓跌/涨循环 3%/4%/3%，第4档起下跌5%。相对建仓价下跌超 20% 禁止补仓
                 </p>
-              </div>
-              <div class="toolbar">
-                <button type="button" class="tool-btn" id="btn-add">添加商品</button>
-                <button type="button" class="tool-btn" id="btn-del">删除商品</button>
-                <button type="button" class="tool-btn tool-btn-primary" id="btn-export">
-                  导出 PNG
-                </button>
               </div>
             </header>
             <main id="products" class="products" aria-live="polite"></main>
+            <div class="toolbar toolbar-footer">
+              <button type="button" class="tool-btn" id="btn-add">添加商品</button>
+              <button type="button" class="tool-btn tool-btn-primary" id="btn-export">
+                导出 PNG
+              </button>
+              <button type="button" class="tool-btn" id="btn-export-data" title="导出 JSON 备份">
+                导出数据
+              </button>
+              <button type="button" class="tool-btn" id="btn-import-data" title="从 JSON 备份恢复">
+                导入数据
+              </button>
+              <input type="file" id="import-file" accept="application/json,.json" hidden />
+            </div>
+            <button type="button" class="tc-skip-settle" id="tc-skip-settle" hidden>
+              跳过动画
+            </button>
+            <div class="tc-modal" id="tc-del-modal" hidden>
+              <div class="tc-modal-backdrop" data-tc-close></div>
+              <div class="tc-modal-panel" role="dialog" aria-modal="true" aria-labelledby="tc-del-title">
+                <h2 class="tc-modal-title" id="tc-del-title">确认</h2>
+                <p class="tc-modal-body" id="tc-del-msg">确定继续？</p>
+                <div class="tc-modal-extra" id="tc-del-extra" hidden>
+                  <label class="tc-modal-field">
+                    <span>清仓价</span>
+                    <input id="tc-clear-price" class="tc-clear-price" type="text" inputmode="decimal"
+                      autocomplete="off" aria-label="清仓卖出价" />
+                  </label>
+                  <p class="tc-modal-preview" id="tc-clear-preview" aria-live="polite"></p>
+                </div>
+                <div class="tc-modal-actions">
+                  <button type="button" class="tool-btn" id="tc-del-cancel" data-tc-close>取消</button>
+                  <button type="button" class="tool-btn tool-btn-danger" id="tc-del-confirm">确定</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

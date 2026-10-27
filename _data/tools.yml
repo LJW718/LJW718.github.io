@@ -7,5 +7,5 @@
 - id: trading-calculator
   title: 略亏少赚不被套交易计算器
   kind: Calculator
-  description: A 股手续费已计入的补货/卖出价格表，支持多商品与 PNG 导出。
+  description: A 股手续费已计入的补仓/卖出价格表，支持多商品与 PNG 导出。
   path: /tools/trading-calculator/

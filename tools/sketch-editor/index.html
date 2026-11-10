@@ -1,0 +1,117 @@
+---
+layout: default
+title: 平面草图编辑器
+permalink: /tools/sketch-editor/
+description: 第四象限点线草图编辑器，支持多图纸、导入导出与 CAD 草图预览。
+extra_css:
+  - /tools/sketch-editor/css/sketch-editor.css
+---
+<div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+          <div class="sidenav-shell">
+            <h1>Contents</h1>
+            <ul class="nav sidenav">
+              <li><a href="{{ '/tools/' | prepend: site.baseurl }}">全部工具</a></li>
+              {% for tool in site.data.tools %}
+              <li{% if page.url == tool.path %} class="active"{% endif %}>
+                <a href="{{ tool.path | prepend: site.baseurl }}">{{ tool.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% include visitor_map.html %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+          <div class="tool-app sketch-app" id="sketch-editor">
+            <header class="topbar">
+              <div class="brand">
+                <h1>平面草图编辑器</h1>
+                <p>第四象限 · mm · 坐标系内完成加点 / 连线 / 删除</p>
+              </div>
+            </header>
+
+            <main class="body">
+              <section class="preview-card">
+                <div class="preview-head">
+                  <div class="toolbar" id="toolGroup" role="toolbar" aria-label="草图工具栏">
+                    <select id="sketchSelect" class="toolbar-select" aria-label="选择图纸"></select>
+                    <div class="toolbar-actions">
+                      <!-- 从右到左：出图 → 保存 → 导出 → 导入 → 适配/缩放 → 清除/还原/撤销 → CAD/坐标 → 删除/新建 -->
+                      <button type="button" class="tool-btn accent" id="btnExportPng" title="导出 CAD 草图" aria-label="导出 CAD 草图">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 8h18v14H5z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 18l3-4 3 3 3-5 3 6"/><circle cx="10" cy="12" r="1.5" fill="currentColor"/></svg>
+                      </button>
+                      <button type="button" class="tool-btn" id="btnSave" title="保存" aria-label="保存">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M6 6h13l3 3v13H6z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M10 6v6h9"/><path fill="none" stroke="currentColor" stroke-width="2" d="M10 18h8v4h-8z"/></svg>
+                      </button>
+                      <button type="button" class="tool-btn" id="btnExport" title="导出 JSON" aria-label="导出">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 17V5M10 9l4-4 4 4M7 21h14"/></svg>
+                      </button>
+                      <button type="button" class="tool-btn" id="btnImport" title="导入 JSON" aria-label="导入">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 5v12M10 13l4 4 4-4M7 21h14"/></svg>
+                      </button>
+                      <span class="tool-sep" aria-hidden="true"></span>
+                      <button type="button" class="tool-btn edit-only" id="toolZoomFit" title="完整适配 Ctrl+0" aria-label="完整适配">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 11V6h5M17 6h5v5M22 17v5h-5M11 22H6v-5"/><path fill="none" stroke="currentColor" stroke-width="1.8" d="M10 10h8v8h-8z"/></svg>
+                      </button>
+                      <button type="button" class="tool-btn edit-only" id="toolZoomIn" title="放大 Ctrl+=" aria-label="放大">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M17 17l5 5M12 9.5v5M9.5 12h5"/></svg>
+                      </button>
+                      <span class="zoom-pct edit-only" id="zoomPct" title="当前缩放">100%</span>
+                      <button type="button" class="tool-btn edit-only" id="toolZoomOut" title="缩小 Ctrl+-" aria-label="缩小">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M17 17l5 5M9.5 12h5"/></svg>
+                      </button>
+                      <span class="tool-sep" aria-hidden="true"></span>
+                      <button type="button" class="tool-btn edit-only" id="toolClear" title="恢复原图" aria-label="恢复原图">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true">
+                          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M17.5 3.5L9.5 17"/>
+                          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7.5 16.5h10"/>
+                          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 17.5L6 24M10.5 17.2L9.2 24.2M13 17L13 24.5M15.5 17.2L16.8 24.2M18 17.5L20 24"/>
+                        </svg>
+                      </button>
+                      <button type="button" class="tool-btn edit-only" id="toolRedo" title="还原 Ctrl+Y" aria-label="还原" disabled>
+                        <svg viewBox="0 0 28 28" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" d="M20 12a8 8 0 1 0-2 6"/><path fill="currentColor" d="M22 8l-6-3 1 7z"/></svg>
+                      </button>
+                      <button type="button" class="tool-btn edit-only" id="toolUndo" title="撤销 Ctrl+Z" aria-label="撤销" disabled>
+                        <svg viewBox="0 0 28 28" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" d="M8 12a8 8 0 1 1 2 6"/><path fill="currentColor" d="M6 8l6-3-1 7z"/></svg>
+                      </button>
+                      <span class="tool-sep" aria-hidden="true"></span>
+                      <button type="button" class="tool-btn" id="modeSketch" title="CAD 草图预览" aria-label="CAD 草图预览" aria-pressed="false">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M7 9h14v12H7z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 17h8M10 13h5"/><path fill="none" stroke="currentColor" stroke-width="1.6" d="M18 12l2-2 1 1-2 2z"/></svg>
+                      </button>
+                      <button type="button" class="tool-btn on" id="modeCoord" title="坐标系预览" aria-label="坐标系预览" aria-pressed="true">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 22V8M6 22h14"/><path fill="none" stroke="currentColor" stroke-width="2" d="M6 8l3 3M20 22l-3-3"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M10 18h4M10 14h7M10 10h5"/></svg>
+                      </button>
+                      <span class="tool-sep" aria-hidden="true"></span>
+                      <button type="button" class="tool-btn danger" id="btnDelSketch" title="删除图纸" aria-label="删除图纸">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 9h14M11 9V7h6v2M10 9l1 14h6l1-14M13 13v6M15 13v6"/></svg>
+                      </button>
+                      <button type="button" class="tool-btn" id="btnNewSketch" title="新建图纸" aria-label="新建图纸">
+                        <svg viewBox="0 0 28 28" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 5h8l5 5v13H8z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 5v5h5M14 13v8M10 17h8"/></svg>
+                      </button>
+                      <input type="file" id="fileImport" accept="application/json,.json" hidden />
+                    </div>
+                  </div>
+                  <div class="hint-row">
+                    <p class="tool-hint" id="toolHint">空白加点 · 点点连线 · 拖点移动 · 右键删除 · Esc 取消 · 方向键微调</p>
+                    <p class="op-hint" id="opHint">空白连续折线 · Ctrl+空白独立点 · 右键删点/线 · Esc 结束</p>
+                  </div>
+                </div>
+                <div class="canvas-shell">
+                  <canvas id="mainCanvas" tabindex="0"></canvas>
+                </div>
+              </section>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="{{ '/tools/sketch-editor/js/sketch-editor.js' | prepend: site.baseurl }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>

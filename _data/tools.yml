@@ -9,3 +9,9 @@
   kind: Calculator
   description: A 股手续费已计入的补仓/卖出价格表，支持多商品与 PNG 导出。
   path: /tools/trading-calculator/
+
+- id: sketch-editor
+  title: 平面草图编辑器
+  kind: Editor
+  description: 第四象限点线草图，支持多图纸、导入导出与 CAD 草图预览。
+  path: /tools/sketch-editor/

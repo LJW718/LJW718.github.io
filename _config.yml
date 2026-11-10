@@ -33,7 +33,7 @@ busuanzi_pv_start: 1000
 # Unlock once: open any page with ?tools=<tools_unlock_key>
 # Lock again:  ?tools=0
 tools_private: true
-tools_unlock_key: "alvin-tools"
+tools_unlock_key: "1"
 
 # Gems
 plugins: [jekyll-paginate]

@@ -1,0 +1,364 @@
+/* Sketch editor — site dark cyan theme, aligned layout */
+.tool-app.sketch-app {
+  --sk-card: var(--surface-2, #182338);
+  --sk-accent: var(--cyan-soft, #7af0c8);
+  --sk-accent2: var(--cyan, #2ee6a6);
+  --sk-mute: var(--text-soft, #8b9bb0);
+  --sk-line: var(--line, rgba(122, 240, 200, 0.14));
+  --sk-text: var(--text, #d2dce9);
+  --sk-ink: var(--ink, #eef4fc);
+  --sk-tool-on: rgba(46, 230, 166, 0.18);
+  --sk-tool-off: rgba(7, 11, 18, 0.45);
+  --sk-status-bg: rgba(7, 11, 18, 0.55);
+  --sk-btn-bg: var(--surface, #121a2b);
+  --sk-btn-border: var(--line-strong, rgba(46, 230, 166, 0.35));
+  --sk-pad: 14px;
+  --sk-gap: 12px;
+  --sk-control-h: 34px;
+  font-family: var(--font-body, "IBM Plex Sans", "Noto Sans SC", sans-serif);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--sk-text);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--sk-gap);
+  min-height: min(78vh, 920px);
+}
+
+.tool-app.sketch-app *,
+.tool-app.sketch-app *::before,
+.tool-app.sketch-app *::after {
+  box-sizing: border-box;
+}
+
+.tool-app.sketch-app button,
+.tool-app.sketch-app input,
+.tool-app.sketch-app select {
+  font: inherit;
+  color: inherit;
+}
+
+.tool-app.sketch-app button {
+  cursor: pointer;
+}
+
+.tool-app.sketch-app input[type="file"][hidden] {
+  display: none !important;
+}
+
+/* ── Top bar (brand only) ── */
+.tool-app.sketch-app .topbar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 2px 0;
+}
+
+.tool-app.sketch-app .brand {
+  min-width: 0;
+}
+
+.tool-app.sketch-app .brand h1 {
+  margin: 0;
+  font-family: var(--font-display, "Space Grotesk", "Noto Sans SC", sans-serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sk-ink);
+  letter-spacing: 0.02em;
+}
+
+.tool-app.sketch-app .brand p {
+  margin: 6px 0 0;
+  color: var(--sk-mute);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.tool-app.sketch-app .btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--sk-control-h);
+  min-width: 52px;
+  border: 1px solid var(--sk-btn-border);
+  background: var(--sk-btn-bg);
+  color: var(--sk-accent);
+  font-weight: 600;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 0 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.tool-app.sketch-app .btn:hover:not(:disabled) {
+  background: var(--cyan-dim, rgba(46, 230, 166, 0.14));
+  border-color: var(--sk-accent2);
+  color: var(--sk-accent2);
+}
+
+.tool-app.sketch-app .btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.tool-app.sketch-app .btn.ghost {
+  background: transparent;
+  color: var(--sk-mute);
+  border-color: var(--sk-line);
+}
+
+.tool-app.sketch-app .btn.ghost:hover:not(:disabled) {
+  background: rgba(46, 230, 166, 0.1);
+  color: var(--sk-accent);
+  border-color: var(--sk-btn-border);
+}
+
+.tool-app.sketch-app .btn.accent {
+  background: rgba(46, 230, 166, 0.18);
+  border-color: var(--sk-accent2);
+  color: var(--sk-accent2);
+  min-width: 96px;
+  padding: 0 12px;
+}
+
+.tool-app.sketch-app .btn.accent:hover:not(:disabled) {
+  background: rgba(46, 230, 166, 0.28);
+  color: #fff;
+}
+
+/* ── Body ── */
+.tool-app.sketch-app .body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(420px, 1fr);
+  gap: var(--sk-gap);
+  min-height: 0;
+}
+
+/* ── Preview card ── */
+.tool-app.sketch-app .preview-card {
+  background: var(--sk-card);
+  border: 1px solid var(--sk-line);
+  border-radius: 12px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 480px;
+  min-width: 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft, 0 8px 24px rgba(0, 0, 0, 0.35));
+}
+
+.tool-app.sketch-app .preview-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px var(--sk-pad) 8px;
+  border-bottom: 1px solid var(--sk-line);
+  background: linear-gradient(180deg, rgba(7, 11, 18, 0.35), transparent);
+}
+
+.tool-app.sketch-app .toolbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+  padding: 4px;
+  background: rgba(7, 11, 18, 0.45);
+  border: 1px solid var(--sk-line);
+  border-radius: 12px;
+}
+
+.tool-app.sketch-app .toolbar-select {
+  flex: 1 1 auto;
+  min-width: 7.5rem;
+  max-width: none;
+  width: 0;
+  height: 30px;
+  margin: 0;
+  padding: 0 10px;
+  border: 1px solid var(--sk-line);
+  border-radius: 8px;
+  background: rgba(12, 18, 28, 0.85);
+  color: var(--sk-text);
+  line-height: 30px;
+}
+
+.tool-app.sketch-app .toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  gap: 3px;
+  margin-left: auto;
+  min-width: 0;
+}
+
+.tool-app.sketch-app .toolbar .tool-sep {
+  width: 1px;
+  height: 18px;
+  margin: 0 4px;
+  background: var(--sk-line);
+  flex: 0 0 auto;
+}
+
+.tool-app.sketch-app .toolbar.is-cad-locked .edit-only {
+  opacity: 0.42;
+  filter: grayscale(0.35);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.tool-app.sketch-app .zoom-pct {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  padding: 0 2px;
+  color: var(--sk-mute);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.tool-app.sketch-app .hint-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 14px;
+  min-width: 0;
+  padding: 0 2px;
+}
+
+.tool-app.sketch-app .tool-hint,
+.tool-app.sketch-app .op-hint {
+  margin: 0;
+  min-width: 0;
+  color: var(--sk-mute);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tool-app.sketch-app .tool-hint {
+  text-align: left;
+  flex: 1 1 auto;
+}
+
+.tool-app.sketch-app .op-hint {
+  text-align: right;
+  margin-left: auto;
+  color: var(--sk-accent2);
+  opacity: 0.92;
+  flex: 0 1 auto;
+}
+
+.tool-app.sketch-app .canvas-shell {
+
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: #0d1420;
+  min-height: 0;
+}
+
+.tool-app.sketch-app #mainCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  cursor: default;
+  outline: none;
+}
+
+
+.tool-app.sketch-app .tool-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--sk-accent);
+  width: 32px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s, opacity 0.15s;
+}
+
+.tool-app.sketch-app .tool-btn:hover:not(:disabled) {
+  background: rgba(46, 230, 166, 0.12);
+}
+
+.tool-app.sketch-app .tool-btn.on {
+  background: var(--sk-tool-on);
+  color: var(--sk-accent2);
+}
+
+.tool-app.sketch-app .tool-btn.accent {
+  background: rgba(46, 230, 166, 0.16);
+  color: var(--sk-accent2);
+}
+
+.tool-app.sketch-app .tool-btn.accent:hover:not(:disabled) {
+  background: rgba(46, 230, 166, 0.28);
+  color: #fff;
+}
+
+.tool-app.sketch-app .tool-btn.danger:hover:not(:disabled) {
+  background: rgba(255, 120, 120, 0.14);
+  color: #ff9b9b;
+}
+
+.tool-app.sketch-app .tool-btn:disabled {
+  color: var(--text-muted, #667788);
+  cursor: default;
+  opacity: 0.55;
+}
+
+@media (max-width: 900px) {
+  .tool-app.sketch-app .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .tool-app.sketch-app .toolbar-select {
+    flex: 1 1 100%;
+    width: auto;
+  }
+
+  .tool-app.sketch-app .toolbar-actions {
+    flex: 1 1 100%;
+    justify-content: flex-end;
+  }
+
+  .tool-app.sketch-app .tool-hint,
+  .tool-app.sketch-app .op-hint {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 720px) {
+  .tool-app.sketch-app {
+    min-height: 0;
+  }
+
+  .tool-app.sketch-app .preview-card,
+  .tool-app.sketch-app #mainCanvas {
+    min-height: 320px;
+  }
+}
